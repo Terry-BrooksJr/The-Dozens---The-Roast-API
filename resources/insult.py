@@ -1,5 +1,5 @@
 from flask import Response, request
-from database.models import Movie, User
+from database.models import Insult, User
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restful import Resource
 
@@ -11,7 +11,9 @@ class InsultsAPI(Resource):
         insult1 = ""
         for doc in insult:
             insult1 = doc["content"]
-        return jsonify(Insult=insult1), 200
+            print(insult1)
+        return {"Yo Mama So...":insult1}, 200
+
 
     @jwt_required
     def post(self):
