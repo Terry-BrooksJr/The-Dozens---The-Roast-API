@@ -14,7 +14,6 @@ class InsultsAPI(Resource):
         insult1 = ""
         for doc in insult:
             insult1 = doc["content"]
-            print(insult1)
         return {"Yo Mama So...": insult1}, 200
 
     @jwt_required

@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_bcrypt import Bcrypt
+import os
 from flask_jwt_extended import JWTManager
 
 from database.db import initialize_db
@@ -14,7 +15,7 @@ api = Api(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-
+app.config['MONGODB_SETTINGS'] = {"host": os.getenv('MONGODB_URI')}
 initialize_db(app)
 initialize_routes(api)
 

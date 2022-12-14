@@ -7,3 +7,4 @@ class Config(object):
     MONGODB_DEV_SETTINGS = {
         "host": os.getenv('MONGODB_URI')
     }
+
