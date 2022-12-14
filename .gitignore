@@ -21,6 +21,7 @@ build/
 docs/_build/
 .vscode
 
+.devcontainer/*
 # Coverage reports
 htmlcov/
 .coverage
