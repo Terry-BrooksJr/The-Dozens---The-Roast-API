@@ -6,4 +6,4 @@
 #     db.init_app(app)
 
 # def connections_is_active():
-#     assert 
+#     assert

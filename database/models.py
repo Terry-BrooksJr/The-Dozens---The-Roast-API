@@ -7,14 +7,15 @@ class Insult(db.Document):
     category = db.StringField(required=True)
     explict = db.BooleanField(required=True)
     added_on = db.StringField(required=True)
-    meta = {"collection": "insults" }
+    added_by = db.StringField(required=True)
+
+    meta = {"collection": "insults"}
 
 
 class User(db.Document):
     email = db.EmailField(required=True, unique=True)
     password = db.StringField(required=True, min_length=6)
-    meta = {"collection": "users",
-            "db": "UserCreds"}
+    meta = {"collection": "users", "db": "UserCreds"}
 
     def hash_password(self):
         self.password = generate_password_hash(self.password).decode("utf8")

@@ -14,8 +14,6 @@ api = Api(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
-app.config["MONGODB_SETTINGS"] = {"host": "mongodb+srv://RoastAPI:rOYSHfRef7LxEJHc@primary.kkk2b.mongodb.net/InsultVault",
-                                  "db": "InsultVault"}
 
 initialize_db(app)
 initialize_routes(api)

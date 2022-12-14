@@ -1,7 +1,10 @@
-from flask import Response, request
-from database.models import Insult, User
+from flask import request
+from database.models import Insult
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restful import Resource
+import pendulum
+
+now = pendulum.now()
 
 
 class InsultsAPI(Resource):
@@ -12,15 +15,24 @@ class InsultsAPI(Resource):
         for doc in insult:
             insult1 = doc["content"]
             print(insult1)
-        return {"Yo Mama So...":insult1}, 200
-
+        return {"Yo Mama So...": insult1}, 200
 
     @jwt_required
     def post(self):
-        content = request.json["content"]
-        category = request.json["category"]
-        explict = request.json["nsfw"]
-        date = str(now.to_datetime_string())
-        Insult(content=content, explict=explict, added_on=date).save()
-        insult = Insult.objects.all()
-        return jsonify(message="Added"), 201
+        try:
+            user_id = get_jwt_identity()
+            body = request.get_json()
+            user = User.objects.get(id=user_id)
+            content = body["content"]
+            # category = request.json["category"]
+            explict = body["nsfw"]
+            date = str(now.to_datetime_string())
+            Insult(
+                content=content, explict=explict, added_on=date, added_by=user
+            ).save()
+            insult = Insult.objects.all()
+            return {"Status": "Insult Added"}, 201
+        except (FieldDoesNotExist, ValidationError):
+            raise SchemaValidationError
+        except Exception as e:
+            raise InternalServerError
