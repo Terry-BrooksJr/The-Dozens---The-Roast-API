@@ -31,7 +31,8 @@ class SignupApi(Resource):
         else:
             user.hash_password()
             user.save()
-            return {"id": str(user.id)}, 200
+            id = user.id
+            return {"id": str(id)}, 200
 
 
 class LoginApi(Resource):

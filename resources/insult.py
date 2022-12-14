@@ -29,9 +29,9 @@ class InsultsAPI(Resource):
             Insult(
                 content=content, explict=explict, added_on=date, added_by=user
             ).save()
-            Insult.objects.all()
+            insult = Insult.objects.all()
             return {"Status": "Insult Added"}, 201
         except (FieldDoesNotExist, ValidationError):
             raise SchemaValidationError
-        except Exception:
+        except Exception as e:
             raise InternalServerError
