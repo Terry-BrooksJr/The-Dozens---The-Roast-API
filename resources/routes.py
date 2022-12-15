@@ -25,5 +25,6 @@ def initialize_routes(api):
 
     api.add_resource(InsultsAPI, "/insult")
 
-    api.add_resource(SignupApi, "/auth/signup", "/auth")
-    api.add_resource(LoginApi, "/token")
+    api.add_resource(SignupApi, "/auth/signup", "/auth", "/signup")
+    api.add_resource(LoginApi, "/token", "/key")
+    
