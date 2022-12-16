@@ -5,15 +5,19 @@ from utils.gatekeeper import GateKeeper
 from flask_restful import Resource
 import pendulum
 from database.db import db
-import os 
+import os
+from utils.errors import UnauthorizedError, errors, EmailAlreadyExistsError
 import redis
 
 now = pendulum.now()
 import pprint
+
 gatekeeper = GateKeeper()
 jwt_redis_blocklist = redis.StrictRedis(
-    host=os.getenv('REDIS_URI'), port=6379, db=0, decode_responses=True
+    host=os.getenv("REDIS_URI"), port=6379, db=0, decode_responses=True
 )
+
+
 class SignupApi(Resource):
     def post(self):
         body = request.get_json()
@@ -31,9 +35,7 @@ class SignupApi(Resource):
         try:
             user_found = User.objects.get(email=email)
             if user_found:
-                return {
-                    "Error": "This Email Is Already Registered. If You Need a Token Try the '/token' endpoint"
-                }, 409
+                raise EmailAlreadyExistsError(EmailAlreadyExistsError)
         except user.DoesNotExist:
             pass
         except (ValidationError, Exception):
@@ -58,11 +60,15 @@ class LoginApi(Resource):
         user = User(email=email, password=body["password"])
 
         try:
-            registered = User.objects.get(email=body["email"])
+            registered = User.objects.get(email=email)
         except (UnauthorizedError, DoesNotExist, Exception):
             return {"Error": "Email Not Registered"}, 401
         try:
-            authorized = registered.check_password(body["password"])
+            pipeline = [{"$match": {"email": email}}]
+            users = User.objects().aggregate(pipeline)
+            for doc in users:
+                logged_password = doc["password"]
+            gatekeeper.check_password(body["password"], logged_password)
         except (UnauthorizedError, DoesNotExist, Exception):
             return {"Error": "Password invalid"}, 401
         else:
