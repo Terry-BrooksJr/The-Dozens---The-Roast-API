@@ -1,169 +1,82 @@
-# Flask-RESTful API project template
+# Yo' Mama - The Roast API 
 
 This project shows one of the possible ways to implement RESTful API server.
 
 There are implemented two models: User and Todo, one user has many todos.
 
 Main libraries used:
-1. Flask-Migrate - for handling all database migrations.
+1. Flask-JWT-Extended - for handling Bearer Token Provision and Validation for Creation, Update operations.
 2. Flask-RESTful - restful API library.
 3. Flask-Script - provides support for writing external scripts.
-4. Flask-SQLAlchemy - adds support for SQLAlchemy ORM.
+4. Flask-Mongoengine - adds support for MongoDB ORM.
+5. Flask-Bcrypt - supports the user registration system for users who want to contribute jokes
 
 Project structure:
 ```
 .
-├── README.md
+.
 ├── app.py
-├── endpoints
-│   ├── __init__.py
-│   ├── todos
-│   │   ├── __init__.py
-│   │   ├── model.py
-│   │   └── resource.py
-│   └── users
-│       ├── __init__.py
-│       ├── model.py
-│       └── resource.py
-├── manage.py
+├── config.py
+├── database
+│   ├── db.py
+│   ├── init_jokes.json
+│   ├── _init__.py
+│   └── models.py
+├── name
+├── README.md
 ├── requirements.txt
-└── settings.py
+├── resources
+│   ├── auth.py
+│   ├── __init__.py
+│   ├── insult.py
+│   └── routes.py
+├── test
+│   └── db-test.py
+└── utils
+    ├── arguments.py
+    ├── errors.py
+    ├── gatekeeper.py
+    ├── __init__.py
+    └── parser.py
 ```
 
-* endpoints - holds all endpoints.
-* app.py - flask application initialization.
-* settings.py - all global app settings.
-* manage.py - script for managing application (migrations, server execution, etc.)
+* resources - holds all endpoints.
+* app.py - flask application initialization(entrypoint).
+* tests - all testing related to the API
+* utils - Collection of Global utility Classes and functions
+* database - All things related to the primary Database - MongoDB
 
 ## Running 
 
 1. Clone repository.
 2. pip install requirements.txt
-3. Run following commands:
-    1. python manage.py db init
-    2. python manage.py db migrate
-    3. python manage.py db upgrade
-4. Start server by running python manage.py runserver
-
+3. Start server by running  python3 app.py run
 ## Usage
-### Users endpoint
-POST http://127.0.0.1:5000/api/users
-
+### POST endpoints
+POST http://127.0.0.1:5000/signup
+http://127.0.0.1:5000/signup    
 REQUEST
 ```json
 {
-	"name": "John John"
+	"email": "sample@email.com",
+    "password": "myPassWord"
 }
 ```
 RESPONSE
 ```json
 {
-    "id": 1,
-    "name": "John John",
-    "todos": []
+    "id": "639908d09e3d57d4baa655d4"
 }
 ```
-PUT http://127.0.0.1:5000/api/users/1
+POST http://127.0.0.1:5000/token
 
-REQUEST
-```json
-{
-	"name": "Smith Smith"
-}
+#TODO - Finish Documentation
 ```
-RESPONSE
+GET http://127.0.0.1:5000/insult
 ```json
-{
-    "id": 1,
-    "name": "Smith Smith",
-    "todos": []
-}
-```
-DELETE http://127.0.0.1:5000/api/users/1
 
-RESPONSE
-```json
-{
-    "id": 3,
-    "name": "Tom Tom",
-    "todos": []
-}
 ```
-GET http://127.0.0.1:5000/api/users
+GET http://127.0.0.1:5000/insult/<catagory>
+```json
 
-RESPONSE
-```json
-{
-    "count": 2,
-    "users": [
-        {
-            "id": 1,
-            "name": "John John",
-            "todos": [
-                {
-                    "id": 1,
-                    "name": "First task",
-                    "description": "First task description"
-                },
-                {
-                    "id": 2,
-                    "name": "Second task",
-                    "description": "Second task description"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "name": "Smith Smith",
-            "todos": []
-        }
-    ]
-}
 ```
-GET http://127.0.0.1:5000/api/users/2
-```json
-{
-    "id": 2,
-    "name": "Smith Smith",
-    "todos": []
-}
-```
-GET http://127.0.0.1:5000/api/users?name=John John
-```json
-{
-    "count": 1,
-    "users": [
-        {
-            "id": 1,
-            "name": "John John",
-            "todos": [
-                {
-                    "id": 1,
-                    "name": "First task",
-                    "description": "First task description"
-                },
-                {
-                    "id": 2,
-                    "name": "Second task",
-                    "description": "Second task description"
-                }
-            ]
-        }
-    ]
-}
-```
-GET http://127.0.0.1:5000/api/users?limit=1&offset=1
-```json
-{
-    "count": 1,
-    "users": [
-        {
-            "id": 2,
-            "name": "Smith Smith",
-            "todos": []
-        }
-    ]
-}
-```
-
-Todo endpoint is similar to Users endpoint.
