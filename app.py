@@ -21,4 +21,5 @@ app.config["MONGODB_SETTINGS"] = {"host": os.getenv("MONGODB_URI")}
 initialize_db(app)
 initialize_routes(api)
 
-app.run()
+if __name__ == "__main__":
+    app.run(host="localhost", port=6969, debug=True)

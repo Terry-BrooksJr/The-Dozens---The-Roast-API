@@ -23,7 +23,7 @@ class ApiTest(Resource):
 def initialize_routes(api):
     api.add_resource(ApiTest, "/test")
 
-    api.add_resource(InsultsAPI, "/insult","/")
+    api.add_resource(InsultsAPI, "/insult", "/")
 
     api.add_resource(SignupApi, "/auth/signup", "/auth", "/signup")
     api.add_resource(LoginApi, "/token", "/key")

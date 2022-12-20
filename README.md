@@ -14,7 +14,6 @@ Main libraries used:
 Project structure:
 ```
 .
-.
 ├── app.py
 ├── config.py
 ├── database
@@ -52,7 +51,7 @@ Project structure:
 2. pip install requirements.txt
 3. Start server by running  python3 app.py run
 ## Usage
-### POST endpoints
+## POST endpoints
 POST http://127.0.0.1:5000/signup
 http://127.0.0.1:5000/signup    
 REQUEST
@@ -62,15 +61,21 @@ REQUEST
     "password": "myPassWord"
 }
 ```
+POST Keys: 
+- `email`: Valid Email Address 
+-  `password` : Any combination Of **7 or More** ASCII Character.
 RESPONSE
 ```json
 {
     "id": "639908d09e3d57d4baa655d4"
 }
 ```
+Returns BSON id - You **DO NOT** need to retain this ID. 
+
 POST http://127.0.0.1:5000/token
 
 #TODO - Finish Documentation
+## GET Endpoints
 ```
 GET http://127.0.0.1:5000/insult
 ```json
@@ -80,3 +85,6 @@ GET http://127.0.0.1:5000/insult/<catagory>
 ```json
 
 ```
+
+## DELETE & PATCH Operations Are Not Supported. 
+<sub>Feel free to open an issue or submit a PR</em>

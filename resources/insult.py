@@ -9,6 +9,7 @@ from utils.arguments import Argument
 from utils.gatekeeper import GateKeeper
 from database.models import Insult
 from utils.errors import errors, SchemaValidationError
+from utils.jokester import Jokester
 
 now = pendulum.now()
 parser = reqparse.RequestParser()
@@ -17,8 +18,9 @@ gatekeeper = GateKeeper()
 POST_fields = {
     "content": fields.String(),
     "nsfw": fields.Boolean(),
-    "catagory" : fields.String()
+    "catagory": fields.String(),
 }
+
 
 class InsultsAPI(Resource):
     def __init__(self):
@@ -57,17 +59,12 @@ class InsultsAPI(Resource):
                     "vaildators": [],
                     "locations": ["json"],
                     "required": True,
-                }
+                },
             },
         }
-        
+
     def get(self):
-        pipeline = [{"$sample": {"size": 1}}]
-        insult = Insult.objects().aggregate(pipeline)
-        non_filtered_insult = str()
-        for doc in insult:
-            non_filtered_insult = doc["content"]
-        return {"Yo Mama So...": non_filtered_insult}, 200
+        return {"Yo Mama So...": Jokester.get_random_joke()}, 200
 
     @jwt_required
     @marshal_with(POST_fields)
@@ -101,55 +98,57 @@ class InsultsAPI(Resource):
             raise SchemaValidationError
         except Exception:
             raise InternalServerError
-#FIXME - Get this Parameter Parsing filteration logic to work
+
+
+# FIXME - Get this Parameter Parsing filteration logic to work
 #    params = parse_params(self.PARAMS["GET"])
 #         nsfw_setting = params["nsfw"]
 #         catagory_selection = params["catagory"]
 #         fields.Boolean.format(nsfw_setting)
 
-        # # Conditiomal to Handle of Only NSFW hearder passed
-        # if type(nsfw_setting) is not None:
-        #     try:
-        #         nsfw_set_pipeline = [
-        #             {"$match": {"nsfw/explict": nsfw_setting}},
-        #             {"$sample": {"size": 1}},
-        #         ]
-        #         insult = Insult.objects().aggregate(pipeline)
-        #         nsfw_filtered_insult = str()
-        #         for doc in insult:
-        #             nsfw_filtered_insult = doc["content"]
-        #         return {"Yo Mama So...": nsfw_filtered_insult}, 200
-        #     except Exception:
-        #         raise SchemaValidationError(errors["SchemaValidationError"])
-        # # Conditional to Handle if Both GET Paraks Are Passed
-        # elif type(nsfw_setting) is not None and type(catagory_selection) is not None:
-        #     nsfw_and_cat_set_pipeline = [
-        #         {
-        #             "$match": {
-        #                 "category": catagory_selection,
-        #                 "nsfw/explict": nsfw_setting,
-        #             }
-        #         },
-        #         {"$sample": {"size": 1}},
-        #     ]
-        #     insult = Insult.objects().aggregate(nsfw_and_cat_set_pipeline)
-        #     filtered_by_cat_and_nsfw_insult = str()
-        #     for doc in insult:
-        #         filtered_by_cat_and_nsfw_insult = doc["content"]
-        #     return {"Yo Mama So...": filtered_by_cat_and_nsfw_insult}, 200
-        # # Conditional to Handle if only Catagory is set
-        # elif type(catagory_selection) is not None:
-        #     catagory_selection_only_pipeline = [
-        #         {
-        #             "$match": {
-        #                 "category": catagory_selection,
-        #             }
-        #         },
-        #         {"$sample": {"size": 1}},
-        #     ]
-        #     insult = Insult.objects().aggregate(catagory_selection_only_pipeline)
-        #     catagory_selection_insult = str()
-        #     for doc in insult:
-        #         catagory_selection_insult = doc["content"]
-        #     return {"Yo Mama So...": catagory_selection_insult}, 200
-        # else:
+# # Conditiomal to Handle of Only NSFW hearder passed
+# if type(nsfw_setting) is not None:
+#     try:
+#         nsfw_set_pipeline = [
+#             {"$match": {"nsfw/explict": nsfw_setting}},
+#             {"$sample": {"size": 1}},
+#         ]
+#         insult = Insult.objects().aggregate(pipeline)
+#         nsfw_filtered_insult = str()
+#         for doc in insult:
+#             nsfw_filtered_insult = doc["content"]
+#         return {"Yo Mama So...": nsfw_filtered_insult}, 200
+#     except Exception:
+#         raise SchemaValidationError(errors["SchemaValidationError"])
+# # Conditional to Handle if Both GET Paraks Are Passed
+# elif type(nsfw_setting) is not None and type(catagory_selection) is not None:
+#     nsfw_and_cat_set_pipeline = [
+#         {
+#             "$match": {
+#                 "category": catagory_selection,
+#                 "nsfw/explict": nsfw_setting,
+#             }
+#         },
+#         {"$sample": {"size": 1}},
+#     ]
+#     insult = Insult.objects().aggregate(nsfw_and_cat_set_pipeline)
+#     filtered_by_cat_and_nsfw_insult = str()
+#     for doc in insult:
+#         filtered_by_cat_and_nsfw_insult = doc["content"]
+#     return {"Yo Mama So...": filtered_by_cat_and_nsfw_insult}, 200
+# # Conditional to Handle if only Catagory is set
+# elif type(catagory_selection) is not None:
+#     catagory_selection_only_pipeline = [
+#         {
+#             "$match": {
+#                 "category": catagory_selection,
+#             }
+#         },
+#         {"$sample": {"size": 1}},
+#     ]
+#     insult = Insult.objects().aggregate(catagory_selection_only_pipeline)
+#     catagory_selection_insult = str()
+#     for doc in insult:
+#         catagory_selection_insult = doc["content"]
+#     return {"Yo Mama So...": catagory_selection_insult}, 200
+# else:
