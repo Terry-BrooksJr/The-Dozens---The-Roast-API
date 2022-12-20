@@ -1,4 +1,12 @@
-
+"""
+    This is the Models that comproise the two main collections in the MongoDB Database: Users and Insults. It is powered by the ORM: Mongoengine
+    
+    While There are Class Methods Associated with these objects, the majaority of methods/functions have been abstracted away via a Utility Class in the `/utils` directory. 
+    
+    Design Choice was made to ensure sepration of cocerns and modularity:
+    - Utils Classes are the Actions. 
+    - Models are the Structure.
+"""
 from flask_jwt_extended import create_access_token, get_jwt
 import pendulum
 from utils.gatekeeper import GateKeeper
