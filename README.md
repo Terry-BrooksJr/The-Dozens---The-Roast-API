@@ -51,9 +51,15 @@ Project structure:
 2. pip install requirements.txt
 3. Start server by running  python3 app.py run
 ## Usage
+
+### Method Agonistic -
+Using Any HTTP Method to the **<API_URL>/status** endpoint will return:
+```json
+
+```
 ## POST endpoints
-POST http://127.0.0.1:5000/signup
-http://127.0.0.1:5000/signup    
+POST <API_URL>/signup
+<API_URL>/signup    
 REQUEST
 ```json
 {
@@ -72,16 +78,16 @@ RESPONSE
 ```
 Returns BSON id - You **DO NOT** need to retain this ID. 
 
-POST http://127.0.0.1:5000/token
+POST <API_URL>/token
 
 #TODO - Finish Documentation
 ## GET Endpoints
 ```
-GET http://127.0.0.1:5000/insult
+GET <API_URL>/insult
 ```json
 
 ```
-GET http://127.0.0.1:5000/insult/<catagory>
+GET <API_URL>/insult/<catagory>
 ```json
 
 ```
