@@ -289,3 +289,7 @@ poetry.toml
 
 
 # End of https://www.toptal.com/developers/gitignore/api/flask,python
+.devcontainer/noop.txt
+.devcontainer/Dockerfile
+.devcontainer/docker-compose.yml
+.devcontainer/devcontainer.json
