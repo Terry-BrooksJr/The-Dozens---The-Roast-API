@@ -13,13 +13,16 @@ class SignUpApiTest(TestCase):
         self.db = app.get_db()
 
     def test_successful_signup(self):
-        test_user = User(email="Pytest_User@gmail.com", password="Butter_Baby", joined_on="1970-01-01" )
+        test_user = User(
+            email="Pytest_User@gmail.com",
+            password="Butter_Baby",
+            joined_on="1970-01-01",
+        )
         test_user.hash_password()
         test_user.save()
-        
+
         user_found = User.objects.get(email="Pytest_User@gmail.com")
         self.assertTrue(user_found)
-
 
         def tearDown(self):
             test_user = User.objects.get(email="Pytest_User@gmail.com")
