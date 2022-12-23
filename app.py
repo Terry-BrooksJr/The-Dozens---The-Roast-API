@@ -1,13 +1,14 @@
+import os
+
 from flask import Flask
 from flask_bcrypt import Bcrypt
-import os
 from flask_jwt_extended import JWTManager
-
-from database.db import initialize_db
 from flask_restful import Api
+
 import utils
-from resources.routes import initialize_routes
 from config import Config
+from database.db import initialize_db
+from resources.routes import initialize_routes
 
 app = Flask(__name__)
 app.config.from_object(Config)
