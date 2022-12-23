@@ -1,3 +1,6 @@
+"""
+This is the main entry point of the application. It is responsible for initializing the Flask app, the database, the API, and the routes.
+"""
 import os
 
 from flask import Flask
