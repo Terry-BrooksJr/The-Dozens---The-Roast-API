@@ -1,23 +1,63 @@
-from .insult import InsultsAPI
-from .auth import SignupApi, LoginApi
-from flask_restful import Resource
+"""
+This Module is responsible for routing the API requests to the correct endpoints. The only endpoints that are defined here are the testing/status endpoint. All other endpoints are defined in their respective modules.
+"""
+
 from flask import request
+from flask_restful import Resource
+import pendulum
+
+from .auth import LoginApi, SignupApi
+from .insult import InsultsAPI
+
+now = pendulum.now()
 
 
 class ApiTest(Resource):
+    """Class for testing the API test Endpoints.
+
+    Inherits from the flask_restful Resource class.
+    """
+
     def get(self):
-        return {"status": "API Is Up!"}, 200
+        return {
+            "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively isulting millions of mama's"
+        }, 200
 
     def post(self):
         body = request.get_json()
-        return {"status": "API Is Up!", "Echo": body}, 201
+        return {
+            "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively isulting millions of mama's",
+            "We Hear You": body,
+        }, 200
 
     def patch(self):
         body = request.get_json()
-        return {"status": "API Is Up!", "Echo": body}, 204
+        return {
+            "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively isulting millions of mama's",
+            "We Hear You": body,
+        }, 200
 
     def delete(self):
-        return {"status": "API Is Uqp!"}, 204
+        return {
+            "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively isulting millions of mama's"
+        }, 200
+
+    def put(self):
+        body = request.get_json()
+        return {
+            "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively isulting millions of mama's",
+            "We Hear You": body,
+        }, 200
+
+    def options(self):
+        return {
+            "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively isulting millions of mama's"
+        }, 200
+
+    def head(self):
+        return {
+            "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively isulting millions of mama's"
+        }, 200
 
 
 def initialize_routes(api):
