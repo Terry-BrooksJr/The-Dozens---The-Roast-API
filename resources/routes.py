@@ -3,7 +3,7 @@ This Module is responsible for routing the API requests to the correct endpoints
 """
 
 from flask import request
-from flask_restful import Resource
+from flask_restx import Resource
 import pendulum
 
 from .auth import LoginApi, SignupApi

@@ -2,7 +2,7 @@ from flask import request
 from flask_jwt_extended import create_access_token
 from database.models import User
 from utils.gatekeeper import GateKeeper
-from flask_restful import Resource
+from flask_restx import Resource
 import pendulum
 from database.db import db
 import os
