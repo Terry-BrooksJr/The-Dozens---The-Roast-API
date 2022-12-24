@@ -49,7 +49,7 @@ sentinels==1.0.0
 six==1.16.0
 SQLAlchemy==1.4.45
 tomli==2.0.1
-waitress==1.4.2
+waitress==2.1.2
 wcwidth==0.1.7
 Werkzeug==2.2.2
 wrapt==1.11.1

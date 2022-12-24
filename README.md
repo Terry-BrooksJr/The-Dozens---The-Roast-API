@@ -60,6 +60,7 @@ Using Any HTTP Method to the **<API_URL>/status** endpoint will return:
 ## POST endpoints
 POST <API_URL>/signup
 <API_URL>/signup    
+
 REQUEST
 ```json
 {
@@ -67,6 +68,7 @@ REQUEST
     "password": "myPassWord"
 }
 ```
+
 POST Keys: 
 - `email`: Valid Email Address 
 -  `password` : Any combination Of **7 or More** ASCII Character.
@@ -76,6 +78,7 @@ RESPONSE
     "id": "639908d09e3d57d4baa655d4"
 }
 ```
+
 Returns BSON id - You **DO NOT** need to retain this ID. 
 
 POST <API_URL>/token
