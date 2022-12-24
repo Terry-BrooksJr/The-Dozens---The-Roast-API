@@ -17,7 +17,7 @@ build/
 .tox/
 .cache/
 .pytest_cache/
-.idea/
+.idea/ 
 docs/_build/
 .vscode
 
@@ -293,3 +293,7 @@ poetry.toml
 .devcontainer/Dockerfile
 .devcontainer/docker-compose.yml
 .devcontainer/devcontainer.json
+<<<<<<< Updated upstream
+=======
+.devcontainer/.devcontainer.env
+>>>>>>> Stashed changes
