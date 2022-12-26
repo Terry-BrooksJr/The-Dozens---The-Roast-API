@@ -53,6 +53,7 @@ Project structure:
 3. Start server by running  python3 app.py run
 ## Usage
 
+
 ### Method Agonistic -
 Using Any HTTP Method to the **<API_URL>/status** endpoint will return:
 ```json
@@ -98,3 +99,7 @@ GET <API_URL>/insult/<catagory>
 
 ## DELETE & PATCH Operations Are Not Supported. 
 <sub>Feel free to open an issue or submit a PR</em>
+
+## Additional Documentation 
+- [Postman](https://www.postman.com/terryabrooksjr/workspace/the-roast-api-yo-mama-jokes)
+- [Swagger](http://FIXME\) #TODO - Add Swagger Link
