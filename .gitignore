@@ -323,3 +323,4 @@ utils/__pycache__/parser.cpython-39.pyc
 .devcontainer/.history/*
 .vscode/*
 trunk_results.txt
+.vscode/PythonImportHelper-v2-Completion.json
