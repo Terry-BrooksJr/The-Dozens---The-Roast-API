@@ -1,4 +1,5 @@
-# Yo' Mama - The Roast API 
+# Yo' Mama - The Roast API
+
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
 
 This project shows one of the possible ways to implement RESTful API server.
@@ -6,6 +7,7 @@ This project shows one of the possible ways to implement RESTful API server.
 There are implemented two models: User and Todo, one user has many todos.
 
 Main libraries used:
+
 1. Flask-JWT-Extended - for handling Bearer Token Provision and Validation for Creation, Update operations.
 2. Flask-RESTful - restful API library.
 3. Flask-Script - provides support for writing external scripts.
@@ -13,6 +15,7 @@ Main libraries used:
 5. Flask-Bcrypt - supports the user registration system for users who want to contribute jokes
 
 Project structure:
+
 ```
 .
 ├── app.py
@@ -40,66 +43,79 @@ Project structure:
     └── parser.py
 ```
 
-* resources - holds all endpoints.
-* app.py - flask application initialization(entrypoint).
-* tests - all testing related to the API
-* utils - Collection of Global utility Classes and functions
-* database - All things related to the primary Database - MongoDB
+- resources - holds all endpoints.
+- app.py - flask application initialization(entrypoint).
+- tests - all testing related to the API
+- utils - Collection of Global utility Classes and functions
+- database - All things related to the primary Database - MongoDB
 
-## Running 
+## Running
 
 1. Clone repository.
 2. pip install requirements.txt
-3. Start server by running  python3 app.py run
+3. Start server by running python3 app.py run
+
 ## Usage
 
-
 ### Method Agonistic -
+
 Using Any HTTP Method to the **<API_URL>/status** endpoint will return:
+
 ```json
 
 ```
+
 ## POST endpoints
+
 POST <API_URL>/signup
-<API_URL>/signup    
+<API_URL>/signup
 
 REQUEST
+
 ```json
 {
-	"email": "sample@email.com",
-    "password": "myPassWord"
+  "email": "sample@email.com",
+  "password": "myPassWord"
 }
 ```
 
-POST Keys: 
-- `email`: Valid Email Address 
--  `password` : Any combination Of **7 or More** ASCII Character.
-RESPONSE
+POST Keys:
+
+- `email`: Valid Email Address
+- `password` : Any combination Of **7 or More** ASCII Character.
+  RESPONSE
+
 ```json
 {
-    "id": "639908d09e3d57d4baa655d4"
+  "id": "639908d09e3d57d4baa655d4"
 }
 ```
 
-Returns BSON id - You **DO NOT** need to retain this ID. 
+Returns BSON id - You **DO NOT** need to retain this ID.
 
 POST <API_URL>/token
 
 #TODO - Finish Documentation
+
 ## GET Endpoints
-```
+
+````
 GET <API_URL>/insult
 ```json
 
-```
+````
+
 GET <API_URL>/insult/<catagory>
+
 ```json
 
 ```
 
-## DELETE & PATCH Operations Are Not Supported. 
+## DELETE & PATCH Operations Are Not Supported.
+
 <sub>Feel free to open an issue or submit a PR</em>
 
-## Additional Documentation 
+## Additional Documentation
+
 - [Postman](https://www.postman.com/terryabrooksjr/workspace/the-roast-api-yo-mama-jokes)
 - [Swagger](http://FIXME\) #TODO - Add Swagger Link
