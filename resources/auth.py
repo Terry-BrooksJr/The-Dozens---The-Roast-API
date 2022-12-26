@@ -91,7 +91,7 @@ class SignupApi(Resource):
             user.hash_password()
             user.save()
             id = user.id
-            return {"id": str(id)}, 200
+            return {"id": str(id)}, 201
 
 
 @api.route("/token")
@@ -99,6 +99,10 @@ class LoginApi(Resource):
     @api.doc(model=token_request_model, body=User)
     @api.response(401, "Unauthorized - Incorrect Password or Un-Registred Email")
     @api.response(201, "Token Issued")
+    @api.doc(params={"email": "A Vaild Email Address", "location": "form"})
+    @api.doc(params={"Password": "Any combination Of 7 or More ASCII Character."})
+    @api.expect(token_request_model)
+
     def post(self):
         body = request.get_json()
         if "email" not in body.keys():

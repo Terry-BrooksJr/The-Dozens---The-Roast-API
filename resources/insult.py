@@ -3,17 +3,15 @@ from flask import copy_current_request_context
 from flask import current_app as app
 from flask import request
 from flask_jwt_extended import get_jwt_identity, jwt_required
-<<<<<<< Updated upstream
-from flask_restx import Resource, reqparse, fields, marshal_with
-=======
 from flask_restx import Resource, reqparse, fields, marshal_with, apidoc, Namespace
->>>>>>> Stashed changes
 from utils.parser import parse_params
 from utils.arguments import Argument
 from utils.gatekeeper import GateKeeper
 from database.models import Insult
 from utils.errors import errors, SchemaValidationError
 from utils.jokester import Jokester
+#Namespace Declaration
+api = Namespace('Insults', description='Joke operations')
 
 # Namespace Declaration
 api = Namespace("Insults", description="Joke operations")
@@ -37,6 +35,7 @@ parser = reqparse.RequestParser()
 gatekeeper = GateKeeper()
 
 
+@api.route('/')
 class InsultsAPI(Resource):
     @marshal_with(GET_fields, skip_none=True)
     def get(self):
