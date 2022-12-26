@@ -61,10 +61,10 @@ class ApiTest(Resource):
 
 
 def initialize_routes(api):
-    #Testinf Endpoints
+    # Testinf Endpoints
     api.add_resource(ApiTest, "/test", "/status")
     # Insult Resources Endpoints
     api.add_resource(InsultsAPI, "/insult", "/")
-    #Auth Endpoints
+    # Auth Endpoints
     api.add_resource(SignupApi, "/auth/signup", "/auth", "/signup")
     api.add_resource(LoginApi, "/token", "/key")

@@ -6,11 +6,11 @@
 // Select the database to use.
 use('InsultVault');
 
-const nsfw_setting = true;
+const explicit_setting = true;
 const catagory_selection = 'Fat'
 // Build an aggregation to view total sales for each product in 2014.
-const nsfw_aggregation = [
-  {"$match": {"nsfw/explict": nsfw_setting}},
+const explicit_aggregation = [
+  {"$match": {"explicit/explict": explicit_setting}},
   {"$sample": {"size": 1}}
 ];
 const category_aggregation = [

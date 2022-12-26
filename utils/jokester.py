@@ -1,4 +1,5 @@
 from database.models import Insult
+import random
 
 
 class Jokester:
@@ -16,9 +17,7 @@ class Jokester:
 
     @staticmethod
     def get_censored_joke():
-        censored_pipeline = [
-            {"$match": {"nsfw": False}},
-        ]
+        censored_pipeline = [{"$match": {"explicit": False}}, {"$sample": {"size": 1}}]
         censored_joke = str()
         insult = Insult.objects().aggregate(censored_pipeline)
         for doc in insult:
@@ -29,5 +28,16 @@ class Jokester:
         return censored_joke
 
     @staticmethod
-    def get_categorized_joke(catagory):
-        pass
+    def get_categorized_joke(catagory_selection, explicit_settings):
+        pipeline_step1 = {"$match": {"explicit": explicit_settings}}
+        pipeline_step2 = {"$match": {"catagory": catagory_selection}}
+        catagorized_pipeline = [pipeline_step1, pipeline_step2]
+        catagorized_joke = str()
+        insult = Insult.objects().aggregate(catagorized_pipeline)
+        randomizer = random.randint(0, len(insult))
+        for doc in insult:
+            if doc[randomizer]["status"] == "Active":
+                catagorized_joke = doc[randomizer]["content"]
+            else:
+                get_categorized_joke()
+        return catagorized_joke

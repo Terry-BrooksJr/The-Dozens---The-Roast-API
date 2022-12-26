@@ -3952,7 +3952,7 @@
   "_id": {
     "$oid": "63a08738cefc89ff4999813e"
   },
-  "content": "TEST - Document Should Be Found By NSFW: True and Status: 'Deleted'",
+  "content": "TEST - Document Should Be Found By explicit: True and Status: 'Deleted'",
   "added_by": "Developer",
   "added_on": "2022-12-19",
   "category": "Test",
