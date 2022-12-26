@@ -1,0 +1,34 @@
+#Ignore the logs directory
+logs/
+
+#Ignoring the password file
+passwords.txt
+
+#Ignoring git and cache folders
+.git
+.cache
+
+#Ignoring all gitthe markdown and class files
+*.md
+**/*.class
+
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis

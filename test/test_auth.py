@@ -1,5 +1,6 @@
-from unittest import TestCase
 import json
+from unittest import TestCase
+
 import pytest
 
 from app import app

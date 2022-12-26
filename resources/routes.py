@@ -2,9 +2,9 @@
 This Module is responsible for routing the API requests to the correct endpoints. The only endpoints that are defined here are the testing/status endpoint. All other endpoints are defined in their respective modules.
 """
 
+import pendulum
 from flask import request
 from flask_restx import Resource
-import pendulum
 
 from .auth import LoginApi, SignupApi
 from .insult import InsultsAPI

@@ -1,5 +1,6 @@
-from database.models import Insult
 import random
+
+from database.models import Insult
 
 
 class Jokester:

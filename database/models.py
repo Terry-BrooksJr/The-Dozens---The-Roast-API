@@ -7,8 +7,9 @@
     - Utils Classes are the Actions. 
     - Models are the Structure.
 """
-from flask_jwt_extended import create_access_token, get_jwt
 import pendulum
+from flask_jwt_extended import create_access_token, get_jwt
+
 from utils.gatekeeper import GateKeeper
 
 from .db import db

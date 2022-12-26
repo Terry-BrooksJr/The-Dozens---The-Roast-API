@@ -1,12 +1,15 @@
 from flask_restx import Api
+
 from utils.errors import (
-    errors,
+    EmailAlreadyExistsError,
+    InternalServerError,
     TokenRevokedError,
     UnauthorizedError,
-    InternalServerError,
-    InternalServerError,
-    EmailAlreadyExistsError,
+    UserDoesNotExist,
+    ValidationError,
+    errors,
 )
+
 from .auth import api as AuthNS
 from .insult import api as InsultNS
 
@@ -17,8 +20,8 @@ api = Api(
     description="The dozens is a game of verbal combat, played mostly by African Americans on street corners, in barbershops, wherever. It is designed to teach participants to maintain control and keep cool under adverse circumstances.",
 )
 
-api.add_namespace(AuthNS, "/auth")
-api.add_namespace(InsultNS, "/insult")
+api.add_namespace(AuthNS, "/")
+api.add_namespace(InsultNS, "/")
 
 
 @api.errorhandler(Exception)
@@ -38,6 +41,21 @@ def EmailAlreadyExistsError(error):
     }
 
 
+@api.errorhandler(UserDoesNotExist)
+def UserDoesNotExist(error):
+    """Return a custom message and 401 status code"""
+    return {
+        "message": "The email provided is not registered to contriubute to the API. Please use the `/signup` endpoint, then re-attempt this request",
+        "status": 401,
+    }
+
+
+@api.errorhandler(UnauthorizedError)
+def ValidationError(error):
+    """Return a custom message and 400 status code"""
+    return {"message": "Please Check the Password and re-attempt that request"}
+
+
 @api.errorhandler(TokenRevokedError)
 def TokenRevokedError(error):
     """Return a custom message and 401 status code"""
@@ -47,7 +65,7 @@ def TokenRevokedError(error):
 
 
 @api.errorhandler(InternalServerError)
-def handle_fake_exception_with_header(error):
+def InternalServerError(error):
     """Return a custom message and 400 status code"""
     return {
         "message": "We Stupid, We can't even keep the sever up and running. Sorry, Internal Sercver Error. Reload"

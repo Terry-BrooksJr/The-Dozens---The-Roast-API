@@ -4,20 +4,19 @@ import pendulum
 import redis
 from flask import request
 from flask_jwt_extended import create_access_token
-from flask_restx import Resource, fields, reqparse, Namespace, fields
+from flask_restx import Namespace, Resource, fields, reqparse
+from werkzeug.exceptions import BadRequest
 
 # from app import api
 from database.db import db
 from database.models import User
-from utils.errors import EmailAlreadyExistsError, UnauthorizedError, errors
+from utils.errors import (
+    EmailAlreadyExistsError,
+    UnauthorizedError,
+    UserDoesNotExist,
+    errors,
+)
 from utils.gatekeeper import GateKeeper
-from flask_restx import Resource
-import pendulum
-from database.db import db
-import os
-from utils.errors import UnauthorizedError, errors, EmailAlreadyExistsError
-import redis
-from werkzeug.exceptions import BadRequest
 
 # Namespace Declaration
 api = Namespace(
@@ -53,7 +52,7 @@ parser.add_argument("bar", type=str, required=True, location="form")
 now = pendulum.now()
 
 
-@api.route("/")
+@api.route("auth")
 class SignupApi(Resource):
     @api.doc(model=signup_model, body=User)
     @api.response(201, "User Created")
@@ -70,8 +69,9 @@ class SignupApi(Resource):
         if "password" not in body.keys():
             raise BadRequest("'password' Is A Required Key")
         # Assinging the Value Of Keys to ORM Model
-        if len(body["email"] or len(body["password"])):
-            raise BadRequest("Empty Request")
+        # TODO - Find a way to validate for Empty Post Bodies
+        # if len(body["email"] or len(body["password"])):
+        #     raise BadRequest("Empty Request")
         email = body["email"].lower()
         user = User(
             email=email, password=body["password"], joined_on=now.to_date_string()
@@ -83,8 +83,10 @@ class SignupApi(Resource):
                 raise EmailAlreadyExistsError(EmailAlreadyExistsError)
         except user.DoesNotExist:
             pass
-        except (ValidationError, Exception):
-            raise BadRequest("Invaild Email Address. Please Confirm Entry")
+        except (UserDoesNotExist):
+            pass
+        except Exception as e:
+            raise BadRequest(e)
         if len(user.password) <= 6:
             raise BadRequest("Passwords Must be 6 Longer Than 6  Characters")
         else:
@@ -94,7 +96,7 @@ class SignupApi(Resource):
             return {"id": str(id)}, 201
 
 
-@api.route("/token")
+@api.route("token")
 class LoginApi(Resource):
     @api.doc(model=token_request_model, body=User)
     @api.response(401, "Unauthorized - Incorrect Password or Un-Registred Email")
@@ -102,7 +104,6 @@ class LoginApi(Resource):
     @api.doc(params={"email": "A Vaild Email Address", "location": "form"})
     @api.doc(params={"Password": "Any combination Of 7 or More ASCII Character."})
     @api.expect(token_request_model)
-
     def post(self):
         body = request.get_json()
         if "email" not in body.keys():

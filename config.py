@@ -7,5 +7,3 @@ class Config(object):
     MONGODB_DEV_SETTINGS = {"host": os.getenv("MONGODB_URI")}
     BUNDLE_ERROR = True
     ENV = "Development"
-
-
