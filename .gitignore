@@ -309,3 +309,5 @@ utils/__pycache__/errors.cpython-39.pyc
 utils/__pycache__/gatekeeper.cpython-39.pyc
 utils/__pycache__/jokester.cpython-39.pyc
 utils/__pycache__/parser.cpython-39.pyc
+*.pyc
+.devcontainer/devcontainer.json

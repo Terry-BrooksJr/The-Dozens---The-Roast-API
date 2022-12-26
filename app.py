@@ -22,8 +22,6 @@ api.init_app(app)
 initialize_db(app)
 
 
-app.config["BUNDLE_ERRORS"] = True
-app.config["MONGODB_SETTINGS"] = {"host": os.getenv("MONGODB_URI")}
 
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
