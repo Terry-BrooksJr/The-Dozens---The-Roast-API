@@ -26,5 +26,39 @@
 			"requireLocalPort": true
 		}
 	},
-	"postCreateCommand": "./1password.sh && pip3 install -r requirements.txt && flask run --reload"
+	"postCreateCommand": "./1password.sh && pip3 install -r requirements.txt && flask run --reload",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mhutchie.git-graph",
+				"Atishay-Jain.All-Autocomplete",
+				"almenon.arepl",
+				"ms-python.black-formatter",
+				"streetsidesoftware.code-spell-checker",
+				"wmaurer.change-case",
+				"oleg-shilo.codemap",
+				"ExodiusStudios.comment-anchors",
+				"adam-bender.commit-message-editor",
+				"ezforo.copy-relative-path-and-line-numbers",
+				"ms-azuretools.vscode-docker",
+				"formulahendry.docker-explorer",
+				"Gruntfuggly.todo-tree",
+				"mgesbert.python-path",
+				"littlefoxteam.vscode-python-test-adapter",
+				"Bar.python-import-helper",
+				"tht13.python",
+				"ms-python.vscode-pylance",
+				"ms-python.pylint",
+				"ms-python.isort",
+				"donjayamanne.githistory",
+				"GitHub.copilot",
+				"GitHub.vscode-pull-request-github",
+				"VisualStudioExptTeam.vscodeintellicode",
+				"VisualStudioExptTeam.intellicode-api-usage-examples",
+				"eriklynd.json-tools",
+				"magicstack.MagicPython",
+				"mongodb.mongodb-vscode"
+			]
+		}
+	}
 }
