@@ -1,47 +1,30 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/anaconda
 {
-	"name": "The Dozens - Dev Enviornment",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.17",
+	"name": "Standard Flask App/API - Dev Enviornment",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 	"features": {
 		"ghcr.io/devcontainers/features/python:1": {},
-		"ghcr.io/meaningful-ooo/devcontainer-features/homebrew:2": {},
-		"ghcr.io/devcontainers-contrib/features/black:1": {},
-		"ghcr.io/devcontainers-contrib/features/coverage-py:1": {},
 		"ghcr.io/devcontainers-contrib/features/pre-commit:1": {},
-		"ghcr.io/devcontainers-contrib/features/pylint:1": {}
+		"ghcr.io/devcontainers-contrib/features/pylint:1": {},
+		"ghcr.io/devcontainers-contrib/features/coverage-py:1": {}
 	},
 	"containerEnv": {
-		"MONGODB_URI":"mongodb+srv://RoastAPI:oL5o8De5uHsXI4if@primary.kkk2b.mongodb.net/InsultVault",
-		"SECRET_KEY": "K.r9j9HwRkyajUHVZ!VZ4hJY7J9LDdqeN6TBNG2JfuZtPav!8dAj2@3BkFDpWHaTrQehPN",
-		"JWT_SECRET_KEY": "t1NP63m4wnBg6nyHYKfmc2TpCOGI4nss",
-		"REDIS_URI": "redis://default:nUtb7M44Z3ocrMyXIJ7PlS6AFtGr3oT6@redis-13695.c83.us-east-1-2.ec2.cloud.redislabs.com:13695",
-		"HEROKU_KEY": "89e6ee16-a722-405f-bff7-bcf6ba0937fa",
-		"FLASK_RUN_PORT":"6969"
+		"MONGODB_URI": "op://Dev-Work/ENV/DATABASE RELATED VARIABLES - Postgres/MONGODB_URI-DOZEN",
+		"SECRET_KEY": "op://Dev-Work/ENV/General ENV Varibles/SECRET_KEY",
+		"JWT_SECRET_KEY":"op://Dev-Work/ENV/General ENV Varibles/JWT_SECRET_KEY",
+		"REDIS_URI": "op://Dev-Work/ENV/DATABASE RELATED VARIABLES - Postgres/REDIS_URI-DOZEN",
+		"HEROKU_KEY": "op://Dev-Work/ENV/lzxyjtfcrzokz355qkgc2pftry/HEROKU_KEY",
+		"FLASK_RUN_PORT": "6969"
 	},
-
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	 "forwardPorts": [6969],
-
-	 "portsAttributes": {
+	"forwardPorts": [
+		6969
+	],
+	"portsAttributes": {
 		"6969": {
 			"label": "Application",
 			"onAutoForward": "silent",
 			"onAutoForwardFailure": "notify",
 			"requireLocalPort": true
 		}
-	 },
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "brew install --cask 1password/tap/1password-cli && pip3 install -r requirements.txt && flask run --reload"
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	},
+	"postCreateCommand": "./1password.sh && pip3 install -r requirements.txt && flask run --reload"
 }

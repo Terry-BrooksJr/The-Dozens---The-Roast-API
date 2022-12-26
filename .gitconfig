@@ -1,0 +1,14 @@
+[user]
+ name = Terry A. Brooks, Jr
+email = Terry.Arthur@BrooksJr.com
+
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHrH9MTeCdXDX3aM9er31SMIOrHI9MU27Tvqc2kn7dsY
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
