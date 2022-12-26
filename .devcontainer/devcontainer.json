@@ -26,7 +26,7 @@
 			"requireLocalPort": true
 		}
 	},
-	"postCreateCommand": "./1password.sh && pip3 install -r requirements.txt && flask run --reload",
+	"postCreateCommand": "pip3 install -r requirements.txt && flask run --reload && ./1password.sh1",
 	"customizations": {
 		"vscode": {
 			"extensions": [
