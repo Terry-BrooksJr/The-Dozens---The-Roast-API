@@ -43,10 +43,10 @@ instance/*
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
-__pycache__/
+__pycache__/*
 *.py[cod]
 *$py.class
-
+*.pyc
 # C extensions
 *.so
 
@@ -293,7 +293,19 @@ poetry.toml
 .devcontainer/Dockerfile
 .devcontainer/docker-compose.yml
 .devcontainer/devcontainer.json
-<<<<<<< Updated upstream
-=======
 .devcontainer/.devcontainer.env
->>>>>>> Stashed changes
+__pycache__/*
+__pycache__/app.cpython-39.pyc
+__pycache__/config.cpython-39.pyc
+database/__pycache__/db.cpython-39.pyc
+database/__pycache__/models.cpython-39.pyc
+resources/__pycache__/__init__.cpython-39.pyc
+resources/__pycache__/auth.cpython-39.pyc
+resources/__pycache__/insult.cpython-39.pyc
+resources/__pycache__/routes.cpython-39.pyc
+utils/__pycache__/__init__.cpython-39.pyc
+utils/__pycache__/arguments.cpython-39.pyc
+utils/__pycache__/errors.cpython-39.pyc
+utils/__pycache__/gatekeeper.cpython-39.pyc
+utils/__pycache__/jokester.cpython-39.pyc
+utils/__pycache__/parser.cpython-39.pyc
