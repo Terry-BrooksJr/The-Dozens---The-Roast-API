@@ -10,18 +10,14 @@ from werkzeug.exceptions import BadRequest
 # from app import api
 from database.db import db
 from database.models import User
-from utils.errors import (
-    EmailAlreadyExistsError,
-    UnauthorizedError,
-    UserDoesNotExist,
-    errors,
-)
+from utils.errors import (EmailAlreadyExistsError, UnauthorizedError,
+                          UserDoesNotExist, errors)
 from utils.gatekeeper import GateKeeper
 
 # Namespace Declaration
 api = Namespace(
-    "authorizations",
-    description="This Namespace is charged with the tasks of issuing, authenticating bearer tokens and registering users ",
+    "Authorizations & Authentication",
+    description="These endpoints encompass all the endpoints needed to:\n 1. Sign-Up to contribute a joke. \n 2. Provisioning a Bearer Token require at the time of submission. <br> <sub>Note: The Bearer Token is required to submit a joke, and registration is required to receive a token.</sub>",
 )
 
 # Namespace Related Models
@@ -40,14 +36,13 @@ token_request_model = api.model(
     },
 )
 # Top-Level Vaariables/Plugins
-gatekeeper = GateKeeper()
 jwt_redis_blocklist = redis.StrictRedis(
     host=os.getenv("REDIS_URI"), port=6379, db=0, decode_responses=True
 )
 
 parser = reqparse.RequestParser()
-parser.add_argument("foo", type=str, required=True, location="form")
-parser.add_argument("bar", type=str, required=True, location="form")
+parser.add_argument("email", type=str, required=True, location="form")
+parser.add_argument("password", type=str, required=True, location="form")
 
 now = pendulum.now()
 
@@ -58,16 +53,15 @@ class SignupApi(Resource):
     @api.response(201, "User Created")
     @api.response(400, "Bad Request")
     @api.response(401, "Unauthroized")
-    @api.doc(params={"email": "A Vaild Email Address", "location": "form"})
-    @api.doc(params={"Password": "Any combination Of 7 or More ASCII Character."})
+    @api.doc(parser=parser)
     @api.expect(signup_model)
     def post(self):
         body = request.get_json()
-        # Verifying the Required Keys Are In Payload
-        if "email" not in body.keys():
-            raise BadRequest("'email' Is A Required Key")
-        if "password" not in body.keys():
-            raise BadRequest("'password' Is A Required Key")
+        # # Verifying the Required Keys Are In Payload
+        # if "email" not in body.keys():
+        #     raise BadRequest("'email' Is A Required Key")
+        # if "password" not in body.keys():
+        #     raise BadRequest("'password' Is A Required Key")
         # Assinging the Value Of Keys to ORM Model
         # TODO - Find a way to validate for Empty Post Bodies
         # if len(body["email"] or len(body["password"])):
@@ -90,7 +84,7 @@ class SignupApi(Resource):
         if len(user.password) <= 6:
             raise BadRequest("Passwords Must be 6 Longer Than 6  Characters")
         else:
-            user.hash_password()
+            GateKeeper.encrypt_password()
             user.save()
             id = user.id
             return {"id": str(id)}, 201
@@ -106,27 +100,27 @@ class LoginApi(Resource):
     @api.expect(token_request_model)
     def post(self):
         body = request.get_json()
-        if "email" not in body.keys():
-            raise BadRequest("'email' Is A Required Key'")
-        if "password" not in body.keys():
-            raise BadRequest("'passeword' Is A Required Key'")
+        # if "email" not in body.keys():
+        #     raise BadRequest("'email' Is A Required Key'")
+        # if "password" not in body.keys():
+        #     raise BadRequest("'passeword' Is A Required Key'")
         email = body["email"].lower()
         user = User(email=email, password=body["password"])
 
         try:
             registered = User.objects.get(email=email)
-        except (UnauthorizedError, DoesNotExist, Exception):
+        except (UnauthorizedError, UserDoesNotExist, Exception):
             return {"Error": "Email Not Registered"}, 401
         try:
             pipeline = [{"$match": {"email": email}}]
             users = User.objects().aggregate(pipeline)
             for doc in users:
                 logged_password = doc["password"]
-            gatekeeper.check_password(body["password"], logged_password)
-        except (UnauthorizedError, DoesNotExist, Exception):
+            GateKeeper.check_password(body["password"], logged_password)
+        except (UnauthorizedError, UserDoesNotExist, Exception):
             return {"Error": "Password invalid"}, 401
         else:
-            token = gatekeeper.issue_token(user.id)
+            token = GateKeeper.issue_token(user['email'])
             string_expiry = now.add(days=7)
 
             return {

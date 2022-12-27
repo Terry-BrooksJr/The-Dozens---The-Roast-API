@@ -2,75 +2,131 @@ import pendulum
 from flask import copy_current_request_context
 from flask import current_app as app
 from flask import request
-from flask_jwt_extended import get_jwt_identity, jwt_required
+from flask_jwt_extended import get_jwt, jwt_required, verify_jwt_in_request
 from flask_restx import Namespace, Resource, apidoc, fields, marshal_with, reqparse
 
-from database.models import Insult
-from utils.arguments import Argument
-from utils.errors import SchemaValidationError, errors
+from database.models import Insult, User
+from utils.errors import BannedUserError, InvaildTokenError, UnauthorizedError, errors
 from utils.gatekeeper import GateKeeper
 from utils.jokester import Jokester
-from utils.parser import parse_params
 
-# Namespace Declaration
+#! Namespace Declaration
 api = Namespace("Insults", description="Joke operations")
 
-# Namespace Declaration
-api = Namespace("Insults", description="Joke operations")
-
-# Namespace Related Models
+#!Namespace Related Models
 GET_fields = api.model(
-    "GET_fields",
+    "Insult (Get Method)",
     {
         "explicit": fields.Boolean,
         "catagory": fields.String,
     },
 )
-POST_fields = {
-    "content": fields.String(),
-    "explicit": fields.Boolean(),
-    "catagory": fields.String(),
-}
-# Top-Level Vaariables/Plugins
+POST_fields = api.model(
+    "Insult (Post Method)",
+    {
+        "content": fields.String,
+        "explicit": fields.Boolean,
+        "catagory": fields.String,
+        "bearer token": fields.String,
+    },
+)
+
+
+#! Top-Level Vaariables/Plugins
 now = pendulum.now()
 parser = reqparse.RequestParser()
-gatekeeper = GateKeeper()
+joke_categories = Jokester.get_catagories()
+print(joke_categories)
+#!Request Parameters Designations
+parser.add_argument("content", type=str, required=True, location="form")
+parser.add_argument("explicit", type=str, required=True, location="form")
+parser.add_argument(
+    "catagory",
+    type=str,
+    required=True,
+    location="form",
+    help="specify the jokes to a  category, if it doesn't fit to any choose 'snowflake'",
+    choices=joke_categories,
+)
+parser.add_argument(
+    "bearer token",
+    type=str,
+    required=True,
+    location="headers",
+    help="Please ensure your have registered your email and password to receive a bearer token. See endpoint `/signup` for more information.",
+)
 
+get_parsers = parser.copy()
+POST_parsers = parser.copy()
+
+get_parsers.replace_argument(
+    "explicit",
+    type=str,
+    required=False,
+    location="headers",
+    help="Explicit Filter. When Set to True the default filter is turned off.",
+    choices=["true", "false"],
+)
+get_parsers.replace_argument(
+    "",
+    type=str,
+    required=False,
+    location="args",
+    help="limit the jokes to a specific category",
+    choices=list(joke_categories),
+)
+get_parsers.remove_argument("content")
+get_parsers.remove_argument("bearer token")
+
+#! GET ENDPOINT - Insults
 
 @api.route("insult")
 class InsultsAPI(Resource):
     @marshal_with(GET_fields, skip_none=True)
+    @api.doc(model=GET_fields, parser=get_parsers)
+    @api.response(200, "Insults Found")
+    @api.response(400, "Bad Request - If passing a parameter, check values and reattempt")
+    @api.expect(get_parsers)
     def get(self):
-        return {"Yo Mama So...": Jokester.get_random_joke()}, 200
+        joke = Jokester.get_random_joke()
+        return {"Yo Mama So...": joke["content"]}, 200
 
-    # @jwt_required
-    # @marshal_with(POST_fields)
-    # def post(self):
-    #     if "content" not in body.keys():
-    #         return {"Error": "'content' Is A Required Key"}
-    #     if "explicit" not in body.keys():
-    #         return {"Error": "'explicit' Is A Required Key"}
-    #     if "token" not in body.keys():
-    #         return {"Error": "'token' Is A Required Key"}
-    #     try:
-    #         user_id = get_jwt_identity()
-    #         auth_token = get_jwt()
-    #         revoked = gatekeeper.check_if_token_is_revoked(auth_token)
-    #         if revoked:
-    #             return {
-    #                 "Not Authorized": "The Token Provided has Expired or Has been Revoked!"
-    #             }, 401
-    #         else:
-    #             user = User.objects.get(id=user_id)
-    #             content = request.get("content")
-    #             # category = request.json["category"]
-    #             explict = request.get["explicit"]
-    #             date = str(now.to_datetime_string())
-    #             Insult(
-    #                 content=content, explict=explict, added_on=date, added_by=user
-    #             ).save()
-    #             insult = Insult.objects.all()
-    #             return {"Status": "Insult Added"}, 201
+
+
+
+#! POST ENDPOINT - Insults
+    @jwt_required
+    @marshal_with(POST_fields, skip_none=True)
+    @api.doc(model=POST_fields, parser=POST_parsers)
+    @api.expect(POST_parsers)
+    @api.response(200, "Insult Added")
+    @api.response(401, "Unauthorized")
+    @api.response(403, "Banned User")
+    @api.response(400, "Bad Request")
+    def post(self):
+        identity = verify_jwt_in_request(locations=["headers"])
+        if identity is not None:
+            claims = get_jwt()
+            user = User.objects.get(id=claims["id"])
+            banned = GateKeeper.is_user_banned(user["email"])
+            try:
+                if not banned:
+                    content = request.get("content")
+                    category = request.json["category"]
+                    explict = request.get["explicit"]
+                    date = str(now.to_datetime_string())
+                    Insult(
+                        content=content, explict=explict, added_on=date, added_by=user
+                    ).save()
+                    insult = Insult.objects.all()
+                    return {"Status": "Insult Added"}, 201
+            except BannedUserError:
+                raise UnauthorizedError(
+                    "Adding this content is not allow, the user has been banned"
+                )
+        else:
+            raise InvaildTokenError()
+
     #     except (FieldDoesNotExist, ValidationError):
     #         raise SchemaValidationError
     #     except Exception:

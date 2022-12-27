@@ -10,10 +10,10 @@ class Jokester:
         randomized_joke = str()
         insult = Insult.objects().aggregate(randomized_pipeline)
         for doc in insult:
-            if doc["status"] == "Active":
-                randomized_joke = doc["content"]
-            else:
-                get_random_joke()
+            # if doc["status"] == "Active":
+            randomized_joke = doc["content"]
+            # else:
+            #     Jokester.get_random_joke()
         return randomized_joke
 
     @staticmethod
@@ -23,9 +23,10 @@ class Jokester:
         insult = Insult.objects().aggregate(censored_pipeline)
         for doc in insult:
             if doc["status"] == "Active":
-                censored_joke = doc["content"]
+                censored_joke = doc
+
             else:
-                get_censored_joke()
+                Jokester.get_censored_joke()
         return censored_joke
 
     @staticmethod
@@ -40,5 +41,17 @@ class Jokester:
             if doc[randomizer]["status"] == "Active":
                 catagorized_joke = doc[randomizer]["content"]
             else:
-                get_categorized_joke()
+                Jokester.get_categorized_joke()
         return catagorized_joke
+
+    @staticmethod
+    def get_catagories():
+        catagories = Insult.objects().distinct(field="catagory")
+        # print(dir(catagories))
+        # catagories.distinct("catagory")
+        catagory_list = list()
+
+        for cat in catagories:
+            catagory_list.append(cat)
+
+        return catagory_list
