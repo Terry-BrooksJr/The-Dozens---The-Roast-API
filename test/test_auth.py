@@ -6,7 +6,7 @@ import pytest
 from app import app
 from database.db import db
 from database.models import User
-
+from utils.gatekeeper import GateKeeper
 
 class SignUpApiTest(TestCase):
     def SetUp(self):
@@ -19,7 +19,7 @@ class SignUpApiTest(TestCase):
             password="Butter_Baby",
             joined_on="1970-01-01",
         )
-        test_user.hash_password()
+        GateKeeper.hash_password()
         test_user.save()
 
         user_found = User.objects.get(email="Pytest_User@gmail.com")
@@ -29,5 +29,5 @@ class SignUpApiTest(TestCase):
             test_user = User.objects.get(email="Pytest_User@gmail.com")
             test_user.objects().delete()
 
-            with pytest.raises(user.DoesNotExist):
+            with pytest.raises(User.DoesNotExist):
                 User.objects.get(email="Pytest_User@gmail.com")
