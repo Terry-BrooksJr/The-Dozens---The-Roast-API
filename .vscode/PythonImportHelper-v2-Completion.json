@@ -1,10 +1,62 @@
 [
     {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
         "label": "MongoEngine",
         "importPath": "flask_mongoengine",
         "description": "flask_mongoengine",
         "isExtraImport": true,
         "detail": "flask_mongoengine",
+        "documentation": {}
+    },
+    {
+        "label": "connect",
+        "importPath": "mongoengine",
+        "description": "mongoengine",
+        "isExtraImport": true,
+        "detail": "mongoengine",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "getenv",
+        "importPath": "os",
+        "description": "os",
+        "isExtraImport": true,
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "pendulum",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pendulum",
+        "description": "pendulum",
+        "detail": "pendulum",
         "documentation": {}
     },
     {
@@ -56,6 +108,14 @@
         "documentation": {}
     },
     {
+        "label": "get_jwt",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
         "label": "JWTManager",
         "importPath": "flask_jwt_extended",
         "description": "flask_jwt_extended",
@@ -64,15 +124,6 @@
         "documentation": {}
     },
     {
-        "label": "pendulum",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pendulum",
-        "description": "pendulum",
-        "detail": "pendulum",
-        "documentation": {}
-    },
-    {
         "label": "GateKeeper",
         "importPath": "utils.gatekeeper",
         "description": "utils.gatekeeper",
@@ -94,23 +145,6 @@
         "description": "utils.gatekeeper",
         "isExtraImport": true,
         "detail": "utils.gatekeeper",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "getenv",
-        "importPath": "os",
-        "description": "os",
-        "isExtraImport": true,
-        "detail": "os",
         "documentation": {}
     },
     {
@@ -195,6 +229,14 @@
         "documentation": {}
     },
     {
+        "label": "Namespace",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
         "label": "Resource",
         "importPath": "flask_restx",
         "description": "flask_restx",
@@ -227,14 +269,6 @@
         "documentation": {}
     },
     {
-        "label": "fields",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
         "label": "Resource",
         "importPath": "flask_restx",
         "description": "flask_restx",
@@ -243,15 +277,7 @@
         "documentation": {}
     },
     {
-        "label": "Resource",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "reqparse",
+        "label": "apidoc",
         "importPath": "flask_restx",
         "description": "flask_restx",
         "isExtraImport": true,
@@ -275,15 +301,7 @@
         "documentation": {}
     },
     {
-        "label": "apidoc",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "Namespace",
+        "label": "reqparse",
         "importPath": "flask_restx",
         "description": "flask_restx",
         "isExtraImport": true,
@@ -307,11 +325,11 @@
         "documentation": {}
     },
     {
-        "label": "db",
-        "importPath": "database.db",
-        "description": "database.db",
+        "label": "BadRequest",
+        "importPath": "werkzeug.exceptions",
+        "description": "werkzeug.exceptions",
         "isExtraImport": true,
-        "detail": "database.db",
+        "detail": "werkzeug.exceptions",
         "documentation": {}
     },
     {
@@ -411,46 +429,6 @@
         "documentation": {}
     },
     {
-        "label": "UnauthorizedError",
-        "importPath": "utils.errors",
-        "description": "utils.errors",
-        "isExtraImport": true,
-        "detail": "utils.errors",
-        "documentation": {}
-    },
-    {
-        "label": "errors",
-        "importPath": "utils.errors",
-        "description": "utils.errors",
-        "isExtraImport": true,
-        "detail": "utils.errors",
-        "documentation": {}
-    },
-    {
-        "label": "UnauthorizedError",
-        "importPath": "utils.errors",
-        "description": "utils.errors",
-        "isExtraImport": true,
-        "detail": "utils.errors",
-        "documentation": {}
-    },
-    {
-        "label": "errors",
-        "importPath": "utils.errors",
-        "description": "utils.errors",
-        "isExtraImport": true,
-        "detail": "utils.errors",
-        "documentation": {}
-    },
-    {
-        "label": "EmailAlreadyExistsError",
-        "importPath": "utils.errors",
-        "description": "utils.errors",
-        "isExtraImport": true,
-        "detail": "utils.errors",
-        "documentation": {}
-    },
-    {
         "label": "errors",
         "importPath": "utils.errors",
         "description": "utils.errors",
@@ -467,27 +445,11 @@
         "documentation": {}
     },
     {
-        "label": "BadRequest",
-        "importPath": "werkzeug.exceptions",
-        "description": "werkzeug.exceptions",
+        "label": "errors",
+        "importPath": "utils.errors",
+        "description": "utils.errors",
         "isExtraImport": true,
-        "detail": "werkzeug.exceptions",
-        "documentation": {}
-    },
-    {
-        "label": "parse_params",
-        "importPath": "utils.parser",
-        "description": "utils.parser",
-        "isExtraImport": true,
-        "detail": "utils.parser",
-        "documentation": {}
-    },
-    {
-        "label": "Argument",
-        "importPath": "utils.arguments",
-        "description": "utils.arguments",
-        "isExtraImport": true,
-        "detail": "utils.arguments",
+        "detail": "utils.errors",
         "documentation": {}
     },
     {
@@ -499,7 +461,23 @@
         "documentation": {}
     },
     {
-        "label": "get_cends",
+        "label": "get_random_joke",
+        "importPath": "utils.jokester",
+        "description": "utils.jokester",
+        "isExtraImport": true,
+        "detail": "utils.jokester",
+        "documentation": {}
+    },
+    {
+        "label": "get_censored_joke",
+        "importPath": "utils.jokester",
+        "description": "utils.jokester",
+        "isExtraImport": true,
+        "detail": "utils.jokester",
+        "documentation": {}
+    },
+    {
+        "label": "get_categorized_joke",
         "importPath": "utils.jokester",
         "description": "utils.jokester",
         "isExtraImport": true,
@@ -540,15 +518,6 @@
         "documentation": {}
     },
     {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
-        "documentation": {}
-    },
-    {
         "label": "pytest",
         "kind": 6,
         "isExtraImport": true,
@@ -574,19 +543,19 @@
         "documentation": {}
     },
     {
+        "label": "ConnectionFailure",
+        "importPath": "pymongo.errors",
+        "description": "pymongo.errors",
+        "isExtraImport": true,
+        "detail": "pymongo.errors",
+        "documentation": {}
+    },
+    {
         "label": "MongoClient",
         "importPath": "pymongo",
         "description": "pymongo",
         "isExtraImport": true,
         "detail": "pymongo",
-        "documentation": {}
-    },
-    {
-        "label": "check",
-        "importPath": "pytest_check",
-        "description": "pytest_check",
-        "isExtraImport": true,
-        "detail": "pytest_check",
         "documentation": {}
     },
     {
@@ -606,11 +575,19 @@
         "documentation": {}
     },
     {
-        "label": "connect",
-        "importPath": "mongoengine",
-        "description": "mongoengine",
+        "label": "check",
+        "importPath": "pytest_check",
+        "description": "pytest_check",
         "isExtraImport": true,
-        "detail": "mongoengine",
+        "detail": "pytest_check",
+        "documentation": {}
+    },
+    {
+        "label": "check",
+        "importPath": "pytest_check",
+        "description": "pytest_check",
+        "isExtraImport": true,
+        "detail": "pytest_check",
         "documentation": {}
     },
     {
@@ -646,30 +623,6 @@
         "documentation": {}
     },
     {
-        "label": "check_password_hash",
-        "importPath": "flask_bcrypt",
-        "description": "flask_bcrypt",
-        "isExtraImport": true,
-        "detail": "flask_bcrypt",
-        "documentation": {}
-    },
-    {
-        "label": "generate_password_hash",
-        "importPath": "flask_bcrypt",
-        "description": "flask_bcrypt",
-        "isExtraImport": true,
-        "detail": "flask_bcrypt",
-        "documentation": {}
-    },
-    {
-        "label": "Bcrypt",
-        "importPath": "flask_bcrypt",
-        "description": "flask_bcrypt",
-        "isExtraImport": true,
-        "detail": "flask_bcrypt",
-        "documentation": {}
-    },
-    {
         "label": "random",
         "kind": 6,
         "isExtraImport": true,
@@ -687,7 +640,7 @@
         "documentation": {}
     },
     {
-        "label": "FileHandler",
+        "label": "WARNING",
         "importPath": "logging",
         "description": "logging",
         "isExtraImport": true,
@@ -695,7 +648,7 @@
         "documentation": {}
     },
     {
-        "label": "WARNING",
+        "label": "FileHandler",
         "importPath": "logging",
         "description": "logging",
         "isExtraImport": true,
@@ -711,27 +664,11 @@
         "documentation": {}
     },
     {
-        "label": "Config",
-        "importPath": "config",
-        "description": "config",
+        "label": "Bcrypt",
+        "importPath": "flask_bcrypt",
+        "description": "flask_bcrypt",
         "isExtraImport": true,
-        "detail": "config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "config",
-        "description": "config",
-        "isExtraImport": true,
-        "detail": "config",
-        "documentation": {}
-    },
-    {
-        "label": "Config",
-        "importPath": "config",
-        "description": "config",
-        "isExtraImport": true,
-        "detail": "config",
+        "detail": "flask_bcrypt",
         "documentation": {}
     },
     {
@@ -744,11 +681,11 @@
         "documentation": {}
     },
     {
-        "label": "initialize_routes",
-        "importPath": "resources.routes",
-        "description": "resources.routes",
+        "label": "Config",
+        "importPath": "config",
+        "description": "config",
         "isExtraImport": true,
-        "detail": "resources.routes",
+        "detail": "config",
         "documentation": {}
     },
     {
@@ -757,6 +694,68 @@
         "description": "resources",
         "isExtraImport": true,
         "detail": "resources",
+        "documentation": {}
+    },
+    {
+        "label": "initialize_routes",
+        "importPath": "resources.routes",
+        "description": "resources.routes",
+        "isExtraImport": true,
+        "detail": "resources.routes",
+        "documentation": {}
+    },
+    {
+        "label": "to_result_sarif",
+        "kind": 2,
+        "importPath": ".trunk.plugins.trunk.linters.codespell.codespell_to_sarif",
+        "description": ".trunk.plugins.trunk.linters.codespell.codespell_to_sarif",
+        "peekOfCode": "def to_result_sarif(\n    path: str, line_number: int, column_number: int, rule_id: str, message: str\n):\n    return {\n        \"level\": \"error\",\n        \"locations\": [\n            {\n                \"physicalLocation\": {\n                    \"artifactLocation\": {\n                        \"uri\": path,",
+        "detail": ".trunk.plugins.trunk.linters.codespell.codespell_to_sarif",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".trunk.plugins.trunk.linters.codespell.codespell_to_sarif",
+        "description": ".trunk.plugins.trunk.linters.codespell.codespell_to_sarif",
+        "peekOfCode": "def main(argv):\n    results = []\n    for line in sys.stdin.readlines():\n        filename, line_number, message = line.split(\":\")\n        results.append(\n            to_result_sarif(\n                filename, int(line_number), 0, \"misspelled\", message.strip()\n            )\n        )\n    sarif = {",
+        "detail": ".trunk.plugins.trunk.linters.codespell.codespell_to_sarif",
+        "documentation": {}
+    },
+    {
+        "label": "to_result_sarif",
+        "kind": 2,
+        "importPath": ".trunk.plugins.trunk.linters.nancy.parse",
+        "description": ".trunk.plugins.trunk.linters.nancy.parse",
+        "peekOfCode": "def to_result_sarif(\n    path: str, line_number: int, column_number: int, rule_id: str, message: str\n):\n    return {\n        \"level\": \"error\",\n        \"locations\": [\n            {\n                \"physicalLocation\": {\n                    \"artifactLocation\": {\n                        \"uri\": path,",
+        "detail": ".trunk.plugins.trunk.linters.nancy.parse",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".trunk.plugins.trunk.linters.nancy.parse",
+        "description": ".trunk.plugins.trunk.linters.nancy.parse",
+        "peekOfCode": "def main(argv):\n    results = []\n    nancy_output = json.load(sys.stdin)\n    for vuln_entry in nancy_output.get(\"vulnerable\", []):\n        for vuln in vuln_entry.get(\"Vulnerabilities\", []):\n            results.append(\n                to_result_sarif(\n                    \".\",\n                    0,\n                    0,",
+        "detail": ".trunk.plugins.trunk.linters.nancy.parse",
+        "documentation": {}
+    },
+    {
+        "label": "to_result_sarif",
+        "kind": 2,
+        "importPath": ".trunk.plugins.trunk.linters.sqlfluff.sqlfluff_to_sarif",
+        "description": ".trunk.plugins.trunk.linters.sqlfluff.sqlfluff_to_sarif",
+        "peekOfCode": "def to_result_sarif(\n    path: str, line_number: int, column_number: int, rule_id: str, message: str\n):\n    return {\n        \"level\": \"error\",\n        \"locations\": [\n            {\n                \"physicalLocation\": {\n                    \"artifactLocation\": {\n                        \"uri\": path,",
+        "detail": ".trunk.plugins.trunk.linters.sqlfluff.sqlfluff_to_sarif",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".trunk.plugins.trunk.linters.sqlfluff.sqlfluff_to_sarif",
+        "description": ".trunk.plugins.trunk.linters.sqlfluff.sqlfluff_to_sarif",
+        "peekOfCode": "def main(argv):\n    sqlfluff_json = json.load(sys.stdin)\n    results = []\n    for result in sqlfluff_json:\n        filepath = result[\"filepath\"]\n        for violation in result[\"violations\"]:\n            line_number = violation[\"line_no\"]\n            column_number = violation[\"line_pos\"]\n            rule_id = violation[\"code\"]\n            message = violation[\"description\"]",
+        "detail": ".trunk.plugins.trunk.linters.sqlfluff.sqlfluff_to_sarif",
         "documentation": {}
     },
     {
@@ -773,7 +772,7 @@
         "kind": 5,
         "importPath": "database.db",
         "description": "database.db",
-        "peekOfCode": "db = MongoEngine()\ndef initialize_db(app):\n    db.init_app(app)",
+        "peekOfCode": "db = MongoEngine()\nconnect(host=os.getenv(\"mongodb+srv://RoastAPI:oL5o8De5uHsXI4if@primary.kkk2b.mongodb.net/InsultVault\"))\ndef initialize_db(app):\n    db.init_app(app)",
         "detail": "database.db",
         "documentation": {}
     },
@@ -782,7 +781,7 @@
         "kind": 6,
         "importPath": "database.models",
         "description": "database.models",
-        "peekOfCode": "class Insult(db.Document):\n    content = db.StringField(required=True)\n    category = db.StringField(required=True)\n    explict = db.BooleanField(required=True)\n    added_on = db.StringField(required=True)\n    added_by = db.StringField(required=True)\n    meta = {\"collection\": \"insults\"}\nclass User(db.Document):\n    email = db.EmailField(required=True, unique=True)\n    password = db.StringField(required=True, min_length=6)",
+        "peekOfCode": "class Insult(db.Document):\n    content = db.StringField(required=True)\n    category = db.StringField(required=True)\n    explict = db.BooleanField(required=True)\n    added_on = db.StringField(required=True)\n    status = db.StringField(required=True, default=\"active\")\n    added_by = db.StringField(required=True)\n    meta = {\"collection\": \"insults\"}\nclass User(db.Document):\n    email = db.EmailField(required=True, unique=True)",
         "detail": "database.models",
         "documentation": {}
     },
@@ -800,7 +799,7 @@
         "kind": 5,
         "importPath": "database.models",
         "description": "database.models",
-        "peekOfCode": "gatekeeper = GateKeeper()\nnow = pendulum.now()\nclass Insult(db.Document):\n    content = db.StringField(required=True)\n    category = db.StringField(required=True)\n    explict = db.BooleanField(required=True)\n    added_on = db.StringField(required=True)\n    added_by = db.StringField(required=True)\n    meta = {\"collection\": \"insults\"}\nclass User(db.Document):",
+        "peekOfCode": "gatekeeper = GateKeeper()\nnow = pendulum.now()\nclass Insult(db.Document):\n    content = db.StringField(required=True)\n    category = db.StringField(required=True)\n    explict = db.BooleanField(required=True)\n    added_on = db.StringField(required=True)\n    status = db.StringField(required=True, default=\"active\")\n    added_by = db.StringField(required=True)\n    meta = {\"collection\": \"insults\"}",
         "detail": "database.models",
         "documentation": {}
     },
@@ -809,7 +808,7 @@
         "kind": 5,
         "importPath": "database.models",
         "description": "database.models",
-        "peekOfCode": "now = pendulum.now()\nclass Insult(db.Document):\n    content = db.StringField(required=True)\n    category = db.StringField(required=True)\n    explict = db.BooleanField(required=True)\n    added_on = db.StringField(required=True)\n    added_by = db.StringField(required=True)\n    meta = {\"collection\": \"insults\"}\nclass User(db.Document):\n    email = db.EmailField(required=True, unique=True)",
+        "peekOfCode": "now = pendulum.now()\nclass Insult(db.Document):\n    content = db.StringField(required=True)\n    category = db.StringField(required=True)\n    explict = db.BooleanField(required=True)\n    added_on = db.StringField(required=True)\n    status = db.StringField(required=True, default=\"active\")\n    added_by = db.StringField(required=True)\n    meta = {\"collection\": \"insults\"}\nclass User(db.Document):",
         "detail": "database.models",
         "documentation": {}
     },
@@ -818,7 +817,7 @@
         "kind": 6,
         "importPath": "resources.auth",
         "description": "resources.auth",
-        "peekOfCode": "class SignupApi(Resource):\n    @api.doc(model=signup_model, body=User)\n    @api.response(201, \"User Created\")\n    @api.response(400, \"Bad Request\")\n    @api.response(401, \"Unauthroized\")\n    @api.doc(params={\"email\": \"A Vaild Email Address\", \"location\": \"form\"})\n    @api.doc(params={\"Password\": \"Any combination Of 7 or More ASCII Character.\"})\n    @api.expect(signup_model)\n    def post(self):\n        body = request.get_json()",
+        "peekOfCode": "class SignupApi(Resource):\n    @api.doc(model=signup_model, body=User)\n    @api.response(201, \"User Created\")\n    @api.response(400, \"Bad Request\")\n    @api.response(401, \"Unauthroized\")\n    @api.doc(parser=parser)\n    @api.expect(signup_model)\n    def post(self):\n        body = request.get_json()\n        # # Verifying the Required Keys Are In Payload",
         "detail": "resources.auth",
         "documentation": {}
     },
@@ -827,7 +826,7 @@
         "kind": 6,
         "importPath": "resources.auth",
         "description": "resources.auth",
-        "peekOfCode": "class LoginApi(Resource):\n    @api.doc(model=token_request_model, body=User)\n    @api.response(401, \"Unauthorized - Incorrect Password or Un-Registred Email\")\n    @api.response(201, \"Token Issued\")\n    @api.doc(params={\"email\": \"A Vaild Email Address\", \"location\": \"form\"})\n    @api.doc(params={\"Password\": \"Any combination Of 7 or More ASCII Character.\"})\n    @api.expect(token_request_model)\n    def post(self):\n        body = request.get_json()\n        if \"email\" not in body.keys():",
+        "peekOfCode": "class LoginApi(Resource):\n    @api.doc(model=token_request_model, body=User)\n    @api.response(401, \"Unauthorized - Incorrect Password or Un-Registred Email\")\n    @api.response(201, \"Token Issued\")\n    @api.doc(params={\"email\": \"A Vaild Email Address\", \"location\": \"form\"})\n    @api.doc(params={\"Password\": \"Any combination Of 7 or More ASCII Character.\"})\n    @api.expect(token_request_model)\n    def post(self):\n        body = request.get_json()\n        # if \"email\" not in body.keys():",
         "detail": "resources.auth",
         "documentation": {}
     },
@@ -836,7 +835,7 @@
         "kind": 5,
         "importPath": "resources.auth",
         "description": "resources.auth",
-        "peekOfCode": "api = Namespace(\n    \"authorizations\",\n    description=\"This Namespace is charged with the tasks of issuing, authenticating bearer tokens and registering users \",\n)\n# Namespace Related Models\nsignup_model = api.model(\n    \"SignUp\",\n    {\n        \"email\": fields.String(required=True),\n        \"password\": fields.String(min_length=7, required=True),",
+        "peekOfCode": "api = Namespace(\n    \"Authorizations & Authentication\",\n    description=\"These endpoints encompass all the endpoints needed to\\n 1. Sign-Up to contribute a joke. \\n 2. Provisioning a Bearer Token require at the time of submission. <br> <sub>Note: The Bearer Token is required to submit a joke, and registration is required to receive a token.</sub>\"\n)\n# Namespace Related Models\nsignup_model = api.model(\n    \"SignUp\",\n    {\n        \"email\": fields.String(required=True),\n        \"password\": fields.String(min_length=7, required=True),",
         "detail": "resources.auth",
         "documentation": {}
     },
@@ -863,7 +862,7 @@
         "kind": 5,
         "importPath": "resources.auth",
         "description": "resources.auth",
-        "peekOfCode": "gatekeeper = GateKeeper()\njwt_redis_blocklist = redis.StrictRedis(\n    host=os.getenv(\"REDIS_URI\"), port=6379, db=0, decode_responses=True\n)\nparser = reqparse.RequestParser()\nparser.add_argument(\"foo\", type=str, required=True, location=\"form\")\nparser.add_argument(\"bar\", type=str, required=True, location=\"form\")\nnow = pendulum.now()\n@api.route(\"auth\")\nclass SignupApi(Resource):",
+        "peekOfCode": "gatekeeper = GateKeeper()\njwt_redis_blocklist = redis.StrictRedis(\n    host=os.getenv(\"REDIS_URI\"), port=6379, db=0, decode_responses=True\n)\nparser = reqparse.RequestParser()\nparser.add_argument(\"email\", type=str, required=True, location=\"form\")\nparser.add_argument(\"password\", type=str, required=True, location=\"form\")\nnow = pendulum.now()\n@api.route(\"auth\")\nclass SignupApi(Resource):",
         "detail": "resources.auth",
         "documentation": {}
     },
@@ -872,7 +871,7 @@
         "kind": 5,
         "importPath": "resources.auth",
         "description": "resources.auth",
-        "peekOfCode": "jwt_redis_blocklist = redis.StrictRedis(\n    host=os.getenv(\"REDIS_URI\"), port=6379, db=0, decode_responses=True\n)\nparser = reqparse.RequestParser()\nparser.add_argument(\"foo\", type=str, required=True, location=\"form\")\nparser.add_argument(\"bar\", type=str, required=True, location=\"form\")\nnow = pendulum.now()\n@api.route(\"auth\")\nclass SignupApi(Resource):\n    @api.doc(model=signup_model, body=User)",
+        "peekOfCode": "jwt_redis_blocklist = redis.StrictRedis(\n    host=os.getenv(\"REDIS_URI\"), port=6379, db=0, decode_responses=True\n)\nparser = reqparse.RequestParser()\nparser.add_argument(\"email\", type=str, required=True, location=\"form\")\nparser.add_argument(\"password\", type=str, required=True, location=\"form\")\nnow = pendulum.now()\n@api.route(\"auth\")\nclass SignupApi(Resource):\n    @api.doc(model=signup_model, body=User)",
         "detail": "resources.auth",
         "documentation": {}
     },
@@ -881,7 +880,7 @@
         "kind": 5,
         "importPath": "resources.auth",
         "description": "resources.auth",
-        "peekOfCode": "parser = reqparse.RequestParser()\nparser.add_argument(\"foo\", type=str, required=True, location=\"form\")\nparser.add_argument(\"bar\", type=str, required=True, location=\"form\")\nnow = pendulum.now()\n@api.route(\"auth\")\nclass SignupApi(Resource):\n    @api.doc(model=signup_model, body=User)\n    @api.response(201, \"User Created\")\n    @api.response(400, \"Bad Request\")\n    @api.response(401, \"Unauthroized\")",
+        "peekOfCode": "parser = reqparse.RequestParser()\nparser.add_argument(\"email\", type=str, required=True, location=\"form\")\nparser.add_argument(\"password\", type=str, required=True, location=\"form\")\nnow = pendulum.now()\n@api.route(\"auth\")\nclass SignupApi(Resource):\n    @api.doc(model=signup_model, body=User)\n    @api.response(201, \"User Created\")\n    @api.response(400, \"Bad Request\")\n    @api.response(401, \"Unauthroized\")",
         "detail": "resources.auth",
         "documentation": {}
     },
@@ -890,7 +889,7 @@
         "kind": 5,
         "importPath": "resources.auth",
         "description": "resources.auth",
-        "peekOfCode": "now = pendulum.now()\n@api.route(\"auth\")\nclass SignupApi(Resource):\n    @api.doc(model=signup_model, body=User)\n    @api.response(201, \"User Created\")\n    @api.response(400, \"Bad Request\")\n    @api.response(401, \"Unauthroized\")\n    @api.doc(params={\"email\": \"A Vaild Email Address\", \"location\": \"form\"})\n    @api.doc(params={\"Password\": \"Any combination Of 7 or More ASCII Character.\"})\n    @api.expect(signup_model)",
+        "peekOfCode": "now = pendulum.now()\n@api.route(\"auth\")\nclass SignupApi(Resource):\n    @api.doc(model=signup_model, body=User)\n    @api.response(201, \"User Created\")\n    @api.response(400, \"Bad Request\")\n    @api.response(401, \"Unauthroized\")\n    @api.doc(parser=parser)\n    @api.expect(signup_model)\n    def post(self):",
         "detail": "resources.auth",
         "documentation": {}
     },
@@ -899,7 +898,7 @@
         "kind": 6,
         "importPath": "resources.insult",
         "description": "resources.insult",
-        "peekOfCode": "class InsultsAPI(Resource):\n    @marshal_with(GET_fields, skip_none=True)\n    def get(self):\n        return {\"Yo Mama So...\": Jokester.get_random_joke()}, 200\n    # @jwt_required\n    # @marshal_with(POST_fields)\n    # def post(self):\n    #     if \"content\" not in body.keys():\n    #         return {\"Error\": \"'content' Is A Required Key\"}\n    #     if \"explicit\" not in body.keys():",
+        "peekOfCode": "class InsultsAPI(Resource):\n    @marshal_with(GET_fields, skip_none=True)\n    @api.doc(model=GET_fields, parser=get_parsers)\n    def get(self):\n        joke = Jokester.get_random_joke()\n        return {\"Yo Mama So...\": joke['content']}, 200\n    # @jwt_required\n    # @marshal_with(POST_fields)\n    # def post(self):\n    #     if \"content\" not in body.keys():",
         "detail": "resources.insult",
         "documentation": {}
     },
@@ -908,16 +907,7 @@
         "kind": 5,
         "importPath": "resources.insult",
         "description": "resources.insult",
-        "peekOfCode": "api = Namespace(\"Insults\", description=\"Joke operations\")\n# Namespace Declaration\napi = Namespace(\"Insults\", description=\"Joke operations\")\n# Namespace Related Models\nGET_fields = api.model(\n    \"GET_fields\",\n    {\n        \"explicit\": fields.Boolean,\n        \"catagory\": fields.String,\n    },",
-        "detail": "resources.insult",
-        "documentation": {}
-    },
-    {
-        "label": "api",
-        "kind": 5,
-        "importPath": "resources.insult",
-        "description": "resources.insult",
-        "peekOfCode": "api = Namespace(\"Insults\", description=\"Joke operations\")\n# Namespace Related Models\nGET_fields = api.model(\n    \"GET_fields\",\n    {\n        \"explicit\": fields.Boolean,\n        \"catagory\": fields.String,\n    },\n)\nPOST_fields = {",
+        "peekOfCode": "api = Namespace(\"Insults\", description=\"Joke operations\")\n#!Namespace Related Models\nGET_fields = api.model(\n    \"Insult (Get Method)\",\n    {\n        \"explicit\": fields.Boolean,\n        \"catagory\": fields.String,\n    },\n)\nPOST_fields = api.model(\"Insult (Post Method)\",{",
         "detail": "resources.insult",
         "documentation": {}
     },
@@ -926,7 +916,7 @@
         "kind": 5,
         "importPath": "resources.insult",
         "description": "resources.insult",
-        "peekOfCode": "GET_fields = api.model(\n    \"GET_fields\",\n    {\n        \"explicit\": fields.Boolean,\n        \"catagory\": fields.String,\n    },\n)\nPOST_fields = {\n    \"content\": fields.String(),\n    \"explicit\": fields.Boolean(),",
+        "peekOfCode": "GET_fields = api.model(\n    \"Insult (Get Method)\",\n    {\n        \"explicit\": fields.Boolean,\n        \"catagory\": fields.String,\n    },\n)\nPOST_fields = api.model(\"Insult (Post Method)\",{\n    \"content\": fields.String(),\n    \"explicit\": fields.Boolean(),",
         "detail": "resources.insult",
         "documentation": {}
     },
@@ -935,7 +925,7 @@
         "kind": 5,
         "importPath": "resources.insult",
         "description": "resources.insult",
-        "peekOfCode": "POST_fields = {\n    \"content\": fields.String(),\n    \"explicit\": fields.Boolean(),\n    \"catagory\": fields.String(),\n}\n# Top-Level Vaariables/Plugins\nnow = pendulum.now()\nparser = reqparse.RequestParser()\ngatekeeper = GateKeeper()\n@api.route(\"insult\")",
+        "peekOfCode": "POST_fields = api.model(\"Insult (Post Method)\",{\n    \"content\": fields.String(),\n    \"explicit\": fields.Boolean(),\n    \"catagory\": fields.String(),\n})\n#! Top-Level Vaariables/Plugins\nnow = pendulum.now()\ngatekeeper = GateKeeper()\nparser = reqparse.RequestParser()\njoke_categories = Jokester.get_catagories()",
         "detail": "resources.insult",
         "documentation": {}
     },
@@ -944,16 +934,7 @@
         "kind": 5,
         "importPath": "resources.insult",
         "description": "resources.insult",
-        "peekOfCode": "now = pendulum.now()\nparser = reqparse.RequestParser()\ngatekeeper = GateKeeper()\n@api.route(\"insult\")\nclass InsultsAPI(Resource):\n    @marshal_with(GET_fields, skip_none=True)\n    def get(self):\n        return {\"Yo Mama So...\": Jokester.get_random_joke()}, 200\n    # @jwt_required\n    # @marshal_with(POST_fields)",
-        "detail": "resources.insult",
-        "documentation": {}
-    },
-    {
-        "label": "parser",
-        "kind": 5,
-        "importPath": "resources.insult",
-        "description": "resources.insult",
-        "peekOfCode": "parser = reqparse.RequestParser()\ngatekeeper = GateKeeper()\n@api.route(\"insult\")\nclass InsultsAPI(Resource):\n    @marshal_with(GET_fields, skip_none=True)\n    def get(self):\n        return {\"Yo Mama So...\": Jokester.get_random_joke()}, 200\n    # @jwt_required\n    # @marshal_with(POST_fields)\n    # def post(self):",
+        "peekOfCode": "now = pendulum.now()\ngatekeeper = GateKeeper()\nparser = reqparse.RequestParser()\njoke_categories = Jokester.get_catagories()\n#!Request Parameters Designations\nparser.add_argument(\"content\", type=str, required=True, location=\"form\")\nparser.add_argument(\"explicit\", type=str, required=True, location=\"form\")\nparser.add_argument(\"catagory\", type=str, required=True, location=\"form\", help=\"specify the jokes to a  category, if it doesn't fit to any choose 'snowflake'\", choices=joke_categories)\nget_parsers = parser.copy()\nPOST_parsers = parser.copy()",
         "detail": "resources.insult",
         "documentation": {}
     },
@@ -962,7 +943,43 @@
         "kind": 5,
         "importPath": "resources.insult",
         "description": "resources.insult",
-        "peekOfCode": "gatekeeper = GateKeeper()\n@api.route(\"insult\")\nclass InsultsAPI(Resource):\n    @marshal_with(GET_fields, skip_none=True)\n    def get(self):\n        return {\"Yo Mama So...\": Jokester.get_random_joke()}, 200\n    # @jwt_required\n    # @marshal_with(POST_fields)\n    # def post(self):\n    #     if \"content\" not in body.keys():",
+        "peekOfCode": "gatekeeper = GateKeeper()\nparser = reqparse.RequestParser()\njoke_categories = Jokester.get_catagories()\n#!Request Parameters Designations\nparser.add_argument(\"content\", type=str, required=True, location=\"form\")\nparser.add_argument(\"explicit\", type=str, required=True, location=\"form\")\nparser.add_argument(\"catagory\", type=str, required=True, location=\"form\", help=\"specify the jokes to a  category, if it doesn't fit to any choose 'snowflake'\", choices=joke_categories)\nget_parsers = parser.copy()\nPOST_parsers = parser.copy()\nget_parsers.replace_argument(\"explicit\", type=str, required=False, location=\"headers\", help=\"Explicit Filter. When Set to True the default filter is turned off.\", choices=[\"true\", \"false\"])",
+        "detail": "resources.insult",
+        "documentation": {}
+    },
+    {
+        "label": "parser",
+        "kind": 5,
+        "importPath": "resources.insult",
+        "description": "resources.insult",
+        "peekOfCode": "parser = reqparse.RequestParser()\njoke_categories = Jokester.get_catagories()\n#!Request Parameters Designations\nparser.add_argument(\"content\", type=str, required=True, location=\"form\")\nparser.add_argument(\"explicit\", type=str, required=True, location=\"form\")\nparser.add_argument(\"catagory\", type=str, required=True, location=\"form\", help=\"specify the jokes to a  category, if it doesn't fit to any choose 'snowflake'\", choices=joke_categories)\nget_parsers = parser.copy()\nPOST_parsers = parser.copy()\nget_parsers.replace_argument(\"explicit\", type=str, required=False, location=\"headers\", help=\"Explicit Filter. When Set to True the default filter is turned off.\", choices=[\"true\", \"false\"])\nget_parsers.replace_argument(\"catagory\", type=str, required=False, location=\"args\", help=\"limit the jokes to a specific category\", choices=joke_categories)",
+        "detail": "resources.insult",
+        "documentation": {}
+    },
+    {
+        "label": "joke_categories",
+        "kind": 5,
+        "importPath": "resources.insult",
+        "description": "resources.insult",
+        "peekOfCode": "joke_categories = Jokester.get_catagories()\n#!Request Parameters Designations\nparser.add_argument(\"content\", type=str, required=True, location=\"form\")\nparser.add_argument(\"explicit\", type=str, required=True, location=\"form\")\nparser.add_argument(\"catagory\", type=str, required=True, location=\"form\", help=\"specify the jokes to a  category, if it doesn't fit to any choose 'snowflake'\", choices=joke_categories)\nget_parsers = parser.copy()\nPOST_parsers = parser.copy()\nget_parsers.replace_argument(\"explicit\", type=str, required=False, location=\"headers\", help=\"Explicit Filter. When Set to True the default filter is turned off.\", choices=[\"true\", \"false\"])\nget_parsers.replace_argument(\"catagory\", type=str, required=False, location=\"args\", help=\"limit the jokes to a specific category\", choices=joke_categories)\nget_parsers.remove_argument(\"content\")",
+        "detail": "resources.insult",
+        "documentation": {}
+    },
+    {
+        "label": "get_parsers",
+        "kind": 5,
+        "importPath": "resources.insult",
+        "description": "resources.insult",
+        "peekOfCode": "get_parsers = parser.copy()\nPOST_parsers = parser.copy()\nget_parsers.replace_argument(\"explicit\", type=str, required=False, location=\"headers\", help=\"Explicit Filter. When Set to True the default filter is turned off.\", choices=[\"true\", \"false\"])\nget_parsers.replace_argument(\"catagory\", type=str, required=False, location=\"args\", help=\"limit the jokes to a specific category\", choices=joke_categories)\nget_parsers.remove_argument(\"content\")\n@api.route(\"insult\")\nclass InsultsAPI(Resource):\n    @marshal_with(GET_fields, skip_none=True)\n    @api.doc(model=GET_fields, parser=get_parsers)\n    def get(self):",
+        "detail": "resources.insult",
+        "documentation": {}
+    },
+    {
+        "label": "POST_parsers",
+        "kind": 5,
+        "importPath": "resources.insult",
+        "description": "resources.insult",
+        "peekOfCode": "POST_parsers = parser.copy()\nget_parsers.replace_argument(\"explicit\", type=str, required=False, location=\"headers\", help=\"Explicit Filter. When Set to True the default filter is turned off.\", choices=[\"true\", \"false\"])\nget_parsers.replace_argument(\"catagory\", type=str, required=False, location=\"args\", help=\"limit the jokes to a specific category\", choices=joke_categories)\nget_parsers.remove_argument(\"content\")\n@api.route(\"insult\")\nclass InsultsAPI(Resource):\n    @marshal_with(GET_fields, skip_none=True)\n    @api.doc(model=GET_fields, parser=get_parsers)\n    def get(self):\n        joke = Jokester.get_random_joke()",
         "detail": "resources.insult",
         "documentation": {}
     },
@@ -1007,7 +1024,7 @@
         "kind": 6,
         "importPath": "test.test_db",
         "description": "test.test_db",
-        "peekOfCode": "class Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):\n        with check:\n            insult_count = database.insults\n            assert isinstance(insult_count ,Collection)\n            # assert  insult_count > 0\n    def test_user_connection(self):",
+        "peekOfCode": "class Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):\n        with check:\n            insult_count = database.insults\n            assert isinstance(insult_count, Collection)\n            # assert  insult_count > 0\n    def test_user_connection(self):",
         "detail": "test.test_db",
         "documentation": {}
     },
@@ -1016,7 +1033,7 @@
         "kind": 5,
         "importPath": "test.test_db",
         "description": "test.test_db",
-        "peekOfCode": "CONNECTION_STRING = getenv('MONGO_URI')\nclient = MongoClient(CONNECTION_STRING)\nmongoengine_connection = connect(CONNECTION_STRING)\ndatabase = client['InsultVault']\ninsult_collection = database['insults']\nuser_collections = database['users']\npipeline = {\"$count\": 'ObjectId'}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:",
+        "peekOfCode": "CONNECTION_STRING = getenv(\"MONGODB_DEV_SETTINGS\")\nclient = MongoClient(\"mongodb://localhost:27017/InsultVault\")\n# mongoengine_connection = connect(alias=\"Mongo_Test_Connection\", host=CONNECTION_STRING)\ndatabase = client[\"InsultVault\"]\ninsult_collection = database[\"insults\"]\nuser_collections = database[\"users\"]\npipeline = {\"$count\": \"ObjectId\"}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:",
         "detail": "test.test_db",
         "documentation": {}
     },
@@ -1025,16 +1042,7 @@
         "kind": 5,
         "importPath": "test.test_db",
         "description": "test.test_db",
-        "peekOfCode": "client = MongoClient(CONNECTION_STRING)\nmongoengine_connection = connect(CONNECTION_STRING)\ndatabase = client['InsultVault']\ninsult_collection = database['insults']\nuser_collections = database['users']\npipeline = {\"$count\": 'ObjectId'}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)",
-        "detail": "test.test_db",
-        "documentation": {}
-    },
-    {
-        "label": "mongoengine_connection",
-        "kind": 5,
-        "importPath": "test.test_db",
-        "description": "test.test_db",
-        "peekOfCode": "mongoengine_connection = connect(CONNECTION_STRING)\ndatabase = client['InsultVault']\ninsult_collection = database['insults']\nuser_collections = database['users']\npipeline = {\"$count\": 'ObjectId'}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):",
+        "peekOfCode": "client = MongoClient(\"mongodb://localhost:27017/InsultVault\")\n# mongoengine_connection = connect(alias=\"Mongo_Test_Connection\", host=CONNECTION_STRING)\ndatabase = client[\"InsultVault\"]\ninsult_collection = database[\"insults\"]\nuser_collections = database[\"users\"]\npipeline = {\"$count\": \"ObjectId\"}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)",
         "detail": "test.test_db",
         "documentation": {}
     },
@@ -1043,7 +1051,7 @@
         "kind": 5,
         "importPath": "test.test_db",
         "description": "test.test_db",
-        "peekOfCode": "database = client['InsultVault']\ninsult_collection = database['insults']\nuser_collections = database['users']\npipeline = {\"$count\": 'ObjectId'}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):\n        with check:",
+        "peekOfCode": "database = client[\"InsultVault\"]\ninsult_collection = database[\"insults\"]\nuser_collections = database[\"users\"]\npipeline = {\"$count\": \"ObjectId\"}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):\n        with check:",
         "detail": "test.test_db",
         "documentation": {}
     },
@@ -1052,7 +1060,7 @@
         "kind": 5,
         "importPath": "test.test_db",
         "description": "test.test_db",
-        "peekOfCode": "insult_collection = database['insults']\nuser_collections = database['users']\npipeline = {\"$count\": 'ObjectId'}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):\n        with check:\n            insult_count = database.insults",
+        "peekOfCode": "insult_collection = database[\"insults\"]\nuser_collections = database[\"users\"]\npipeline = {\"$count\": \"ObjectId\"}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):\n        with check:\n            insult_count = database.insults",
         "detail": "test.test_db",
         "documentation": {}
     },
@@ -1061,7 +1069,7 @@
         "kind": 5,
         "importPath": "test.test_db",
         "description": "test.test_db",
-        "peekOfCode": "user_collections = database['users']\npipeline = {\"$count\": 'ObjectId'}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):\n        with check:\n            insult_count = database.insults\n            assert isinstance(insult_count ,Collection)",
+        "peekOfCode": "user_collections = database[\"users\"]\npipeline = {\"$count\": \"ObjectId\"}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):\n        with check:\n            insult_count = database.insults\n            assert isinstance(insult_count, Collection)",
         "detail": "test.test_db",
         "documentation": {}
     },
@@ -1070,7 +1078,7 @@
         "kind": 5,
         "importPath": "test.test_db",
         "description": "test.test_db",
-        "peekOfCode": "pipeline = {\"$count\": 'ObjectId'}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):\n        with check:\n            insult_count = database.insults\n            assert isinstance(insult_count ,Collection)\n            # assert  insult_count > 0",
+        "peekOfCode": "pipeline = {\"$count\": \"ObjectId\"}\nclass Test_DatabasConnection(TestCase):\n    def test_database_connection(self):\n        with check:\n            assert isinstance(database, Database)\n    def test_insult_connection(self):\n        with check:\n            insult_count = database.insults\n            assert isinstance(insult_count, Collection)\n            # assert  insult_count > 0",
         "detail": "test.test_db",
         "documentation": {}
     },
@@ -1079,17 +1087,8 @@
         "kind": 6,
         "importPath": "test.test_insults",
         "description": "test.test_insults",
-        "peekOfCode": "class InsultApiTest(TestCase):\n    def test_get_censored_joke():\n        pass",
+        "peekOfCode": "class InsultApiTest(TestCase):\n    def test_get_random_joke(self):\n        with check:\n            joke = get_random_joke()\n    def get_censored_joke(self):\n        pass\n    def get_censored_joke(self):\n        pass",
         "detail": "test.test_insults",
-        "documentation": {}
-    },
-    {
-        "label": "Argument",
-        "kind": 6,
-        "importPath": "utils.arguments",
-        "description": "utils.arguments",
-        "peekOfCode": "class Argument(object):\n    text_type = lambda x: six.text_type(x)\n    \"\"\"\n    :param name: Either a name or a list of option strings, e.g. foo or\n        -f, --foo.\n    :param default: The value produced if the argument is absent from the\n        request.\n    :param dest: The name of the attribute to be added to the object\n        returned by :meth:`~reqparse.RequestParser.parse_args()`.\n    :param bool required: Whether or not the argument may be omitted (optionals",
-        "detail": "utils.arguments",
         "documentation": {}
     },
     {
@@ -1124,7 +1123,7 @@
         "kind": 6,
         "importPath": "utils.errors",
         "description": "utils.errors",
-        "peekOfCode": "class EmailAlreadyExistsError(Exception):\n    pass\nclass UnauthorizedError(Exception):\n    pass\nclass UserDoesNotExist(Exception):\n    pass\nclass ValidationError(Exception):\n    pass\nerrors = {\n    \"InternalServerError\": {",
+        "peekOfCode": "class EmailAlreadyExistsError(Exception):\n    pass\nclass UnauthorizedError(Exception):\n    pass\nclass UserDoesNotExist(Exception):\n    pass\nclass ValidationError(Exception):\n    pass\nerrors = {\n    \"InternalServerError\": {\"message\": \"Something went wrong\", \"status\": 500},",
         "detail": "utils.errors",
         "documentation": {}
     },
@@ -1133,7 +1132,7 @@
         "kind": 6,
         "importPath": "utils.errors",
         "description": "utils.errors",
-        "peekOfCode": "class UnauthorizedError(Exception):\n    pass\nclass UserDoesNotExist(Exception):\n    pass\nclass ValidationError(Exception):\n    pass\nerrors = {\n    \"InternalServerError\": {\n        \"message\": \"Something went wrong\", \n        \"status\": 500",
+        "peekOfCode": "class UnauthorizedError(Exception):\n    pass\nclass UserDoesNotExist(Exception):\n    pass\nclass ValidationError(Exception):\n    pass\nerrors = {\n    \"InternalServerError\": {\"message\": \"Something went wrong\", \"status\": 500},\n    \"SchemaValidationError\": {\n        \"message\": \"Request is missing required fields\",",
         "detail": "utils.errors",
         "documentation": {}
     },
@@ -1142,7 +1141,7 @@
         "kind": 6,
         "importPath": "utils.errors",
         "description": "utils.errors",
-        "peekOfCode": "class UserDoesNotExist(Exception):\n    pass\nclass ValidationError(Exception):\n    pass\nerrors = {\n    \"InternalServerError\": {\n        \"message\": \"Something went wrong\", \n        \"status\": 500\n        },\n    \"SchemaValidationError\": {",
+        "peekOfCode": "class UserDoesNotExist(Exception):\n    pass\nclass ValidationError(Exception):\n    pass\nerrors = {\n    \"InternalServerError\": {\"message\": \"Something went wrong\", \"status\": 500},\n    \"SchemaValidationError\": {\n        \"message\": \"Request is missing required fields\",\n        \"status\": 400,\n    },",
         "detail": "utils.errors",
         "documentation": {}
     },
@@ -1151,7 +1150,7 @@
         "kind": 6,
         "importPath": "utils.errors",
         "description": "utils.errors",
-        "peekOfCode": "class ValidationError(Exception):\n    pass\nerrors = {\n    \"InternalServerError\": {\n        \"message\": \"Something went wrong\", \n        \"status\": 500\n        },\n    \"SchemaValidationError\": {\n        \"message\": \"Request is missing required fields\",\n        \"status\": 400,",
+        "peekOfCode": "class ValidationError(Exception):\n    pass\nerrors = {\n    \"InternalServerError\": {\"message\": \"Something went wrong\", \"status\": 500},\n    \"SchemaValidationError\": {\n        \"message\": \"Request is missing required fields\",\n        \"status\": 400,\n    },\n    \"EmailAlreadyExistsError\": {\n        \"message\": \"User with given email address already exists\",",
         "detail": "utils.errors",
         "documentation": {}
     },
@@ -1160,7 +1159,7 @@
         "kind": 5,
         "importPath": "utils.errors",
         "description": "utils.errors",
-        "peekOfCode": "errors = {\n    \"InternalServerError\": {\n        \"message\": \"Something went wrong\", \n        \"status\": 500\n        },\n    \"SchemaValidationError\": {\n        \"message\": \"Request is missing required fields\",\n        \"status\": 400,\n    },\n    \"EmailAlreadyExistsError\": {",
+        "peekOfCode": "errors = {\n    \"InternalServerError\": {\"message\": \"Something went wrong\", \"status\": 500},\n    \"SchemaValidationError\": {\n        \"message\": \"Request is missing required fields\",\n        \"status\": 400,\n    },\n    \"EmailAlreadyExistsError\": {\n        \"message\": \"User with given email address already exists\",\n        \"status\": 409,\n    },",
         "detail": "utils.errors",
         "documentation": {}
     },
@@ -1169,7 +1168,7 @@
         "kind": 6,
         "importPath": "utils.gatekeeper",
         "description": "utils.gatekeeper",
-        "peekOfCode": "class GateKeeper:\n    def check_if_token_is_revoked(self, jwt: dict):\n        jti = jwt_payload[\"jti\"]\n        token_in_redis = jwt_redis_blocklist.get(jti)\n        return token_in_redis is not None\n    def revoke_token(self):\n        jti = get_jwt()[\"jti\"]\n        jwt_redis_blocklist.set(jti, \"\", ex=ACCESS_EXPIRES)\n        return jsonify(msg=\"Access token revoked\")\n    def issue_token(self, identity):",
+        "peekOfCode": "class GateKeeper:\n    #!TODO: Refactor to make these Static Methods\n    def check_if_token_is_revoked(self, jwt: dict):\n        jti = jwt_payload[\"jti\"],\n        token_in_redis = jwt_redis_blocklist.get(jti)\n        return token_in_redis is not None\n    def revoke_token(self):\n        jti = get_jwt()[\"jti\"]\n        jwt_redis_blocklist.set(jti, \"\", ex=ACCESS_EXPIRES)\n        return jsonify(msg=\"Access token revoked\")",
         "detail": "utils.gatekeeper",
         "documentation": {}
     },
@@ -1178,7 +1177,7 @@
         "kind": 5,
         "importPath": "utils.gatekeeper",
         "description": "utils.gatekeeper",
-        "peekOfCode": "jwt_redis_blocklist = redis.StrictRedis(\n    host=os.getenv(\"REDIS_URI\"), port=6379, db=0, decode_responses=True\n)\nACCESS_EXPIRES = timedelta(hours=1)\nTOKEN_EXPIRES = timedelta(days=7)\nclass GateKeeper:\n    def check_if_token_is_revoked(self, jwt: dict):\n        jti = jwt_payload[\"jti\"]\n        token_in_redis = jwt_redis_blocklist.get(jti)\n        return token_in_redis is not None",
+        "peekOfCode": "jwt_redis_blocklist = redis.StrictRedis(\n    host=os.getenv(\"REDIS_URI\"), port=6379, db=0, decode_responses=True\n)\nACCESS_EXPIRES = timedelta(hours=1)\nTOKEN_EXPIRES = timedelta(days=7)\nclass GateKeeper:\n    #!TODO: Refactor to make these Static Methods\n    def check_if_token_is_revoked(self, jwt: dict):\n        jti = jwt_payload[\"jti\"],\n        token_in_redis = jwt_redis_blocklist.get(jti)",
         "detail": "utils.gatekeeper",
         "documentation": {}
     },
@@ -1187,7 +1186,7 @@
         "kind": 5,
         "importPath": "utils.gatekeeper",
         "description": "utils.gatekeeper",
-        "peekOfCode": "ACCESS_EXPIRES = timedelta(hours=1)\nTOKEN_EXPIRES = timedelta(days=7)\nclass GateKeeper:\n    def check_if_token_is_revoked(self, jwt: dict):\n        jti = jwt_payload[\"jti\"]\n        token_in_redis = jwt_redis_blocklist.get(jti)\n        return token_in_redis is not None\n    def revoke_token(self):\n        jti = get_jwt()[\"jti\"]\n        jwt_redis_blocklist.set(jti, \"\", ex=ACCESS_EXPIRES)",
+        "peekOfCode": "ACCESS_EXPIRES = timedelta(hours=1)\nTOKEN_EXPIRES = timedelta(days=7)\nclass GateKeeper:\n    #!TODO: Refactor to make these Static Methods\n    def check_if_token_is_revoked(self, jwt: dict):\n        jti = jwt_payload[\"jti\"],\n        token_in_redis = jwt_redis_blocklist.get(jti)\n        return token_in_redis is not None\n    def revoke_token(self):\n        jti = get_jwt()[\"jti\"]",
         "detail": "utils.gatekeeper",
         "documentation": {}
     },
@@ -1196,7 +1195,7 @@
         "kind": 5,
         "importPath": "utils.gatekeeper",
         "description": "utils.gatekeeper",
-        "peekOfCode": "TOKEN_EXPIRES = timedelta(days=7)\nclass GateKeeper:\n    def check_if_token_is_revoked(self, jwt: dict):\n        jti = jwt_payload[\"jti\"]\n        token_in_redis = jwt_redis_blocklist.get(jti)\n        return token_in_redis is not None\n    def revoke_token(self):\n        jti = get_jwt()[\"jti\"]\n        jwt_redis_blocklist.set(jti, \"\", ex=ACCESS_EXPIRES)\n        return jsonify(msg=\"Access token revoked\")",
+        "peekOfCode": "TOKEN_EXPIRES = timedelta(days=7)\nclass GateKeeper:\n    #!TODO: Refactor to make these Static Methods\n    def check_if_token_is_revoked(self, jwt: dict):\n        jti = jwt_payload[\"jti\"],\n        token_in_redis = jwt_redis_blocklist.get(jti)\n        return token_in_redis is not None\n    def revoke_token(self):\n        jti = get_jwt()[\"jti\"]\n        jwt_redis_blocklist.set(jti, \"\", ex=ACCESS_EXPIRES)",
         "detail": "utils.gatekeeper",
         "documentation": {}
     },
@@ -1223,7 +1222,16 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\napp.config.from_object(Config)\n#!SECTION Initialize the API Endpoints and Plugins\napi.init_app(app)\ninitialize_db(app)\nbcrypt = Bcrypt(app)\njwt = JWTManager(app)\n#!SECTION Server Error Logging\nif not app.debug:\n    file_handler = FileHandler(\"error.log\")",
+        "peekOfCode": "app = Flask(__name__)\napp.config.from_object(Config)\napp.config[\"MONGODB_SETTINGS\"] = Config.MONGODB_DEV_SETTINGS\n#!SECTION Initialize the API Endpoints and Plugins\napi.init_app(app)\ninitialize_db(app)\nbcrypt = Bcrypt(app)\njwt = JWTManager(app)\n#!SECTION Server Error Logging\nif not app.debug:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config[\"MONGODB_SETTINGS\"]",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config[\"MONGODB_SETTINGS\"] = Config.MONGODB_DEV_SETTINGS\n#!SECTION Initialize the API Endpoints and Plugins\napi.init_app(app)\ninitialize_db(app)\nbcrypt = Bcrypt(app)\njwt = JWTManager(app)\n#!SECTION Server Error Logging\nif not app.debug:\n    file_handler = FileHandler(\"error.log\")\n    file_handler.setLevel(WARNING)",
         "detail": "app",
         "documentation": {}
     },
@@ -1250,7 +1258,7 @@
         "kind": 6,
         "importPath": "config",
         "description": "config",
-        "peekOfCode": "class Config(object):\n    DEBUG = True\n    SECRET_KEY = os.getenv(key=\"SECRET_KEY\")\n    MONGODB_DEV_SETTINGS = {\"host\": os.getenv(\"MONGODB_URI\")}\n    BUNDLE_ERROR = True\n    ENV = \"Development\"",
+        "peekOfCode": "class Config(object):\n    DEBUG = True\n    SECRET_KEY = os.getenv(key=\"SECRET_KEY\")\n    MONGODB_DEV_SETTINGS = {\"host\": os.getenv(\"MONGODB_URI\"),\n                            \"alias\": \"default\"}\n    BUNDLE_ERROR = True\n    ENV = \"Development\"",
         "detail": "config",
         "documentation": {}
     }
