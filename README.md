@@ -1,5 +1,7 @@
 # Yo' Mama - The Roast API 
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6c7820feb2214709b0f7d1cd225981f6)](https://app.codacy.com/gh/Terry-BrooksJr/The-Dozens---The-Roast-API?utm_source=github.com&utm_medium=referral&utm_content=Terry-BrooksJr/The-Dozens---The-Roast-API&utm_campaign=Badge_Grade_Settings)
+
 This project shows one of the possible ways to implement RESTful API server.
 
 There are implemented two models: User and Todo, one user has many todos.
