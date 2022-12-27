@@ -6,7 +6,7 @@ class SchemaValidationError(Exception):
     pass
 
 
-class TokenRevokedError(Exception):
+class BannedUserError(Exception):
     pass
 
 
@@ -25,6 +25,8 @@ class UserDoesNotExist(Exception):
 class ValidationError(Exception):
     pass
 
+class InvaildTokenError(Exception):
+    pass
 
 errors = {
     "InternalServerError": {"message": "Something went wrong", "status": 500},

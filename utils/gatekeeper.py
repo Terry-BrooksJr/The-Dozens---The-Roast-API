@@ -4,8 +4,10 @@ from datetime import timedelta
 import redis
 from bcrypt import checkpw, gensalt, hashpw
 from flask import jsonify
-from flask_bcrypt import check_password_hash, generate_password_hash
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, get_jwt, verify_jwt_in_request
+from database.models import User
+from test.test_db import database
+from utils.errors import BannedUserError
 
 jwt_redis_blocklist = redis.StrictRedis(
     host=os.getenv("REDIS_URI"), port=6379, db=0, decode_responses=True
@@ -15,32 +17,48 @@ TOKEN_EXPIRES = timedelta(days=7)
 
 
 class GateKeeper:
-    def check_if_token_is_revoked(self, jwt: dict):
-        jti = jwt_payload["jti"]
-        token_in_redis = jwt_redis_blocklist.get(jti)
-        return token_in_redis is not None
+    @staticmethod
+    def is_user_banned(email):
+        email = email.lower()
+        user = User.objects(email=email).first()
+        if user["status"] != "active":
+            raise BannedUserError("The User Associated With That Token Has Been Banned")
+        else:
+            return False
 
-    def revoke_token(self):
-        jti = get_jwt()["jti"]
-        jwt_redis_blocklist.set(jti, "", ex=ACCESS_EXPIRES)
-        return jsonify(msg="Access token revoked")
+    @staticmethod
+    def ban_user(email):
+        email = email.lower()
+        user = User.objects(email=email).first()
+        user["status"] = "banned"
 
-    def issue_token(self, identity):
-        access_token = create_access_token(
-            identity=identity, expires_delta=TOKEN_EXPIRES
-        )
-        return jsonify(access_token=access_token)
-
-    def check_password(self, provided_pw, logged_pw):
+    @staticmethod
+    def issue_token(email):
+        email = email.lower()
+        user = User.User.objects(email=email).first()
+        additional_claims = {"id": user["ObjectId"]}
+        if not GateKeeper.is_user_banned(email):
+            access_token = create_access_token(
+                identity=email,
+                additional_claims=additional_claims,
+                expires_delta=TOKEN_EXPIRES,
+            )
+            return jsonify(access_token=access_token)
+        else:
+            raise BannedUserError("The User Associated With That Token Has Been Banned")
+    
+    @staticmethod        
+    def check_password(provided_pw, logged_pw):
         salt = gensalt(rounds=8, prefix=b"2b")
-        self.provided_pw = hashpw(provided_pw.encode("utf-8"), salt)
+        provided_pw = hashpw(provided_pw.encode("utf-8"), salt)
         # provided_pw = provided_pw.decode()
         if logged_pw == provided_pw:
             return True
         else:
             return False
-
-    def encrypt_password(self, plaintext_pw):
+    
+    @staticmethod
+    def encrypt_password(plaintext_pw):
         salt = gensalt(rounds=8, prefix=b"2b")
         hashed = hashpw(plaintext_pw.encode("utf-8"), salt)
         return hashed.decode()
