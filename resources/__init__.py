@@ -1,9 +1,10 @@
 from flask_restx import Api
 
 from utils.errors import (
+    BannedUserError,
     EmailAlreadyExistsError,
     InternalServerError,
-    TokenRevokedError,
+    InvaildTokenError,
     UnauthorizedError,
     UserDoesNotExist,
     ValidationError,
@@ -56,12 +57,10 @@ def ValidationError(error):
     return {"message": "Please Check the Password and re-attempt that request"}
 
 
-@api.errorhandler(TokenRevokedError)
-def TokenRevokedError(error):
+@api.errorhandler(BannedUserError)
+def BannedUserError(error):
     """Return a custom message and 401 status code"""
-    return {
-        "message": "I know you hear this often but \"That's Not Good Enough...That token has been reovoked."
-    }
+    return {"message": "Sucks to be your! Your persona non gratia. Now, git!"}
 
 
 @api.errorhandler(InternalServerError)
@@ -70,3 +69,11 @@ def InternalServerError(error):
     return {
         "message": "We Stupid, We can't even keep the sever up and running. Sorry, Internal Sercver Error. Reload"
     }, 500
+
+
+@api.errorhandler(InvaildTokenError)
+def InvaildTokenError(error):
+    """Return a custom message and 400 status code"""
+    return {
+        "message": "I know you hear this often but \"That's Not Good Enough...That token has been reovoked."
+    }

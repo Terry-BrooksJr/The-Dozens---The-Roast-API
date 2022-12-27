@@ -19,7 +19,7 @@ from resources.routes import initialize_routes
 #!SECTION Instantaites the Flask app
 app = Flask(__name__)
 app.config.from_object(Config)
-
+app.config["MONGODB_SETTINGS"] = Config.MONGODB_DEV_SETTINGS
 #!SECTION Initialize the API Endpoints and Plugins
 api.init_app(app)
 initialize_db(app)

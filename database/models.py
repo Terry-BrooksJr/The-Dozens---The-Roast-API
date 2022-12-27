@@ -8,13 +8,9 @@
     - Models are the Structure.
 """
 import pendulum
-from flask_jwt_extended import create_access_token, get_jwt
-
-from utils.gatekeeper import GateKeeper
 
 from .db import db
 
-gatekeeper = GateKeeper()
 now = pendulum.now()
 
 
@@ -32,7 +28,5 @@ class User(db.Document):
     email = db.EmailField(required=True, unique=True)
     password = db.StringField(required=True, min_length=6)
     joined_on = db.StringField(required=True)
-    meta = {"collection": "users", "db": "UserCreds"}
-
-    def hash_password(self):
-        self.password = gatekeeper.encrypt_password(self.password)
+    status = db.StringField(required=True, default="active")
+    meta = {"collection": "users"}
