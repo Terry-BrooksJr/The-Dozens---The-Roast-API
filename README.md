@@ -11,7 +11,7 @@ There are implemented two models: User and Todo, one user has many todos.
 Main libraries used:
 
 1. Flask-JWT-Extended - for handling Bearer Token Provision and Validation for Creation, Update operations.
-2. Flask-RESTful - restful API library.
+2. Flask-RESTx- restful API library.
 3. Flask-Script - provides support for writing external scripts.
 4. Flask-Mongoengine - adds support for MongoDB ORM.
 5. Flask-Bcrypt - supports the user registration system for users who want to contribute jokes
