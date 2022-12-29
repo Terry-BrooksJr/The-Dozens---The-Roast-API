@@ -68,7 +68,7 @@ get_parsers.replace_argument(
     choices=["true", "false"],
 )
 get_parsers.replace_argument(
-    "",
+    "catagory",
     type=str,
     required=False,
     location="args",
@@ -78,10 +78,11 @@ get_parsers.replace_argument(
 get_parsers.remove_argument("content")
 get_parsers.remove_argument("bearer token")
 
-#! GET ENDPOINT - Insults
 
 @api.route("insult")
 class InsultsAPI(Resource):
+    #! GET ENDPOINT - Insults
+
     @marshal_with(GET_fields, skip_none=True)
     @api.doc(model=GET_fields, parser=get_parsers)
     @api.response(200, "Insults Found")
@@ -89,7 +90,7 @@ class InsultsAPI(Resource):
     @api.expect(get_parsers)
     def get(self):
         joke = Jokester.get_random_joke()
-        return {"Yo Mama So...": joke["content"]}, 200
+        return {"Yo Mama So...": joke['content']}, 200
 
 
 

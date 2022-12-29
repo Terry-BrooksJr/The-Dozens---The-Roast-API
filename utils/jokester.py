@@ -10,10 +10,7 @@ class Jokester:
         randomized_joke = str()
         insult = Insult.objects().aggregate(randomized_pipeline)
         for doc in insult:
-            # if doc["status"] == "Active":
-            randomized_joke = doc["content"]
-            # else:
-            #     Jokester.get_random_joke()
+            randomized_joke = doc
         return randomized_joke
 
     @staticmethod

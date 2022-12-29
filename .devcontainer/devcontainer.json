@@ -1,6 +1,6 @@
 {
 	"name": "Standard Flask App/API - Dev Enviornment",
-	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	"image": "terrybrooks/flask_py_dev_env",
 	"features": {
 		"ghcr.io/devcontainers/features/python:1": {},
 		"ghcr.io/devcontainers-contrib/features/pre-commit:1": {},
@@ -8,12 +8,17 @@
 		"ghcr.io/devcontainers-contrib/features/coverage-py:1": {}
 	},
 	"containerEnv": {
-		"MONGODB_URI": "op://Dev-Work/ENV/DATABASE RELATED VARIABLES - Postgres/MONGODB_URI-DOZEN",
-		"SECRET_KEY": "op://Dev-Work/ENV/General ENV Varibles/SECRET_KEY",
-		"JWT_SECRET_KEY":"op://Dev-Work/ENV/General ENV Varibles/JWT_SECRET_KEY",
-		"REDIS_URI": "op://Dev-Work/ENV/DATABASE RELATED VARIABLES - Postgres/REDIS_URI-DOZEN",
-		"HEROKU_KEY": "op://Dev-Work/ENV/lzxyjtfcrzokz355qkgc2pftry/HEROKU_KEY",
-		"FLASK_RUN_PORT": "6969"
+		"MONGODB_URI": "mongodb+srv://RoastAPI:oL5o8De5uHsXI4if@primary.kkk2b.mongodb.net/InsultVault",
+		"SECRET_KEY": "AvuGKTQrxT5bsZX7L6Ee3CuqZzkDBr6KrgAQkSuyYSztsaNhys4YjUs3Cn7NUjL2cg2nBgJH9GgL2USxCAmgfWkV5Rd5J99eTuZfn5Wh$",
+		"JWT_SECRET_KEY": "t1NP63m4wnBg6nyHYKfmc2TpCOGI4nss",
+		"REDIS_URI": "redis://default:nUtb7M44Z3ocrMyXIJ7PlS6AFtGr3oT6@redis-13695.c83.us-east-1-2.ec2.cloud.redislabs.com:13695",
+		"HEROKU_KEY": "89e6ee16-a722-405f-bff7-bcf6ba0937fa",
+		"FLASK_RUN_PORT": "6969",
+		"SIDEKICK_APIKEY": "6b58c084-ab66-49bc-a8b4-f15ba0ff83c9",
+		"SIDEKICK_APPLICATION_NAME": "RoastAPI",
+		"SIDEKICK_APPLICATION_STAGE": "dev",
+		"SIDEKICK_APPLICATION_VERSION": "1.0.0",
+		"SIDEKICK_DEBUG_ENABLE": "true"
 	},
 	"forwardPorts": [
 		6969
@@ -57,7 +62,8 @@
 				"VisualStudioExptTeam.intellicode-api-usage-examples",
 				"eriklynd.json-tools",
 				"magicstack.MagicPython",
-				"mongodb.mongodb-vscode"
+				"mongodb.mongodb-vscode",
+				"Sidekick.sidekick-debugger"
 			]
 		}
 	}

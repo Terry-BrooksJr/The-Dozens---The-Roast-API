@@ -13,6 +13,7 @@ from utils.errors import (
 
 from .auth import api as AuthNS
 from .insult import api as InsultNS
+from .status import api as StatusNS
 
 api = Api(
     errors=errors,
@@ -21,6 +22,7 @@ api = Api(
     description="The dozens is a game of verbal combat, played mostly by African Americans on street corners, in barbershops, wherever. It is designed to teach participants to maintain control and keep cool under adverse circumstances.",
 )
 
+api.add_namespace(StatusNS, "/")
 api.add_namespace(AuthNS, "/")
 api.add_namespace(InsultNS, "/")
 

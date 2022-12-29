@@ -5,16 +5,19 @@ import os
 from logging import WARNING, FileHandler
 
 from flask import Flask
-from flask.logging import default_handler
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
-from flask_restx import Api
 
 import utils
 from config import Config
 from database.db import initialize_db
 from resources import api
-from resources.routes import initialize_routes
+
+try:
+    from utils.debugger import tracepointdebug
+    tracepointdebug.start()
+except ImportError as e:
+    pass
 
 #!SECTION Instantaites the Flask app
 app = Flask(__name__)

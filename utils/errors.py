@@ -28,6 +28,9 @@ class ValidationError(Exception):
 class InvaildTokenError(Exception):
     pass
 
+class DBConnectionError(Exception):
+    pass
+
 errors = {
     "InternalServerError": {"message": "Something went wrong", "status": 500},
     "SchemaValidationError": {

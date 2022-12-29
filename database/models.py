@@ -20,7 +20,7 @@ class Insult(db.Document):
     explict = db.BooleanField(required=True)
     added_on = db.StringField(required=True)
     added_by = db.StringField(required=True)
-
+    status = db.StringField(required=True, default="active")
     meta = {"collection": "insults"}
 
 

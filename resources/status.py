@@ -1,23 +1,43 @@
 """
-This Module is responsible for routing the API requests to the correct endpoints. The only endpoints that are defined here are the testing/status endpoint. All other endpoints are defined in their respective modules.
+This Module is responsible fo the testing/status endpoint. All other endpoints are defined in their respective modules.
 """
 
 import pendulum
-from flask import request
-from flask_restx import Resource
+from flask import request, jsonify
+from flask_restx import Resource, api, Namespace
+from database.db import db
+from utils.administrator import Administrator
 
-from .auth import LoginApi, SignupApi
-from .insult import InsultsAPI
 
+#! Namespace Declaration
+api = Namespace(
+    "Testing & Status",
+    description="These endpoints encompass all the endpoints needed to: \n 1. Test the Current Status of the API. \n 2. If admin, get operation metrics.",
+)
+
+
+#!Namespace Related Models
+
+
+
+#! Top-Level Vaariables/Plugins
 now = pendulum.now()
 
 
+#!Request Parameters Designations
+
+
+
+@api.route('status')
 class ApiTest(Resource):
     """Class for testing the API test Endpoints.
 
     Inherits from the flask_restplus Resource class.
     """
-
+    #! GET ENDPOINT - Status
+    
+    @api.doc()
+    @api.response(200, "As of <DATETIME> UTC the API Is Up and actively insulting millions of Mamas")
     def get(self):
         return {
             "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively insulting millions of Mamas"
@@ -59,12 +79,9 @@ class ApiTest(Resource):
             "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively insulting millions of Mamas"
         }, 200
 
-
-def initialize_routes(api):
-    # Testinf Endpoints
-    api.add_resource(ApiTest, "/test", "/status")
-    # Insult Resources Endpoints
-    api.add_resource(InsultsAPI, "/insult", "/")
-    # Auth Endpoints
-    api.add_resource(SignupApi, "/auth/signup", "/auth", "/signup")
-    api.add_resource(LoginApi, "/token", "/key")
+@api.route('metrics')
+class ApiMetrics(Resource):
+    
+    @api.response(200, "The Count of Insults in the Database")
+    def get(self):
+        return jsonify(f'There are {Administrator.count_insults()} insults in the Database')
