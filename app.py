@@ -15,6 +15,7 @@ from resources import api
 
 try:
     from utils.debugger import tracepointdebug
+
     tracepointdebug.start()
 except ImportError as e:
     pass

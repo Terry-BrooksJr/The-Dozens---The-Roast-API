@@ -5,16 +5,7 @@ class Variable(object):
         self.value = value
 
     def __repr__(self):
-        return str(
-            {
-                "name": self.name,
-                "type": self.type,
-                "value": self.value
-            }
-        )
+        return str({"name": self.name, "type": self.type, "value": self.value})
 
     def to_json(self):
-        return {
-            "@type": str(self.type),
-            "@value": self.value
-        }
+        return {"@type": str(self.type), "@value": self.value}

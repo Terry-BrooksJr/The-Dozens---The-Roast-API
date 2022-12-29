@@ -2,7 +2,6 @@ from tracepointdebug.broker.request.request import Request
 
 
 class BaseRequest(Request):
-
     def __init__(self, id, client=None):
         self.id = id
         self.client = client

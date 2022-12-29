@@ -44,5 +44,3 @@ class RateLimiter(object):
                 return RateLimitResult.HIT
             else:
                 return RateLimitResult.EXCEEDED
-
-

@@ -1,6 +1,7 @@
 # Generated from Condition.g4 by ANTLR 4.9
 from antlr4 import *
 
+
 # This class defines a complete listener for a parse tree produced by ConditionParser.
 class ConditionListener(ParseTreeListener):
 
@@ -12,7 +13,6 @@ class ConditionListener(ParseTreeListener):
     def exitParse(self, ctx):
         pass
 
-
     # Enter a parse tree produced by ConditionParser#binaryExpression.
     def enterBinaryExpression(self, ctx):
         pass
@@ -20,7 +20,6 @@ class ConditionListener(ParseTreeListener):
     # Exit a parse tree produced by ConditionParser#binaryExpression.
     def exitBinaryExpression(self, ctx):
         pass
-
 
     # Enter a parse tree produced by ConditionParser#parenExpression.
     def enterParenExpression(self, ctx):
@@ -30,7 +29,6 @@ class ConditionListener(ParseTreeListener):
     def exitParenExpression(self, ctx):
         pass
 
-
     # Enter a parse tree produced by ConditionParser#comparatorExpression.
     def enterComparatorExpression(self, ctx):
         pass
@@ -38,7 +36,6 @@ class ConditionListener(ParseTreeListener):
     # Exit a parse tree produced by ConditionParser#comparatorExpression.
     def exitComparatorExpression(self, ctx):
         pass
-
 
     # Enter a parse tree produced by ConditionParser#comparator.
     def enterComparator(self, ctx):
@@ -48,7 +45,6 @@ class ConditionListener(ParseTreeListener):
     def exitComparator(self, ctx):
         pass
 
-
     # Enter a parse tree produced by ConditionParser#binary.
     def enterBinary(self, ctx):
         pass
@@ -57,7 +53,6 @@ class ConditionListener(ParseTreeListener):
     def exitBinary(self, ctx):
         pass
 
-
     # Enter a parse tree produced by ConditionParser#operand.
     def enterOperand(self, ctx):
         pass
@@ -65,5 +60,3 @@ class ConditionListener(ParseTreeListener):
     # Exit a parse tree produced by ConditionParser#operand.
     def exitOperand(self, ctx):
         pass
-
-

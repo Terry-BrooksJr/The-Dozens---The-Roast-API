@@ -2,17 +2,19 @@ import atexit
 
 from . import cdbg_native
 from .broker.broker_manager import BrokerManager
-from .probe.trace_point_manager import TracePointManager
 from .probe.log_point_manager import LogPointManager
-'''
+from .probe.trace_point_manager import TracePointManager
+
+"""
     After importing ConfigProvider for the first time, the __init__.py has been run by interpreter and
     whole configuration is reflected to configs.
-'''
+"""
+import logging
+
 from .config.config_provider import ConfigProvider
 
-
-import logging
 logger = logging.getLogger(__name__)
+
 
 def start():
     cdbg_native.InitializeModule(None)

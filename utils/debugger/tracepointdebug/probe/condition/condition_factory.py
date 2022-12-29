@@ -1,20 +1,29 @@
 import abc
-
-from antlr4 import InputStream, CommonTokenStream, ParseTreeWalker, ParseTreeListener
-
 import sys
 
+from antlr4 import CommonTokenStream, InputStream, ParseTreeListener, ParseTreeWalker
+
 if sys.version_info[0] < 3:
-    from tracepointdebug.tracepoint.condition.antlr4parser.python2_runtime.ConditionLexer import ConditionLexer
-    from tracepointdebug.tracepoint.condition.antlr4parser.python2_runtime.ConditionParser import ConditionParser
+    from tracepointdebug.tracepoint.condition.antlr4parser.python2_runtime.ConditionLexer import (
+        ConditionLexer,
+    )
+    from tracepointdebug.tracepoint.condition.antlr4parser.python2_runtime.ConditionParser import (
+        ConditionParser,
+    )
 else:
-    from tracepointdebug.probe.condition.antlr4parser.python3_runtime.ConditionLexer import ConditionLexer
-    from tracepointdebug.probe.condition.antlr4parser.python3_runtime.ConditionParser import ConditionParser
+    from tracepointdebug.probe.condition.antlr4parser.python3_runtime.ConditionLexer import (
+        ConditionLexer,
+    )
+    from tracepointdebug.probe.condition.antlr4parser.python3_runtime.ConditionParser import (
+        ConditionParser,
+    )
 
 from tracepointdebug.probe.condition.binary_operator import BinaryOperator
 from tracepointdebug.probe.condition.comparison_operator import ComparisonOperator
 from tracepointdebug.probe.condition.composite_condition import CompositeCondition
-from tracepointdebug.probe.condition.constant_value_provider import ConstantValueProvider
+from tracepointdebug.probe.condition.constant_value_provider import (
+    ConstantValueProvider,
+)
 from tracepointdebug.probe.condition.operand.boolean_operand import BooleanOperand
 from tracepointdebug.probe.condition.operand.null_operand import NullOperand
 from tracepointdebug.probe.condition.operand.number_operand import NumberOperand
@@ -22,11 +31,10 @@ from tracepointdebug.probe.condition.operand.string_operand import StringOperand
 from tracepointdebug.probe.condition.operand.variable_operand import VariableOperand
 from tracepointdebug.probe.condition.single_condition import SingleCondition
 
-ABC = abc.ABCMeta('ABC', (object,), {})
+ABC = abc.ABCMeta("ABC", (object,), {})
 
 
 class ConditionBuilder(ABC):
-
     @abc.abstractmethod
     def build(self):
         pass
@@ -41,16 +49,17 @@ class ConditionBuilder(ABC):
 
 
 class SingleConditionBuilder(ConditionBuilder):
-
     def __init__(self):
         self.left_operand = None
         self.right_operand = None
         self.comparison_operator = None
 
     def build(self):
-        return SingleCondition(left_operand=self.left_operand,
-                               right_operand=self.right_operand,
-                               comparison_operator=self.comparison_operator)
+        return SingleCondition(
+            left_operand=self.left_operand,
+            right_operand=self.right_operand,
+            comparison_operator=self.comparison_operator,
+        )
 
     def add_builder(self, builder):
         raise Exception("Unsupported Operation")
@@ -60,7 +69,6 @@ class SingleConditionBuilder(ConditionBuilder):
 
 
 class CompositeConditionBuilder(ConditionBuilder):
-
     def __init__(self):
         self.builders = []
         self.operators = []
@@ -141,7 +149,11 @@ class ConditionListener(ParseTreeListener):
             parent_condition_builder = self.condition_builder_stack[-1]
             parent_condition_builder.add_builder(condition_builder)
         else:
-            raise Exception("There is no active condition to add sub-condition: {}".format(ctx.getText()))
+            raise Exception(
+                "There is no active condition to add sub-condition: {}".format(
+                    ctx.getText()
+                )
+            )
 
     # Enter a parse tree produced by ConditionParser#comparator.
     def enterComparator(self, ctx):
@@ -162,7 +174,11 @@ class ConditionListener(ParseTreeListener):
             else:
                 raise Exception("Unsupported binary operator: {}".format(ctx.getText()))
         else:
-            raise Exception("There is no active condition to add binary operator: {}".format(ctx.getText()))
+            raise Exception(
+                "There is no active condition to add binary operator: {}".format(
+                    ctx.getText()
+                )
+            )
 
     # Exit a parse tree produced by ConditionParser#binary.
     def exitBinary(self, ctx):
@@ -200,10 +216,11 @@ class ConditionListener(ParseTreeListener):
 
 
 class ConditionFactory(object):
-
     @staticmethod
     def create_boolean_operand(operand_expression):
-        return BooleanOperand(ConstantValueProvider(operand_expression.lower() == "true"))
+        return BooleanOperand(
+            ConstantValueProvider(operand_expression.lower() == "true")
+        )
 
     @staticmethod
     def create_string_operand(operand_expression):

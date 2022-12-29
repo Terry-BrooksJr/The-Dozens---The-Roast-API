@@ -8,6 +8,7 @@ from database.db import db
 from database.models import User
 from utils.gatekeeper import GateKeeper
 
+
 class SignUpApiTest(TestCase):
     def SetUp(self):
         self.app = app.test_client()

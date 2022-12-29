@@ -5,10 +5,9 @@ from threading import Thread
 from time import sleep
 
 import websocket
-
-from tracepointdebug.utils import debug_logger
-from tracepointdebug.broker.ws_app import WSApp
 from tracepointdebug.application.application import Application
+from tracepointdebug.broker.ws_app import WSApp
+from tracepointdebug.utils import debug_logger
 
 logger = logging.getLogger(__name__)
 
@@ -21,13 +20,20 @@ BROKER_HANDSHAKE_HEADERS = {
     "APP_VERSION": "x-sidekick-app-version",
     "APP_STAGE": "x-sidekick-app-stage",
     "APP_RUNTIME": "x-sidekick-app-runtime",
-    "APP_HOSTNAME": "x-sidekick-app-hostname"
+    "APP_HOSTNAME": "x-sidekick-app-hostname",
 }
 APP_TAG_HEADER_NAME_PREFIX = "x-sidekick-app-tag-"
 
-class BrokerConnection:
 
-    def __init__(self, host, port, broker_credentials, message_callback, initial_request_to_broker):
+class BrokerConnection:
+    def __init__(
+        self,
+        host,
+        port,
+        broker_credentials,
+        message_callback,
+        initial_request_to_broker,
+    ):
         self.message_callback = message_callback
         self.host = host
         self.port = port
@@ -53,56 +59,79 @@ class BrokerConnection:
             on_open=lambda ws: self.on_open(ws),
             on_ping=lambda ws, msg: self.on_ping(ws, msg),
             on_pong=lambda ws, msg: self.on_pong(ws, msg),
-            header= self._create_wsapp_header()
-            
+            header=self._create_wsapp_header(),
         )
 
     def _create_wsapp_header(self):
-        header=[
-                "{header}: {value}".format(header=BROKER_HANDSHAKE_HEADERS.get("API_KEY"),
-                                           value=self.broker_credentials.api_key),
-                "{header}: {value}".format(header=BROKER_HANDSHAKE_HEADERS.get("APP_INSTANCE_ID"),
-                                           value=self.broker_credentials.app_instance_id),
-                "{header}: {value}".format(header=BROKER_HANDSHAKE_HEADERS.get("APP_NAME"),
-                                           value=self.broker_credentials.app_name),
-                "{header}: {value}".format(header=BROKER_HANDSHAKE_HEADERS.get("APP_VERSION"),
-                                           value=self.broker_credentials.app_version),
-                "{header}: {value}".format(header=BROKER_HANDSHAKE_HEADERS.get("APP_STAGE"),
-                                           value=self.broker_credentials.app_stage),
-                "{header}: {value}".format(header=BROKER_HANDSHAKE_HEADERS.get("APP_RUNTIME"),
-                                           value=self.broker_credentials.runtime),
-                "{header}: {value}".format(header=BROKER_HANDSHAKE_HEADERS.get("APP_HOSTNAME"),
-                                           value=self.broker_credentials.hostname)
-            ]
+        header = [
+            "{header}: {value}".format(
+                header=BROKER_HANDSHAKE_HEADERS.get("API_KEY"),
+                value=self.broker_credentials.api_key,
+            ),
+            "{header}: {value}".format(
+                header=BROKER_HANDSHAKE_HEADERS.get("APP_INSTANCE_ID"),
+                value=self.broker_credentials.app_instance_id,
+            ),
+            "{header}: {value}".format(
+                header=BROKER_HANDSHAKE_HEADERS.get("APP_NAME"),
+                value=self.broker_credentials.app_name,
+            ),
+            "{header}: {value}".format(
+                header=BROKER_HANDSHAKE_HEADERS.get("APP_VERSION"),
+                value=self.broker_credentials.app_version,
+            ),
+            "{header}: {value}".format(
+                header=BROKER_HANDSHAKE_HEADERS.get("APP_STAGE"),
+                value=self.broker_credentials.app_stage,
+            ),
+            "{header}: {value}".format(
+                header=BROKER_HANDSHAKE_HEADERS.get("APP_RUNTIME"),
+                value=self.broker_credentials.runtime,
+            ),
+            "{header}: {value}".format(
+                header=BROKER_HANDSHAKE_HEADERS.get("APP_HOSTNAME"),
+                value=self.broker_credentials.hostname,
+            ),
+        ]
 
         application_info = Application.get_application_info()
         application_tags = application_info.get("applicationTags", {})
         if application_tags:
             for appTagName, appTagValue in application_tags.items():
                 header.append(
-                    "{header}: {value}".format(header=APP_TAG_HEADER_NAME_PREFIX + appTagName,
-                                            value=appTagValue
-                ))
+                    "{header}: {value}".format(
+                        header=APP_TAG_HEADER_NAME_PREFIX + appTagName,
+                        value=appTagValue,
+                    )
+                )
 
         return header
 
     def _connect(self):
         self.ws = self._create_app()
         debug_logger("Connecting to broker...")
-        self.ws.run_forever(ping_interval=60, ping_timeout=10,
-                            sockopt=((socket.IPPROTO_TCP, socket.TCP_NODELAY, 1),))
+        self.ws.run_forever(
+            ping_interval=60,
+            ping_timeout=10,
+            sockopt=((socket.IPPROTO_TCP, socket.TCP_NODELAY, 1),),
+        )
 
         while self._running:
             debug_logger("Reconnecting in %s..." % self.reconnect_interval)
             sleep(self.reconnect_interval)
             debug_logger("Connecting to broker...")
             self.ws = self._create_app()
-            self.ws.run_forever(ping_interval=60, ping_timeout=10,
-                                sockopt=((socket.IPPROTO_TCP, socket.TCP_NODELAY, 1),), timeout=self.connection_timeout)
+            self.ws.run_forever(
+                ping_interval=60,
+                ping_timeout=10,
+                sockopt=((socket.IPPROTO_TCP, socket.TCP_NODELAY, 1),),
+                timeout=self.connection_timeout,
+            )
 
     def connect(self):
         self._running = True
         import sys
+
         if sys.version_info[0] >= 3:
             self._thread = Thread(target=self._connect, daemon=True)
         else:
@@ -128,7 +157,11 @@ class BrokerConnection:
 
     def on_error(self, ws, msg):
         if isinstance(msg, websocket.WebSocketBadStatusException):
-            logger.error("Handshake failed, status code: {}, message: {}".format(msg.status_code, msg.args))
+            logger.error(
+                "Handshake failed, status code: {}, message: {}".format(
+                    msg.status_code, msg.args
+                )
+            )
             if msg.status_code == 401:
                 self._running = False
                 if self.ws:
@@ -141,7 +174,7 @@ class BrokerConnection:
     def on_open(self, ws):
         debug_logger("Connection open")
         self.connected.set()
-        connection_set = self.connected.wait() #TODO Timeout
+        connection_set = self.connected.wait()  # TODO Timeout
         if connection_set:
             self.initial_request_to_broker()
 

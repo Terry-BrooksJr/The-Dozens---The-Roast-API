@@ -1,13 +1,14 @@
-import abc, sys
+import abc
+import sys
 
 from tracepointdebug.config import config_names
 from tracepointdebug.config.config_provider import ConfigProvider
 
-ABC = abc.ABCMeta('ABC', (object,), {})
+ABC = abc.ABCMeta("ABC", (object,), {})
 
 
 class ApplicationInfoProvider(ABC):
-    
+
     APPLICATION_RUNTIME = "python"
     APPLICATION_RUNTIME_VERSION = str(sys.version_info[0])
 

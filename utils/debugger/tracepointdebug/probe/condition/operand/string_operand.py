@@ -1,8 +1,9 @@
-from tracepointdebug.probe.condition.operand.typed_operand import TypedOperand
 import sys
 
-class StringOperand(TypedOperand):
+from tracepointdebug.probe.condition.operand.typed_operand import TypedOperand
 
+
+class StringOperand(TypedOperand):
     def __init__(self, value_provider):
         if sys.version_info[0] >= 3:
             super(StringOperand, self).__init__(str, value_provider)

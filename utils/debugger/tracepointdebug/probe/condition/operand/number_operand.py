@@ -2,7 +2,6 @@ from tracepointdebug.probe.condition.operand.typed_operand import TypedOperand
 
 
 class NumberOperand(TypedOperand):
-
     def __init__(self, value_provider):
         super(NumberOperand, self).__init__((float, int), value_provider)
 

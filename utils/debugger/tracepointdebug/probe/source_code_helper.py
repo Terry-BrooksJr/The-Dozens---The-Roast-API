@@ -21,14 +21,14 @@ def memoize(function):
 
 
 def get_source_code(file_path):
-    if file_path is None or file_path.endswith('.pyc'):
+    if file_path is None or file_path.endswith(".pyc"):
         return None
     try:
-        with open(file_path, 'rb') as f:
+        with open(file_path, "rb") as f:
             file_content = f.read()
             return file_content
     except IOError as e:
-        debug_logger('Error reading file from file path: ' + file_path + ' err:', e)
+        debug_logger("Error reading file from file path: " + file_path + " err:", e)
     return None
 
 
@@ -39,18 +39,27 @@ def get_source_code_hash(file_path):
         return None
 
     if six.PY2:
-        source_code = source_code.replace('\r\n', '\n') \
-            .replace('\r\x00\n\x00', '\n\x00') \
-            .replace('\r', '\n')
+        source_code = (
+            source_code.replace("\r\n", "\n")
+            .replace("\r\x00\n\x00", "\n\x00")
+            .replace("\r", "\n")
+        )
     else:
-        source_code = source_code.decode().replace('\r\n', '\n') \
-            .replace('\r\x00\n\x00', '\n\x00') \
-            .replace('\r', '\n').encode('UTF8')
+        source_code = (
+            source_code.decode()
+            .replace("\r\n", "\n")
+            .replace("\r\x00\n\x00", "\n\x00")
+            .replace("\r", "\n")
+            .encode("UTF8")
+        )
 
     try:
         source_hash = hashlib.sha256(source_code).hexdigest()
         return source_hash
     except Exception as e:
-        debug_logger('Unable to calculate hash of source code from file %s error: %s' % (file_path, e))
+        debug_logger(
+            "Unable to calculate hash of source code from file %s error: %s"
+            % (file_path, e)
+        )
 
     return None

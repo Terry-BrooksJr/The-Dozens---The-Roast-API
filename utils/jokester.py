@@ -1,3 +1,7 @@
+"""
+This Module is responsible for all the actions that occur in the /insults endpoint, and the functions that are called by the /insults routes.
+"""
+
 import random
 
 from database.models import Insult

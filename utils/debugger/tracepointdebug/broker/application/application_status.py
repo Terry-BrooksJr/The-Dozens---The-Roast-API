@@ -1,7 +1,16 @@
 class ApplicationStatus(object):
-
-    def __init__(self, instance_id=None, name=None, stage=None, version=None, ip=None, hostname=None,
-                 trace_points=None, log_points=None, runtime=None):
+    def __init__(
+        self,
+        instance_id=None,
+        name=None,
+        stage=None,
+        version=None,
+        ip=None,
+        hostname=None,
+        trace_points=None,
+        log_points=None,
+        runtime=None,
+    ):
         self.instance_id = instance_id
         self.name = name
         self.stage = stage
@@ -26,5 +35,5 @@ class ApplicationStatus(object):
             "hostName": self.hostname,
             "tracePoints": self.trace_points,
             "logPoints": self.log_points,
-            "runtime": self.runtime
+            "runtime": self.runtime,
         }

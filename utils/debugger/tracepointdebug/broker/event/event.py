@@ -1,10 +1,9 @@
 import abc
 
-ABC = abc.ABCMeta('ABC', (object,), {})
+ABC = abc.ABCMeta("ABC", (object,), {})
 
 
 class Event(ABC):
-
     def get_type(self):
         return "Event"
 

@@ -1,10 +1,9 @@
 import abc
 
-ABC = abc.ABCMeta('ABC', (object,), {})
+ABC = abc.ABCMeta("ABC", (object,), {})
 
 
 class Response(ABC):
-
     @abc.abstractmethod
     def get_request_id(self):
         pass
@@ -16,7 +15,7 @@ class Response(ABC):
     @abc.abstractmethod
     def get_client(self):
         pass
-    
+
     @staticmethod
     def get_type():
         return "Response"

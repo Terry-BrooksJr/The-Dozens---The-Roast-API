@@ -1,10 +1,9 @@
 import abc
 
-ABC = abc.ABCMeta('ABC', (object,), {})
+ABC = abc.ABCMeta("ABC", (object,), {})
 
 
 class Operand(ABC):
-
     @abc.abstractmethod
     def get_value(self, condition_context):
         pass

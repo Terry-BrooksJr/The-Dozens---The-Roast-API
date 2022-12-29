@@ -25,11 +25,14 @@ class UserDoesNotExist(Exception):
 class ValidationError(Exception):
     pass
 
+
 class InvaildTokenError(Exception):
     pass
 
+
 class DBConnectionError(Exception):
     pass
+
 
 errors = {
     "InternalServerError": {"message": "Something went wrong", "status": 500},

@@ -3,4 +3,3 @@ class Snapshot(object):
         self.frames = frames
         self.method_name = method_name
         self.file = file
-

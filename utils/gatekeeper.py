@@ -1,12 +1,13 @@
 import os
 from datetime import timedelta
+from test.test_db import database
 
 import redis
 from bcrypt import checkpw, gensalt, hashpw
 from flask import jsonify
 from flask_jwt_extended import create_access_token, get_jwt, verify_jwt_in_request
+
 from database.models import User
-from test.test_db import database
 from utils.errors import BannedUserError
 
 jwt_redis_blocklist = redis.StrictRedis(
@@ -46,8 +47,8 @@ class GateKeeper:
             return jsonify(access_token=access_token)
         else:
             raise BannedUserError("The User Associated With That Token Has Been Banned")
-    
-    @staticmethod        
+
+    @staticmethod
     def check_password(provided_pw, logged_pw):
         salt = gensalt(rounds=8, prefix=b"2b")
         provided_pw = hashpw(provided_pw.encode("utf-8"), salt)
@@ -56,7 +57,7 @@ class GateKeeper:
             return True
         else:
             return False
-    
+
     @staticmethod
     def encrypt_password(plaintext_pw):
         salt = gensalt(rounds=8, prefix=b"2b")

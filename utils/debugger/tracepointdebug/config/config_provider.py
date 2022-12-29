@@ -11,10 +11,12 @@ class ConfigProvider:
     def __init__(options=None):
         ConfigProvider.clear()
         if options is not None:
-            config_options = options.get('config', {})
+            config_options = options.get("config", {})
             for opt in config_options:
                 if opt.lower() == config_names.SIDEKICK_APIKEY:
-                    ConfigProvider.configs[config_names.SIDEKICK_APIKEY] = config_options.get(opt)
+                    ConfigProvider.configs[
+                        config_names.SIDEKICK_APIKEY
+                    ] = config_options.get(opt)
                 ConfigProvider.traverse_config_object(config_options.get(opt), opt)
         ConfigProvider.initialize_config_from_environment_variables()
 
@@ -27,20 +29,22 @@ class ConfigProvider:
                 env_var_name = ConfigProvider.env_var_to_config_name(var_name)
                 val = env_variables.get(var_name).strip()
                 env_var_type = ConfigProvider.get_config_type(env_var_name)
-                ConfigProvider.configs[env_var_name] = ConfigProvider.parse(val, env_var_type)
+                ConfigProvider.configs[env_var_name] = ConfigProvider.parse(
+                    val, env_var_type
+                )
 
     @staticmethod
     def traverse_config_object(obj, path):
         if not isinstance(obj, dict):
-            if not path.startswith('sidekick.'):
-                path = 'sidekick.' + path
+            if not path.startswith("sidekick."):
+                path = "sidekick." + path
             path = path.lower()
             prop_type = ConfigProvider.get_config_type(path)
             ConfigProvider.configs[path] = ConfigProvider.parse(obj, prop_type)
         else:
             for prop_name in obj:
                 prop_val = obj.get(prop_name)
-                prop_path = path + '.' + prop_name
+                prop_path = path + "." + prop_name
                 ConfigProvider.traverse_config_object(prop_val, prop_path)
 
     @staticmethod
@@ -51,23 +55,23 @@ class ConfigProvider:
         if default_value is not None:
             return default_value
         if CONFIG_METADATA.get(key):
-            return CONFIG_METADATA[key].get('defaultValue')
+            return CONFIG_METADATA[key].get("defaultValue")
         return None
 
     @staticmethod
     def get_config_type(config_name):
         config_metadata = CONFIG_METADATA.get(config_name)
         if config_metadata:
-            return config_metadata.get('type')
+            return config_metadata.get("type")
         return None
 
     @staticmethod
     def parse(value, var_type):
-        if var_type == 'string':
+        if var_type == "string":
             return value
-        if var_type == 'int':
+        if var_type == "int":
             return ConfigProvider.convert_to_int(value)
-        if var_type == 'boolean':
+        if var_type == "boolean":
             return ConfigProvider.convert_to_bool(value)
         return ConfigProvider.str_to_proper_type(value)
 
@@ -115,11 +119,11 @@ class ConfigProvider:
 
     @staticmethod
     def config_name_to_env_var(config_name):
-        return config_name.upper().replace('.', '_')
+        return config_name.upper().replace(".", "_")
 
     @staticmethod
     def env_var_to_config_name(env_var_name):
-        return env_var_name.lower().replace('_', '.')
+        return env_var_name.lower().replace("_", ".")
 
     @staticmethod
     def clear():
@@ -127,7 +131,9 @@ class ConfigProvider:
 
     @staticmethod
     def set(key, value):
-        ConfigProvider.configs[key] = ConfigProvider.parse(value, ConfigProvider.get_config_type(key))
+        ConfigProvider.configs[key] = ConfigProvider.parse(
+            value, ConfigProvider.get_config_type(key)
+        )
 
 
 ConfigProvider.__init__()

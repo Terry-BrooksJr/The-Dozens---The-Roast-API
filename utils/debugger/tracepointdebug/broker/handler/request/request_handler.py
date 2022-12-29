@@ -1,10 +1,9 @@
 import abc
 
-ABC = abc.ABCMeta('ABC', (object,), {})
+ABC = abc.ABCMeta("ABC", (object,), {})
 
 
 class RequestHandler(ABC):
-
     @staticmethod
     @abc.abstractmethod
     def get_request_name():

@@ -86,16 +86,15 @@ class InsultsAPI(Resource):
     @marshal_with(GET_fields, skip_none=True)
     @api.doc(model=GET_fields, parser=get_parsers)
     @api.response(200, "Insults Found")
-    @api.response(400, "Bad Request - If passing a parameter, check values and reattempt")
+    @api.response(
+        400, "Bad Request - If passing a parameter, check values and reattempt"
+    )
     @api.expect(get_parsers)
     def get(self):
         joke = Jokester.get_random_joke()
-        return {"Yo Mama So...": joke['content']}, 200
+        return {"Yo Mama So...": joke["content"]}, 200
 
-
-
-
-#! POST ENDPOINT - Insults
+    #! POST ENDPOINT - Insults
     @jwt_required
     @marshal_with(POST_fields, skip_none=True)
     @api.doc(model=POST_fields, parser=POST_parsers)

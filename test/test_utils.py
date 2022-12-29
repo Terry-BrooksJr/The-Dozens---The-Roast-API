@@ -1,20 +1,18 @@
 from unittest import TestCase
+
 from pytest_check import check
 
-from utils.gatekeeper import GateKeeper
 from utils.errors import (
-    SchemaValidationError,
     BannedUserError,
     EmailAlreadyExistsError,
+    InternalServerError,
+    SchemaValidationError,
     UnauthorizedError,
     UserDoesNotExist,
     ValidationError,
-    EmailAlreadyExistsError,
-    UserDoesNotExist,
-    ValidationError,
-    InternalServerError,
     errors,
 )
+from utils.gatekeeper import GateKeeper
 
 
 class TestGatekeeper(TestCase):
@@ -25,4 +23,3 @@ class TestGatekeeper(TestCase):
 
 class TestErrors(TestCase):
     pass
-

@@ -3,7 +3,6 @@ from tracepointdebug.probe.condition.condition import Condition
 
 
 class CompositeCondition(Condition):
-
     def __init__(self, conditions, operators):
         self.conditions = conditions
         self.operators = operators
@@ -16,7 +15,7 @@ class CompositeCondition(Condition):
             if result is None:
                 result = evaluation_result
             else:
-                operator = self.operators[i-1]
+                operator = self.operators[i - 1]
                 if operator == BinaryOperator.AND:
                     result = result and evaluation_result
                 elif operator == BinaryOperator.OR:

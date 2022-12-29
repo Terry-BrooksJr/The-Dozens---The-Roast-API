@@ -21,5 +21,5 @@ class LogPointRateLimitEvent(BaseEvent):
             "applicationName": self.application_name,
             "client": self.client,
             "time": self.time,
-            "hostName": self.hostname
+            "hostName": self.hostname,
         }

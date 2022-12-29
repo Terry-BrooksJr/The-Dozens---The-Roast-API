@@ -10,8 +10,12 @@ from werkzeug.exceptions import BadRequest
 # from app import api
 from database.db import db
 from database.models import User
-from utils.errors import (EmailAlreadyExistsError, UnauthorizedError,
-                          UserDoesNotExist, errors)
+from utils.errors import (
+    EmailAlreadyExistsError,
+    UnauthorizedError,
+    UserDoesNotExist,
+    errors,
+)
 from utils.gatekeeper import GateKeeper
 
 # Namespace Declaration
@@ -120,7 +124,7 @@ class LoginApi(Resource):
         except (UnauthorizedError, UserDoesNotExist, Exception):
             return {"Error": "Password invalid"}, 401
         else:
-            token = GateKeeper.issue_token(user['email'])
+            token = GateKeeper.issue_token(user["email"])
             string_expiry = now.add(days=7)
 
             return {

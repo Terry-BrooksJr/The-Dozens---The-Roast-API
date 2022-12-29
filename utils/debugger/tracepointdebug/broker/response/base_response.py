@@ -3,9 +3,16 @@ from tracepointdebug.probe.coded_exception import CodedException
 
 
 class BaseResponse(Response):
-
-    def __init__(self, request_id=None, client=None, application_instance_id=None, erroneous=False, error_code=None,
-                 error_type=None, error_message=None):
+    def __init__(
+        self,
+        request_id=None,
+        client=None,
+        application_instance_id=None,
+        erroneous=False,
+        error_code=None,
+        error_type=None,
+        error_message=None,
+    ):
         self.request_id = request_id
         self.client = client
         self.application_instance_id = application_instance_id
@@ -54,5 +61,5 @@ class BaseResponse(Response):
             "errorCode": self.error_code,
             "errorMessage": self.error_message,
             "source": self.get_source(),
-            "type": self.get_type()
+            "type": self.get_type(),
         }

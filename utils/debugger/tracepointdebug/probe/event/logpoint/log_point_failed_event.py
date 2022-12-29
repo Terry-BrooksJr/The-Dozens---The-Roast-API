@@ -25,5 +25,5 @@ class LogPointFailedEvent(BaseEvent):
             "time": self.time,
             "hostName": self.hostname,
             "errorCode": self.error_code,
-            "errorMessage": self.error_message
+            "errorMessage": self.error_message,
         }

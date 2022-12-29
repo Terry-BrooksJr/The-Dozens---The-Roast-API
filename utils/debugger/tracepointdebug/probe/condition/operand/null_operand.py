@@ -2,7 +2,6 @@ from tracepointdebug.probe.condition.operand.operand import Operand
 
 
 class NullOperand(Operand):
-
     def get_value(self, condition_context):
         return None
 

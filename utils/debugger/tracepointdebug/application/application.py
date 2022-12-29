@@ -1,4 +1,6 @@
-from tracepointdebug.application.config_aware_application_info_provider import ConfigAwareApplicationInfoProvider
+from tracepointdebug.application.config_aware_application_info_provider import (
+    ConfigAwareApplicationInfoProvider,
+)
 
 
 class Application(object):

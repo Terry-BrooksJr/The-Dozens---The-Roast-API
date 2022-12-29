@@ -1,7 +1,11 @@
 from tracepointdebug.application.application import Application
 from tracepointdebug.broker.handler.request.request_handler import RequestHandler
-from tracepointdebug.probe.request.disable_trace_point_request import DisableTracePointRequest
-from tracepointdebug.probe.response.disable_trace_point_response import DisableTracePointResponse
+from tracepointdebug.probe.request.disable_trace_point_request import (
+    DisableTracePointRequest,
+)
+from tracepointdebug.probe.response.disable_trace_point_response import (
+    DisableTracePointResponse,
+)
 from tracepointdebug.probe.trace_point_manager import TracePointManager
 
 
@@ -21,17 +25,25 @@ class DisableTracePointRequestHandler(RequestHandler):
         application_info = Application.get_application_info()
         try:
             trace_point_manager = TracePointManager.instance()
-            trace_point_manager.disable_trace_point(request.trace_point_id, request.get_client())
+            trace_point_manager.disable_trace_point(
+                request.trace_point_id, request.get_client()
+            )
 
             trace_point_manager.publish_application_status()
             if request.get_client() is not None:
                 trace_point_manager.publish_application_status(request.get_client())
 
-            return DisableTracePointResponse(request_id=request.get_id(), client=request.get_client(),
-                                             application_instance_id=application_info.get('applicationInstanceId'))
+            return DisableTracePointResponse(
+                request_id=request.get_id(),
+                client=request.get_client(),
+                application_instance_id=application_info.get("applicationInstanceId"),
+            )
         except Exception as e:
-            tp = DisableTracePointResponse(request_id=request.get_id(), client=request.get_client(),
-                                           application_instance_id=application_info.get('applicationInstanceId'),
-                                           erroneous=True)
+            tp = DisableTracePointResponse(
+                request_id=request.get_id(),
+                client=request.get_client(),
+                application_instance_id=application_info.get("applicationInstanceId"),
+                erroneous=True,
+            )
             tp.set_error(e)
             return tp

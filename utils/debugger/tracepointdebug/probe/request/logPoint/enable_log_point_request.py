@@ -2,9 +2,10 @@ from tracepointdebug.broker.request.base_request import BaseRequest
 
 
 class EnableLogPointRequest(BaseRequest):
-
     def __init__(self, request):
-        super(EnableLogPointRequest, self).__init__(id=request.get("id"), client=request.get("client"))
+        super(EnableLogPointRequest, self).__init__(
+            id=request.get("id"), client=request.get("client")
+        )
         self.log_point_id = request.get("logPointId")
 
     def get_id(self):

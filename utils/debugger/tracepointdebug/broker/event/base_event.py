@@ -2,9 +2,15 @@ from tracepointdebug.broker.event.event import Event
 
 
 class BaseEvent(Event):
-
-    def __init__(self, send_ack=False, client=None, time=None, hostname=None,
-                 application_name=None, application_instance_id=None):
+    def __init__(
+        self,
+        send_ack=False,
+        client=None,
+        time=None,
+        hostname=None,
+        application_name=None,
+        application_instance_id=None,
+    ):
         self._name = self.__class__.__name__
         self._id = None
         self._send_ack = send_ack

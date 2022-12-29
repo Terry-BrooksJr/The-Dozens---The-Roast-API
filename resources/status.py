@@ -3,11 +3,11 @@ This Module is responsible fo the testing/status endpoint. All other endpoints a
 """
 
 import pendulum
-from flask import request, jsonify
-from flask_restx import Resource, api, Namespace
+from flask import jsonify, request
+from flask_restx import Namespace, Resource, api
+
 from database.db import db
 from utils.administrator import Administrator
-
 
 #! Namespace Declaration
 api = Namespace(
@@ -19,7 +19,6 @@ api = Namespace(
 #!Namespace Related Models
 
 
-
 #! Top-Level Vaariables/Plugins
 now = pendulum.now()
 
@@ -27,17 +26,20 @@ now = pendulum.now()
 #!Request Parameters Designations
 
 
-
-@api.route('status')
+@api.route("status")
 class ApiTest(Resource):
     """Class for testing the API test Endpoints.
 
     Inherits from the flask_restplus Resource class.
     """
+
     #! GET ENDPOINT - Status
-    
+
     @api.doc()
-    @api.response(200, "As of <DATETIME> UTC the API Is Up and actively insulting millions of Mamas")
+    @api.response(
+        200,
+        "As of <DATETIME> UTC the API Is Up and actively insulting millions of Mamas",
+    )
     def get(self):
         return {
             "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively insulting millions of Mamas"
@@ -79,9 +81,10 @@ class ApiTest(Resource):
             "status": f"As of {now.to_datetime_string()} UTC the API Is Up and actively insulting millions of Mamas"
         }, 200
 
-@api.route('metrics')
+
+@api.route("metrics")
 class ApiMetrics(Resource):
-    
     @api.response(200, "The Count of Insults in the Database")
     def get(self):
-        return jsonify(f'There are {Administrator.count_insults()} insults in the Database')
+        jokes, users = Administrator.count_user_and_jokes()
+        return jsonify(f"There are {jokes} insults and {users} in the Database")

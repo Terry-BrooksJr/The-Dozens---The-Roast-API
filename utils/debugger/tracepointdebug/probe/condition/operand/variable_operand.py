@@ -4,11 +4,12 @@ from tracepointdebug.probe.condition.operand.number_operand import NumberOperand
 from tracepointdebug.probe.condition.operand.object_operand import ObjectOperand
 from tracepointdebug.probe.condition.operand.operand import Operand
 from tracepointdebug.probe.condition.operand.string_operand import StringOperand
-from tracepointdebug.probe.condition.variable_value_provider import VariableValueProvider
+from tracepointdebug.probe.condition.variable_value_provider import (
+    VariableValueProvider,
+)
 
 
 class VariableOperand(Operand):
-
     def __init__(self, var_name):
         var_name = str(var_name)
         self.value_provider = VariableValueProvider(var_name)
@@ -24,6 +25,7 @@ class VariableOperand(Operand):
             return StringOperand(self.value_provider)
 
         import sys
+
         if sys.version_info[0] < 3:
             if isinstance(var_value, unicode):
                 return StringOperand(self.value_provider)

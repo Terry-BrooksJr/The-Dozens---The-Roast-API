@@ -4,7 +4,17 @@ from tracepointdebug.broker.event.base_event import BaseEvent
 class TracePointSnapshotEvent(BaseEvent):
     EVENT_NAME = "TracePointSnapshotEvent"
 
-    def __init__(self, tracepoint_id, file, line_no, method_name, frames, trace_id=None, transaction_id=None, span_id=None):
+    def __init__(
+        self,
+        tracepoint_id,
+        file,
+        line_no,
+        method_name,
+        frames,
+        trace_id=None,
+        transaction_id=None,
+        span_id=None,
+    ):
         super(TracePointSnapshotEvent, self).__init__()
         self.tracepoint_id = tracepoint_id
         self.file = file
@@ -33,5 +43,5 @@ class TracePointSnapshotEvent(BaseEvent):
             "applicationName": self.application_name,
             "client": self.client,
             "time": self.time,
-            "hostName": self.hostname
+            "hostName": self.hostname,
         }

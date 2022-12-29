@@ -5,6 +5,7 @@ from tracepointdebug.config.config_provider import ConfigProvider
 
 loggers = {}
 
+
 def get_logger(name):
     global loggers
     if loggers.get(name):
@@ -33,7 +34,7 @@ def log_to_console(message, handler):
 
 def debug_logger(msg, handler=None):
     if ConfigProvider.get(config_names.SIDEKICK_DEBUG_ENABLE):
-        if hasattr(msg, '__dict__'):
+        if hasattr(msg, "__dict__"):
             log_to_console(msg, handler)
             display = vars(msg)
             log_to_console(display, handler)
@@ -44,7 +45,7 @@ def debug_logger(msg, handler=None):
 
 
 def debug_logger_helper(msg, handler):
-    if hasattr(msg, '__dict__'):
+    if hasattr(msg, "__dict__"):
         log_to_console(msg, handler)
         display = vars(msg)
         log_to_console(display, handler)
@@ -53,4 +54,8 @@ def debug_logger_helper(msg, handler):
 
 
 def print_log_event_message(created_at, log_level, log_message):
-    print("{created_at} [{log_level}] {log_message}".format(created_at=created_at, log_level=log_level, log_message=log_message))
+    print(
+        "{created_at} [{log_level}] {log_message}".format(
+            created_at=created_at, log_level=log_level, log_message=log_message
+        )
+    )

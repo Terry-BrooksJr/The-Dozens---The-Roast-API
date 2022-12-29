@@ -4,7 +4,9 @@ from tracepointdebug.broker.event.base_event import BaseEvent
 class LogPointEvent(BaseEvent):
     EVENT_NAME = "LogPointEvent"
 
-    def __init__(self, log_point_id, file, line_no, method_name, log_message, created_at):
+    def __init__(
+        self, log_point_id, file, line_no, method_name, log_message, created_at
+    ):
         super(LogPointEvent, self).__init__()
         self.log_point_id = log_point_id
         self.file = file
@@ -29,5 +31,5 @@ class LogPointEvent(BaseEvent):
             "client": self.client,
             "time": self.time,
             "hostName": self.hostname,
-            "createdAt": self.created_at
+            "createdAt": self.created_at,
         }

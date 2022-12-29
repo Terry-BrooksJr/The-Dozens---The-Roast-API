@@ -2,7 +2,6 @@ from tracepointdebug.probe.condition.operand.operand import Operand
 
 
 class ObjectOperand(Operand):
-
     def __init__(self, value_provider):
         self.value_provider = value_provider
 

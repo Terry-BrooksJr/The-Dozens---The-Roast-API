@@ -1,5 +1,9 @@
 from tracepointdebug.probe.coded_exception import CodedException
-from tracepointdebug.probe.errors import FILE_NAME_IS_MANDATORY, LINE_NUMBER_IS_MANDATORY
+from tracepointdebug.probe.errors import (
+    FILE_NAME_IS_MANDATORY,
+    LINE_NUMBER_IS_MANDATORY,
+)
+
 
 def validate_file_name_and_line_no(file_name, line_no):
     if not file_name or len(file_name) <= 0:
