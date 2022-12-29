@@ -2,6 +2,8 @@
 
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/3eb1b819338e4b5eb8ca2327c62b46dd)](https://www.codacy.com/gh/Terry-BrooksJr/The-Dozens---The-Roast-API/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Terry-BrooksJr/The-Dozens---The-Roast-API&amp;utm_campaign=Badge_Grade)
+
 This project shows one of the possible ways to implement RESTful API server.
 
 There are implemented two models: User and Todo, one user has many todos.
@@ -9,7 +11,7 @@ There are implemented two models: User and Todo, one user has many todos.
 Main libraries used:
 
 1. Flask-JWT-Extended - for handling Bearer Token Provision and Validation for Creation, Update operations.
-2. Flask-RESTful - restful API library.
+2. Flask-RESTx- restful API library.
 3. Flask-Script - provides support for writing external scripts.
 4. Flask-Mongoengine - adds support for MongoDB ORM.
 5. Flask-Bcrypt - supports the user registration system for users who want to contribute jokes
