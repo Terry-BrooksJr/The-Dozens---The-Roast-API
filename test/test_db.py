@@ -25,7 +25,7 @@ def connection_test():
     if isinstance(db_heartbeat, dict):
         if "ok" in db_heartbeat.keys():
             return "Database is connected"
-        else:
+        else:  
             raise ConnectionFailure("Database is not connected")
 
 

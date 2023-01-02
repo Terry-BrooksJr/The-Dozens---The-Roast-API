@@ -13,13 +13,6 @@ from config import Config
 from database.db import initialize_db
 from resources import api
 
-try:
-    from utils.debugger import tracepointdebug
-
-    tracepointdebug.start()
-except ImportError as e:
-    pass
-
 #!SECTION Instantaites the Flask app
 app = Flask(__name__)
 app.config.from_object(Config)

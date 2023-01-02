@@ -1,6 +1,9 @@
+"""
+This Module is responsible for all the actions that occur in the /auth endpoint, and the functions that are called by the /auth routes.terry
+
+"""
 import os
 from datetime import timedelta
-from test.test_db import database
 
 import redis
 from bcrypt import checkpw, gensalt, hashpw
@@ -9,6 +12,7 @@ from flask_jwt_extended import create_access_token, get_jwt, verify_jwt_in_reque
 
 from database.models import User
 from utils.errors import BannedUserError
+from test.test_db import pipeline
 
 jwt_redis_blocklist = redis.StrictRedis(
     host=os.getenv("REDIS_URI"), port=6379, db=0, decode_responses=True
@@ -63,3 +67,14 @@ class GateKeeper:
         salt = gensalt(rounds=8, prefix=b"2b")
         hashed = hashpw(plaintext_pw.encode("utf-8"), salt)
         return hashed.decode()
+    
+    @staticmethod
+    def is_registered(email):
+        pipeline = {"$match": {"email": email}}
+        user = User.objects().aggregate(pipeline)
+        print(len(user))
+        if len(user) > 0:
+            return True
+        else:
+            return False
+

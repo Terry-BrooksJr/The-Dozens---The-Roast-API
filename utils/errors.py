@@ -1,3 +1,4 @@
+
 class InternalServerError(Exception):
     pass
 
@@ -34,6 +35,11 @@ class DBConnectionError(Exception):
     pass
 
 
+class ResourceNotDFoundError(Exception):
+    pass
+
+class BannedUserError(Exception):
+    pass
 errors = {
     "InternalServerError": {"message": "Something went wrong", "status": 500},
     "SchemaValidationError": {

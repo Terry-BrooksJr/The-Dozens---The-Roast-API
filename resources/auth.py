@@ -1,3 +1,7 @@
+"""
+These module encompass all the endpoints needed to register a user and provision a Bearer Token. It routes leverage the GateKeeper class to perform the necessary actions.
+"""
+
 import os
 
 import pendulum
@@ -50,7 +54,6 @@ parser.add_argument("password", type=str, required=True, location="form")
 
 now = pendulum.now()
 
-
 @api.route("auth")
 class SignupApi(Resource):
     @api.doc(model=signup_model, body=User)
@@ -59,39 +62,29 @@ class SignupApi(Resource):
     @api.response(401, "Unauthroized")
     @api.doc(parser=parser)
     @api.expect(signup_model)
+    
+    #! POST Endpoint For User Registration
     def post(self):
         body = request.get_json()
-        # # Verifying the Required Keys Are In Payload
-        # if "email" not in body.keys():
-        #     raise BadRequest("'email' Is A Required Key")
-        # if "password" not in body.keys():
-        #     raise BadRequest("'password' Is A Required Key")
-        # Assinging the Value Of Keys to ORM Model
         # TODO - Find a way to validate for Empty Post Bodies
-        # if len(body["email"] or len(body["password"])):
-        #     raise BadRequest("Empty Request")
-        email = body["email"].lower()
         user = User(
-            email=email, password=body["password"], joined_on=now.to_date_string()
+            email=body["email"].lower(), password=body["password"], joined_on=now.to_date_string()
         )
-        # Verifying The Values of Keys Are Acceptanble and No Duplicate Submissions
-        try:
-            user_found = User.objects.get(email=email)
-            if user_found:
-                raise EmailAlreadyExistsError(EmailAlreadyExistsError)
-        except user.DoesNotExist:
-            pass
-        except (UserDoesNotExist):
-            pass
-        except Exception as e:
-            raise BadRequest(e)
-        if len(user.password) <= 6:
-            raise BadRequest("Passwords Must be 6 Longer Than 6  Characters")
-        else:
-            GateKeeper.encrypt_password()
-            user.save()
-            id = user.id
-            return {"id": str(id)}, 201
+        user.password = GateKeeper.encrypt_password(user.password)
+        user.save()
+        id = user.id
+        return {"id": str(id)}, 201
+   
+        
+        
+        # else:
+        #     raise EmailAlreadyExistsError(errors.EmailAlreadyExistsError)
+        # except user.DoesNotExist:2
+        #     pass
+        # except (UserDoesNotExist):
+        #     pass
+        # except Exception as e:
+        #     raise BadRequest(e)
 
 
 @api.route("token")
@@ -104,13 +97,8 @@ class LoginApi(Resource):
     @api.expect(token_request_model)
     def post(self):
         body = request.get_json()
-        # if "email" not in body.keys():
-        #     raise BadRequest("'email' Is A Required Key'")
-        # if "password" not in body.keys():
-        #     raise BadRequest("'passeword' Is A Required Key'")
         email = body["email"].lower()
         user = User(email=email, password=body["password"])
-
         try:
             registered = User.objects.get(email=email)
         except (UnauthorizedError, UserDoesNotExist, Exception):

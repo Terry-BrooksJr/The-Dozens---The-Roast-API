@@ -1,3 +1,7 @@
+"""
+This Module is the central location for all the routes that are used in the /insults endpoint.
+"""
+
 import pendulum
 from flask import copy_current_request_context
 from flask import current_app as app
@@ -6,7 +10,7 @@ from flask_jwt_extended import get_jwt, jwt_required, verify_jwt_in_request
 from flask_restx import Namespace, Resource, apidoc, fields, marshal_with, reqparse
 
 from database.models import Insult, User
-from utils.errors import BannedUserError, InvaildTokenError, UnauthorizedError, errors
+from utils.errors import BannedUserError, InvaildTokenError, UnauthorizedError, BadRequestError, errors
 from utils.gatekeeper import GateKeeper
 from utils.jokester import Jokester
 
@@ -86,13 +90,16 @@ class InsultsAPI(Resource):
     @marshal_with(GET_fields, skip_none=True)
     @api.doc(model=GET_fields, parser=get_parsers)
     @api.response(200, "Insults Found")
-    @api.response(
-        400, "Bad Request - If passing a parameter, check values and reattempt"
-    )
+    # @api.response(
+    #     400, "Bad Request - If passing a parameter, check values and reattempt"
+    # )
     @api.expect(get_parsers)
     def get(self):
-        joke = Jokester.get_random_joke()
-        return {"Yo Mama So...": joke["content"]}, 200
+        try:
+            joke = Jokester.get_random_joke()
+            return {"Yo Mama So...": joke["butter"]}, 200
+        except BadRequestError as e:
+            return e
 
     #! POST ENDPOINT - Insults
     @jwt_required

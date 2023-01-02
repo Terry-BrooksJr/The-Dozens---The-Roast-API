@@ -5,12 +5,14 @@ from utils.errors import (
     EmailAlreadyExistsError,
     InternalServerError,
     InvaildTokenError,
+    ResourceNotDFoundError,
     UnauthorizedError,
     UserDoesNotExist,
     ValidationError,
     errors,
 )
 
+import werkzeug.exceptions
 from .auth import api as AuthNS
 from .insult import api as InsultNS
 from .status import api as StatusNS
@@ -27,12 +29,16 @@ api.add_namespace(AuthNS, "/")
 api.add_namespace(InsultNS, "/")
 
 
+@api.errorhandler(ResourceNotDFoundError)
+def ResourceNotDFoundError(error):
+    return {"message": "Yea...No...That resource does not exisit. Try again!"}, 404
+
+
 @api.errorhandler(Exception)
 def handle_root_exception(error):
     """Return a custom message and 400 status code"""
     return {
-        "Yo So Stupid": "You can't even make a vaild HTTP request. But Seriousaly, our servers don't know what the fuck to do with that request. "
-    }, 400
+        "message": f"Looking for an Insult? How bout yo So Stupid...You can't even make a vaild HTTP request. But Seriousaly, our servers don't know what the fuck to do with that request - {error}"}, 400
 
 
 @api.errorhandler(EmailAlreadyExistsError)
