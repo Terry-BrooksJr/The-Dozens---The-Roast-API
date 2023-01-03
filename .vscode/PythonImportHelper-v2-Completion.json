@@ -17,36 +17,19 @@
         "documentation": {}
     },
     {
-        "label": "MongoEngine",
-        "importPath": "flask_mongoengine",
-        "description": "flask_mongoengine",
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
         "isExtraImport": true,
-        "detail": "flask_mongoengine",
+        "detail": "datetime",
         "documentation": {}
     },
     {
-        "label": "connect",
-        "importPath": "mongoengine",
-        "description": "mongoengine",
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
         "isExtraImport": true,
-        "detail": "mongoengine",
-        "documentation": {}
-    },
-    {
-        "label": "connect",
-        "importPath": "mongoengine",
-        "description": "mongoengine",
-        "isExtraImport": true,
-        "detail": "mongoengine",
-        "documentation": {}
-    },
-    {
-        "label": "pendulum",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pendulum",
-        "description": "pendulum",
-        "detail": "pendulum",
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -59,7 +42,55 @@
         "documentation": {}
     },
     {
-        "label": "request",
+        "label": "checkpw",
+        "importPath": "bcrypt",
+        "description": "bcrypt",
+        "isExtraImport": true,
+        "detail": "bcrypt",
+        "documentation": {}
+    },
+    {
+        "label": "gensalt",
+        "importPath": "bcrypt",
+        "description": "bcrypt",
+        "isExtraImport": true,
+        "detail": "bcrypt",
+        "documentation": {}
+    },
+    {
+        "label": "hashpw",
+        "importPath": "bcrypt",
+        "description": "bcrypt",
+        "isExtraImport": true,
+        "detail": "bcrypt",
+        "documentation": {}
+    },
+    {
+        "label": "checkpw",
+        "importPath": "bcrypt",
+        "description": "bcrypt",
+        "isExtraImport": true,
+        "detail": "bcrypt",
+        "documentation": {}
+    },
+    {
+        "label": "gensalt",
+        "importPath": "bcrypt",
+        "description": "bcrypt",
+        "isExtraImport": true,
+        "detail": "bcrypt",
+        "documentation": {}
+    },
+    {
+        "label": "hashpw",
+        "importPath": "bcrypt",
+        "description": "bcrypt",
+        "isExtraImport": true,
+        "detail": "bcrypt",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
         "importPath": "flask",
         "description": "flask",
         "isExtraImport": true,
@@ -67,7 +98,7 @@
         "documentation": {}
     },
     {
-        "label": "copy_current_request_context",
+        "label": "request",
         "importPath": "flask",
         "description": "flask",
         "isExtraImport": true,
@@ -139,6 +170,30 @@
         "documentation": {}
     },
     {
+        "label": "verify_jwt_in_request",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
+        "label": "get_jwt",
+        "importPath": "flask_jwt_extended",
+        "description": "flask_jwt_extended",
+        "isExtraImport": true,
+        "detail": "flask_jwt_extended",
+        "documentation": {}
+    },
+    {
         "label": "jwt_required",
         "importPath": "flask_jwt_extended",
         "description": "flask_jwt_extended",
@@ -187,167 +242,7 @@
         "documentation": {}
     },
     {
-        "label": "Namespace",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "Resource",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "fields",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "reqparse",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "Namespace",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "Resource",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "apidoc",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "fields",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "marshal_with",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "reqparse",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "Namespace",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "Resource",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "api",
-        "importPath": "flask_restx",
-        "description": "flask_restx",
-        "isExtraImport": true,
-        "detail": "flask_restx",
-        "documentation": {}
-    },
-    {
-        "label": "BadRequest",
-        "importPath": "werkzeug.exceptions",
-        "description": "werkzeug.exceptions",
-        "isExtraImport": true,
-        "detail": "werkzeug.exceptions",
-        "documentation": {}
-    },
-    {
-        "label": "db",
-        "importPath": "database.db",
-        "description": "database.db",
-        "isExtraImport": true,
-        "detail": "database.db",
-        "documentation": {}
-    },
-    {
-        "label": "db",
-        "importPath": "database.db",
-        "description": "database.db",
-        "isExtraImport": true,
-        "detail": "database.db",
-        "documentation": {}
-    },
-    {
-        "label": "db",
-        "importPath": "database.db",
-        "description": "database.db",
-        "isExtraImport": true,
-        "detail": "database.db",
-        "documentation": {}
-    },
-    {
-        "label": "db",
-        "importPath": "database.db",
-        "description": "database.db",
-        "isExtraImport": true,
-        "detail": "database.db",
-        "documentation": {}
-    },
-    {
-        "label": "initialize_db",
-        "importPath": "database.db",
-        "description": "database.db",
-        "isExtraImport": true,
-        "detail": "database.db",
-        "documentation": {}
-    },
-    {
         "label": "User",
-        "importPath": "database.models",
-        "description": "database.models",
-        "isExtraImport": true,
-        "detail": "database.models",
-        "documentation": {}
-    },
-    {
-        "label": "Insult",
         "importPath": "database.models",
         "description": "database.models",
         "isExtraImport": true,
@@ -424,6 +319,14 @@
         "description": "database.models",
         "isExtraImport": true,
         "detail": "database.models",
+        "documentation": {}
+    },
+    {
+        "label": "BannedUserError",
+        "importPath": "utils.errors",
+        "description": "utils.errors",
+        "isExtraImport": true,
+        "detail": "utils.errors",
         "documentation": {}
     },
     {
@@ -563,11 +466,196 @@
         "documentation": {}
     },
     {
-        "label": "GateKeeper",
-        "importPath": "utils.gatekeeper",
-        "description": "utils.gatekeeper",
+        "label": "pipeline",
+        "importPath": "test.test_db",
+        "description": "test.test_db",
         "isExtraImport": true,
-        "detail": "utils.gatekeeper",
+        "detail": "test.test_db",
+        "documentation": {}
+    },
+    {
+        "label": "pipeline",
+        "importPath": "test.test_db",
+        "description": "test.test_db",
+        "isExtraImport": true,
+        "detail": "test.test_db",
+        "documentation": {}
+    },
+    {
+        "label": "MongoEngine",
+        "importPath": "flask_mongoengine",
+        "description": "flask_mongoengine",
+        "isExtraImport": true,
+        "detail": "flask_mongoengine",
+        "documentation": {}
+    },
+    {
+        "label": "connect",
+        "importPath": "mongoengine",
+        "description": "mongoengine",
+        "isExtraImport": true,
+        "detail": "mongoengine",
+        "documentation": {}
+    },
+    {
+        "label": "connect",
+        "importPath": "mongoengine",
+        "description": "mongoengine",
+        "isExtraImport": true,
+        "detail": "mongoengine",
+        "documentation": {}
+    },
+    {
+        "label": "pendulum",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pendulum",
+        "description": "pendulum",
+        "detail": "pendulum",
+        "documentation": {}
+    },
+    {
+        "label": "Namespace",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "Resource",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "fields",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "reqparse",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "Namespace",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "Resource",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "fields",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "marshal_with",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "reqparse",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "Namespace",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "Resource",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "api",
+        "importPath": "flask_restx",
+        "description": "flask_restx",
+        "isExtraImport": true,
+        "detail": "flask_restx",
+        "documentation": {}
+    },
+    {
+        "label": "BadRequest",
+        "importPath": "werkzeug.exceptions",
+        "description": "werkzeug.exceptions",
+        "isExtraImport": true,
+        "detail": "werkzeug.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
+        "documentation": {}
+    },
+    {
+        "label": "initialize_db",
+        "importPath": "database.db",
+        "description": "database.db",
+        "isExtraImport": true,
+        "detail": "database.db",
         "documentation": {}
     },
     {
@@ -592,6 +680,30 @@
         "description": "utils.gatekeeper",
         "isExtraImport": true,
         "detail": "utils.gatekeeper",
+        "documentation": {}
+    },
+    {
+        "label": "GateKeeper",
+        "importPath": "utils.gatekeeper",
+        "description": "utils.gatekeeper",
+        "isExtraImport": true,
+        "detail": "utils.gatekeeper",
+        "documentation": {}
+    },
+    {
+        "label": "Insult",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
         "documentation": {}
     },
     {
@@ -750,46 +862,6 @@
         "documentation": {}
     },
     {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "checkpw",
-        "importPath": "bcrypt",
-        "description": "bcrypt",
-        "isExtraImport": true,
-        "detail": "bcrypt",
-        "documentation": {}
-    },
-    {
-        "label": "gensalt",
-        "importPath": "bcrypt",
-        "description": "bcrypt",
-        "isExtraImport": true,
-        "detail": "bcrypt",
-        "documentation": {}
-    },
-    {
-        "label": "hashpw",
-        "importPath": "bcrypt",
-        "description": "bcrypt",
-        "isExtraImport": true,
-        "detail": "bcrypt",
-        "documentation": {}
-    },
-    {
-        "label": "pipeline",
-        "importPath": "test.test_db",
-        "description": "test.test_db",
-        "isExtraImport": true,
-        "detail": "test.test_db",
-        "documentation": {}
-    },
-    {
         "label": "random",
         "kind": 6,
         "isExtraImport": true,
@@ -845,6 +917,42 @@
         "description": "resources",
         "isExtraImport": true,
         "detail": "resources",
+        "documentation": {}
+    },
+    {
+        "label": "GateKeeper",
+        "kind": 6,
+        "importPath": ".pytest_cache.gatekeeper",
+        "description": ".pytest_cache.gatekeeper",
+        "peekOfCode": "class GateKeeper:\n    @staticmethod\n    def is_user_banned(email):\n        email = email.lower()\n        user = User.objects(email=email).first()\n        if user[\"status\"] != \"active\":\n            raise BannedUserError(\"The User Associated With That Token Has Been Banned\")\n        else:\n            return False\n    @staticmethod",
+        "detail": ".pytest_cache.gatekeeper",
+        "documentation": {}
+    },
+    {
+        "label": "jwt_redis_blocklist",
+        "kind": 5,
+        "importPath": ".pytest_cache.gatekeeper",
+        "description": ".pytest_cache.gatekeeper",
+        "peekOfCode": "jwt_redis_blocklist = redis.StrictRedis(\n    host=os.getenv(\"REDIS_URI\"), port=6379, db=0, decode_responses=True\n)\nACCESS_EXPIRES = timedelta(hours=1)\nTOKEN_EXPIRES = timedelta(days=7)\nclass GateKeeper:\n    @staticmethod\n    def is_user_banned(email):\n        email = email.lower()\n        user = User.objects(email=email).first()",
+        "detail": ".pytest_cache.gatekeeper",
+        "documentation": {}
+    },
+    {
+        "label": "ACCESS_EXPIRES",
+        "kind": 5,
+        "importPath": ".pytest_cache.gatekeeper",
+        "description": ".pytest_cache.gatekeeper",
+        "peekOfCode": "ACCESS_EXPIRES = timedelta(hours=1)\nTOKEN_EXPIRES = timedelta(days=7)\nclass GateKeeper:\n    @staticmethod\n    def is_user_banned(email):\n        email = email.lower()\n        user = User.objects(email=email).first()\n        if user[\"status\"] != \"active\":\n            raise BannedUserError(\"The User Associated With That Token Has Been Banned\")\n        else:",
+        "detail": ".pytest_cache.gatekeeper",
+        "documentation": {}
+    },
+    {
+        "label": "TOKEN_EXPIRES",
+        "kind": 5,
+        "importPath": ".pytest_cache.gatekeeper",
+        "description": ".pytest_cache.gatekeeper",
+        "peekOfCode": "TOKEN_EXPIRES = timedelta(days=7)\nclass GateKeeper:\n    @staticmethod\n    def is_user_banned(email):\n        email = email.lower()\n        user = User.objects(email=email).first()\n        if user[\"status\"] != \"active\":\n            raise BannedUserError(\"The User Associated With That Token Has Been Banned\")\n        else:\n            return False",
+        "detail": ".pytest_cache.gatekeeper",
         "documentation": {}
     },
     {
@@ -969,7 +1077,7 @@
         "kind": 6,
         "importPath": "resources.insult",
         "description": "resources.insult",
-        "peekOfCode": "class InsultsAPI(Resource):\n    #! GET ENDPOINT - Insults\n    @api.doc(model=GET_fields, parser=get_parsers)\n    @api.response(200, \"Insults Found\")\n    # @api.response(\n    #     400, \"Bad Request - If passing a parameter, check values and reattempt\"\n    # )\n    @api.expect(get_parsers)\n    def get(self):\n        joke = Jokester.get_random_joke()",
+        "peekOfCode": "class InsultsAPI(Resource):\n    #! GET ENDPOINT - Insults\n    @api.doc(model=GET_fields, parser=get_parsers)\n    @api.response(200, \"Insults Found\")\n    @api.response(\n        400, \"Bad Request - If passing a parameter, check values and reattempt\"\n    )\n    @api.expect(get_parsers)\n    def get(self):\n        joke = Jokester.get_random_joke()",
         "detail": "resources.insult",
         "documentation": {}
     },
@@ -1356,7 +1464,7 @@
         "kind": 6,
         "importPath": "utils.jokester",
         "description": "utils.jokester",
-        "peekOfCode": "class Jokester:\n    @staticmethod\n    def get_random_joke():\n        randomized_pipeline = [{\"$sample\": {\"size\": 1}}]\n        randomized_joke = str()\n        insult = Insult.objects().aggregate(randomized_pipeline)\n        for doc in insult:\n            randomized_joke = doc\n        return randomized_joke\n    @staticmethod",
+        "peekOfCode": "class Jokester:\n    @staticmethod\n    def get_random_joke():\n        randomized_pipeline = [{\"$sample\": {\"size\": 1}}]\n        randomized_joke = str()\n        insult = Insult.objects().aggregate(randomized_pipeline)\n        for doc in insult:\n            randomized_joke = doc['content']\n        return randomized_joke\n    @staticmethod",
         "detail": "utils.jokester",
         "documentation": {}
     },

@@ -1,0 +1,51 @@
+@font-face {
+  font-family: YoMamaHeader;
+  src: url(https://cdn.jsdelivr.net/gh/Terry-BrooksJr/MindHealthCDN@c6715b28123debb772de65c5c4b2d41ca63e775e/fonts/RubikVinyl-Regular.ttf);
+}
+
+@font-face {
+  font-family: YoMamaBody;
+  src: url(https://cdn.jsdelivr.net/gh/Terry-BrooksJr/MindHealthCDN@1a2c14865a818cec1a0982dc0197d56106eb95a4/fonts/JuliusSansOne-Regular.ttf);
+}
+body {
+ background-image: url("https://cdn.jsdelivr.net/gh/Terry-BrooksJr/MindHealthCDN@c29df2a17ec6a7e753bd215cbad0ef423da3a214/images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: purple;
+  font-family: "YoMamaBody";
+}
+main{
+  height: 780px;
+  width: 100%;
+}
+#yo-mama-brand {
+  height: 100px;
+  width: auto;
+  margin-left 230px;
+  padding: 0px;
+  float: left;
+}
+#yo-mama-dropdown{
+  outline:0;
+  border:0;
+  background-color: transparent;
+}
+nav {
+background-color: purple;
+}
+
+
+/* Modify the background color */
+.navbar-main {
+    background-color: purple;
+}
+#joke{
+  color: white;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+}

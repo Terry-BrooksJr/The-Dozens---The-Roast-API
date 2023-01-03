@@ -3,16 +3,16 @@ This Module is the central location for all the routes that are used in the /ins
 """
 
 import pendulum
-from flask import copy_current_request_context
 from flask import current_app as app
 from flask import request
 from flask_jwt_extended import get_jwt, jwt_required, verify_jwt_in_request
-from flask_restx import Namespace, Resource, apidoc, fields, marshal_with, reqparse
+from flask_restx import Namespace, Resource, fields, marshal_with, reqparse
 
-from database.models import Insult, User
+from database import Insult, User
 from utils.errors import BannedUserError, InvaildTokenError, UnauthorizedError, errors
 from utils.gatekeeper import GateKeeper
 from utils.jokester import Jokester
+
 
 #! Namespace Declaration
 api = Namespace("Insults", description="Joke operations")
@@ -41,6 +41,8 @@ now = pendulum.now()
 parser = reqparse.RequestParser()
 joke_categories = Jokester.get_catagories()
 print(joke_categories)
+
+
 #!Request Parameters Designations
 parser.add_argument("content", type=str, required=True, location="form")
 parser.add_argument("explicit", type=str, required=True, location="form")
@@ -50,7 +52,7 @@ parser.add_argument(
     required=True,
     location="form",
     help="specify the jokes to a  category, if it doesn't fit to any choose 'snowflake'",
-    choices=joke_categories,
+    choices=joke_categories
 )
 parser.add_argument(
     "bearer token",
@@ -77,7 +79,7 @@ get_parsers.replace_argument(
     required=False,
     location="args",
     help="limit the jokes to a specific category",
-    choices=list(joke_categories),
+    choices=joke_categories
 )
 get_parsers.remove_argument("content")
 get_parsers.remove_argument("bearer token")
@@ -89,13 +91,13 @@ class InsultsAPI(Resource):
 
     @api.doc(model=GET_fields, parser=get_parsers)
     @api.response(200, "Insults Found")
-    # @api.response(
-    #     400, "Bad Request - If passing a parameter, check values and reattempt"
-    # )
+    @api.response(
+        400, "Bad Request - If passing a parameter, check values and reattempt"
+    )
     @api.expect(get_parsers)
     def get(self):
         joke = Jokester.get_random_joke()
-        return {"Yo Mama So...": joke["content"]}, 200
+        return {"Yo Mama So...": joke}, 200
 
 
     #! POST ENDPOINT - Insults

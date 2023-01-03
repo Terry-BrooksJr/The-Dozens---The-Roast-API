@@ -11,3 +11,4 @@ class Config(object):
     JWT_HEADER_NAME = ("Authorization",)
     JWT_SECRET_KEY = (os.getenv("JWT_SECRET_KEY"),)
     SECRET_KEY = os.getenv("SECRET_KEY")
+    
