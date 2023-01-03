@@ -10,7 +10,7 @@ from flask_jwt_extended import get_jwt, jwt_required, verify_jwt_in_request
 from flask_restx import Namespace, Resource, apidoc, fields, marshal_with, reqparse
 
 from database.models import Insult, User
-from utils.errors import BannedUserError, InvaildTokenError, UnauthorizedError, BadRequestError, errors
+from utils.errors import BannedUserError, InvaildTokenError, UnauthorizedError, errors
 from utils.gatekeeper import GateKeeper
 from utils.jokester import Jokester
 
@@ -87,7 +87,6 @@ get_parsers.remove_argument("bearer token")
 class InsultsAPI(Resource):
     #! GET ENDPOINT - Insults
 
-    @marshal_with(GET_fields, skip_none=True)
     @api.doc(model=GET_fields, parser=get_parsers)
     @api.response(200, "Insults Found")
     # @api.response(
@@ -95,11 +94,9 @@ class InsultsAPI(Resource):
     # )
     @api.expect(get_parsers)
     def get(self):
-        try:
-            joke = Jokester.get_random_joke()
-            return {"Yo Mama So...": joke["butter"]}, 200
-        except BadRequestError as e:
-            return e
+        joke = Jokester.get_random_joke()
+        return {"Yo Mama So...": joke["content"]}, 200
+
 
     #! POST ENDPOINT - Insults
     @jwt_required
