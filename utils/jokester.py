@@ -31,18 +31,15 @@ class Jokester:
         return censored_joke
 
     @staticmethod
-    def get_categorized_joke(catagory_selection, explicit_settings):
-        pipeline_step1 = {"$match": {"explicit": explicit_settings}}
+    def get_categorized_joke(catagory_selection):
+        # pipeline_step1 = {"$match": {"explicit": explicit_settings}}
         pipeline_step2 = {"$match": {"catagory": catagory_selection}}
-        catagorized_pipeline = [pipeline_step1, pipeline_step2]
+        catagorized_pipeline = [pipeline_step2]
         catagorized_joke = str()
         insult = Insult.objects().aggregate(catagorized_pipeline)
         randomizer = random.randint(0, len(insult))
         for doc in insult:
-            if doc[randomizer]["status"] == "Active":
-                catagorized_joke = doc[randomizer]["content"]
-            else:
-                Jokester.get_categorized_joke()
+            catagorized_joke = doc[randomizer]["content"]
         return catagorized_joke
 
     @staticmethod
@@ -53,8 +50,10 @@ class Jokester:
         catagory_list = list()
 
         for cat in catagories:
-            if cat['category'] not in catagory_list:
-                catagory_list.append(cat['category'])
-
-        return catagory_list
+            if cat['category'] != 'test':
+                if cat['category'] not in catagory_list:
+                    catagory_list.append(cat['category'])
+                    
+            sorted_list = sorted(catagory_list)
+        return sorted_list
 

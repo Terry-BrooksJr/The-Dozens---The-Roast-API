@@ -1077,7 +1077,7 @@
         "kind": 6,
         "importPath": "resources.insult",
         "description": "resources.insult",
-        "peekOfCode": "class InsultsAPI(Resource):\n    #! GET ENDPOINT - Insults\n    @api.doc(model=GET_fields, parser=get_parsers)\n    @api.response(200, \"Insults Found\")\n    @api.response(\n        400, \"Bad Request - If passing a parameter, check values and reattempt\"\n    )\n    @api.expect(get_parsers)\n    def get(self):\n        joke = Jokester.get_random_joke()",
+        "peekOfCode": "class InsultsAPI(Resource):\n    #! GET ENDPOINT - Insults\n    @api.doc(model=GET_fields, parser=get_parsers)\n    @api.response(200, \"Insults Found\")\n    @api.response(\n        400, \"Bad Request - If passing a parameter, check values and reattempt\"\n    )\n    @api.expect(get_parsers)\n    def get(self):\n        args = parser.parse_args()",
         "detail": "resources.insult",
         "documentation": {}
     },

@@ -96,8 +96,13 @@ class InsultsAPI(Resource):
     )
     @api.expect(get_parsers)
     def get(self):
-        joke = Jokester.get_random_joke()
-        return {"Yo Mama So...": joke}, 200
+        args = parser.parse_args()
+        if args is None:
+            joke = Jokester.get_random_joke()
+            return {"Yo Mama So...": joke}, 200
+        else:
+            joke = Jokester.get_categorized_joke('snowflake', False)
+            return {"Yo Mama So...": joke}, 200
 
 
     #! POST ENDPOINT - Insults
