@@ -1,31 +1,63 @@
+
+"""
+These module encompass all the endpoints needed to register a user and provision a Bearer Token. It routes leverage the GateKeeper class to perform the necessary actions.
+"""
+
+import os
+
+import pendulum
+import redis
 from flask import request
 from flask_jwt_extended import create_access_token
-from database.models import User
-from utils.gatekeeper import GateKeeper
-from flask_restx import Resource
-import pendulum
+from flask_restx import Namespace, Resource, fields, reqparse
+from werkzeug.exceptions import BadRequest
+
+# from app import api
 from database.db import db
-import os
-from utils.errors import UnauthorizedError, errors, EmailAlreadyExistsError
-import redis
+from database.models import User
+from utils.errors import (
+    EmailAlreadyExistsError,
+    UnauthorizedError,
+    UserDoesNotExist,
+    errors,
+)
+from utils.gatekeeper import GateKeeper
 
-now = pendulum.now()
-import pprint
-
-gatekeeper = GateKeeper()
+# Namespace Declaration
+api = Namespace(
+    "Authorizations & Authentication",
+    description="These endpoints encompass all the endpoints needed to:\n 1. Sign-Up to contribute a joke. \n 2. Provisioning a Bearer Token require at the time of submission. <br> <sub>Note: The Bearer Token is required to submit a joke, and registration is required to receive a token.</sub>",
+)
+# Namespace Related Models
+signup_model = api.model(
+    "SignUp",
+    {
+        "email": fields.String(required=True),
+        "password": fields.String(min_length=7, required=True),
+    },
+)
+token_request_model = api.model(
+    "Bearer Token Provision",
+    {
+        "email": fields.String(required=True),
+        "password": fields.String(min_length=7, required=True),
+    },
+)
+# Top-Level Vaariables/Plugins
 jwt_redis_blocklist = redis.StrictRedis(
     host=os.getenv("REDIS_URI"), port=6379, db=0, decode_responses=True
 )
 
+parser = reqparse.RequestParser()
+parser.add_argument("email", type=str, required=True, location="form")
+parser.add_argument("password", type=str, required=True, location="form")
 
+now = pendulum.now()
+
+@api.route("auth")
 class SignupApi(Resource):
     def post(self):
         body = request.get_json()
-        # Verifying the Required Keys Are In Payload
-        if "email" not in body.keys():
-            return {"Error": "'email' Is A Required Key"}, 406
-        if "password" not in body.keys():
-            return {"Error": "'password' Is A Required Key"}, 406
         # Assinging the Value Of Keys to ORM Model
         email = body["email"].lower()
         user = User(
@@ -52,10 +84,6 @@ class SignupApi(Resource):
 class LoginApi(Resource):
     def post(self):
         body = request.get_json()
-        if "email" not in body.keys():
-            return {"Error": "'email' Is A Required Key"}
-        if "password" not in body.keys():
-            return {"Error": "'password' Is A Required Key"}
         email = body["email"].lower()
         user = User(email=email, password=body["password"])
 

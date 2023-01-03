@@ -11,93 +11,36 @@ from database.models import Insult
 from utils.errors import errors, SchemaValidationError
 from utils.jokester import Jokester
 
-now = pendulum.now()
-parser = reqparse.RequestParser()
-gatekeeper = GateKeeper()
-
-POST_fields = {
-    "content": fields.String(),
-    "nsfw": fields.Boolean(),
-    "catagory": fields.String(),
-}
-
 
 class InsultsAPI(Resource):
-    def __init__(self):
-        self.PARAMS = {
-            "GET": {
-                "nsfw": {
-                    "type": bool,
-                    "default": None,
-                    "validators": [],
-                    "locations": ["args", "headers"],
-                    "required": False,
-                },
-                "category": {
-                    "type": str,
-                    "default": None,
-                    "validators": [],
-                    "locations": ["args", "headers"],
-                    "required": False,
-                },
-            },
-            "POST": {
-                "content": {
-                    "type": str,
-                    "vaildators": [],
-                    "locations": ["json"],
-                    "required": True,
-                },
-                "nsfw": {
-                    "type": bool,
-                    "vaildators": [],
-                    "locations": ["json"],
-                    "required": True,
-                },
-                "catagory": {
-                    "type": bool,
-                    "vaildators": [],
-                    "locations": ["json"],
-                    "required": True,
-                },
-            },
-        }
-
     def get(self):
         return {"Yo Mama So...": Jokester.get_random_joke()}, 200
 
-    @jwt_required
-    @marshal_with(POST_fields)
-    def post(self):
-        if "content" not in body.keys():
-            return {"Error": "'content' Is A Required Key"}
-        if "nsfw" not in body.keys():
-            return {"Error": "'nsfw' Is A Required Key"}
-        if "token" not in body.keys():
-            return {"Error": "'token' Is A Required Key"}
-        try:
-            user_id = get_jwt_identity()
-            auth_token = get_jwt()
-            revoked = gatekeeper.check_if_token_is_revoked(auth_token)
-            if revoked:
-                return {
-                    "Not Authorized": "The Token Provided has Expired or Has been Revoked!"
-                }, 401
-            else:
-                user = User.objects.get(id=user_id)
-                content = request.get("content")
-                # category = request.json["category"]
-                explict = request.get["nsfw"]
-                date = str(now.to_datetime_string())
-                Insult(
-                    content=content, explict=explict, added_on=date, added_by=user
-                ).save()
-                insult = Insult.objects.all()
-                return {"Status": "Insult Added"}, 201
-        except (FieldDoesNotExist, ValidationError):
-            raise SchemaValidationError
-        except Exception:
-            raise InternalServerError
+    # @jwt_required
+    # def post(self):
+    #     try:
+    #         user_id = get_jwt_identity()
+    #         auth_token = get_jwt()
+    #         revoked = gatekeeper.check_if_token_is_revoked(auth_token)
+    #         if revoked:
+    #             return {
+    #                 "Not Authorized": "The Token Provided has Expired or Has been Revoked!"
+    #             }, 401
+    #         else:
+    #             user = User.objects.get(id=user_id)
+    #             content = request.get("content")
+    #             # category = request.json["category"]
+    #             explict = request.get["nsfw"]
+    #             date = str(now.to_datetime_string())
+    #             Insult(
+    #                 content=content, explict=explict, added_on=date, added_by=user
+    #             ).save()
+    #             insult = Insult.objects.all()
+    #             return {"Status": "Insult Added"}, 201
+    #     except (FieldDoesNotExist, ValidationError):
+    #         raise SchemaValidationError
+    #     except Exception:
+    #         raise InternalServerError
 
 
 # FIXME - Get this Parameter Parsing filteration logic to work
