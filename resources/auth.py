@@ -48,10 +48,6 @@ jwt_redis_blocklist = redis.StrictRedis(
     host=os.getenv("REDIS_URI"), port=6379, db=0, decode_responses=True
 )
 
-parser = reqparse.RequestParser()
-parser.add_argument("email", type=str, required=True, location="form")
-parser.add_argument("password", type=str, required=True, location="form")
-
 now = pendulum.now()
 
 @api.route("auth")

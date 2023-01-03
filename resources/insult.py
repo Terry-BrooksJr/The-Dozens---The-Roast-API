@@ -4,8 +4,6 @@ from flask import current_app as app
 from flask import request
 from flask_jwt_extended import get_jwt_identity, jwt_required
 from flask_restx import Resource, reqparse, fields, marshal_with
-from utils.parser import parse_params
-from utils.arguments import Argument
 from utils.gatekeeper import GateKeeper
 from database.models import Insult
 from utils.errors import errors, SchemaValidationError
